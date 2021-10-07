@@ -15,9 +15,9 @@ namespace CM7A68_HFT_2021221.Models
         public string Model { get; set; }
         public int Production_year { get; set; }
         public int  Cylinder_number { get; set; }
-        public int Cylinder_capacity { get; set; }
-        public Brand Brand { get; set; }
-        public virtual ICollection<Part> Parts { get; set; }
+        public double Cylinder_capacity { get; set; }
+        public  virtual Brand Brand { get; set; }
+        public virtual ICollection<CarPart> CarParts { get; set; }
 
         [ForeignKey(nameof(Brand))]
         public int BrandID { get; set; }
