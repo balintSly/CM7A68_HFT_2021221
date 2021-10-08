@@ -35,7 +35,7 @@ namespace CM7A68_HFT_2021221.Data
             Brand lamborghini = new Brand() { ID = 6, Name = "Lamborghini" };
             Brand tesla = new Brand() { ID = 7, Name = "Tesla" };
             Brand nissan = new Brand() { ID = 8, Name = "Nissan" };
-            Brand toyota = new Brand() { ID = 9, Name = "Porsche" };
+            Brand toyota = new Brand() { ID = 9, Name = "Toyota" };
             Brand suzuki = new Brand() { ID = 10, Name = "Suzuki" };
 
             Part part1 = new Part() { ID = 1, Brand = "Febi", Item_number = "006070789A", Name = "Brake pads", Price = 5000, Weight = 0.5 };
