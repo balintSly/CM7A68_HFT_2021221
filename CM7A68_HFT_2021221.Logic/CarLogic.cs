@@ -16,11 +16,11 @@ namespace CM7A68_HFT_2021221.Logic
         {
             if (car.Cylinder_capacity < 0)
             {
-                throw new ArgumentException("Invalid cylinder capacity.")
+                throw new ArgumentException("Invalid cylinder capacity.");
             }
             if (car.Cylinder_number < 0)
             {
-                throw new ArgumentException("Invalid cylinder number.")
+                throw new ArgumentException("Invalid cylinder number.");
             }
             if (car.Model.Length == 0)
             {
