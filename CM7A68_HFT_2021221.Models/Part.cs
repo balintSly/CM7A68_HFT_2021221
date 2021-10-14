@@ -17,8 +17,15 @@ namespace CM7A68_HFT_2021221.Models
         public string Item_number { get; set; }
         public string Brand { get; set; }
         public virtual ICollection<CarPart> CarParts { get; set; }
-        
 
+        public override bool Equals(object obj)
+        {
+            return this.GetHashCode() == obj.GetHashCode();
+        }
+        public override int GetHashCode()
+        {
+            return Name.GetHashCode() * ID.GetHashCode()*Weight.GetHashCode()*Item_number.GetHashCode();
+        }
 
 
     }

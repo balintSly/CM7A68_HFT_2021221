@@ -14,6 +14,14 @@ namespace CM7A68_HFT_2021221.Models
         {
             Cars = new HashSet<Car>();
         }
+        public override bool Equals(object obj)
+        {
+            return this.GetHashCode()==obj.GetHashCode();
+        }
+        public override int GetHashCode()
+        {
+            return Name.GetHashCode() * ID.GetHashCode();
+        }
 
 
     }

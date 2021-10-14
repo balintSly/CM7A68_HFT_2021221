@@ -22,5 +22,13 @@ namespace CM7A68_HFT_2021221.Models
         [ForeignKey(nameof(Brand))]
         public int BrandID { get; set; }
 
+        public override bool Equals(object obj)
+        {
+            return this.GetHashCode() == obj.GetHashCode();
+        }
+        public override int GetHashCode()
+        {
+            return Model.GetHashCode() * ID.GetHashCode()*Production_year.GetHashCode()*Cylinder_number.GetHashCode();
+        }
     }
 }
