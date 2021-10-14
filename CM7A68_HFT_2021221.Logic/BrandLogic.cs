@@ -68,13 +68,24 @@ namespace CM7A68_HFT_2021221.Logic
         {
             return brandRepo.ReadAll();
         }
-        //public IEnumerable<string> BremboUserBrands()
-        //{
-        //    var BremboUserBrands = from x in brandRepo.ReadAll()
-        //                           where x.Cars.Any(x => x.CarParts.Any(x => x.Part.Brand == "Brembo"))
-        //                           select new { Name=x.Name };
-        //    return BremboUserBrands;
-        //}
+        public IEnumerable<KeyValuePair<string, string>> BremboUserBrands()
+        {
+            return from x in brandRepo.ReadAll()
+                   where x.Cars.Any(x => x.CarParts.Any(x => x.Part.Brand == "Brembo"))
+                   select new KeyValuePair<string, string>("Brand", x.Name); 
+        }
+        public IEnumerable<KeyValuePair<string, string>> BrandsWithElectricCars()
+        {
+            return from x in brandRepo.ReadAll()
+                   where x.Cars.Any(x => x.Cylinder_capacity == 0)
+                   select new KeyValuePair<string, string>("Brand", x.Name);
+        }
+        public IEnumerable<KeyValuePair<string, string>> BrandWithTheMost4CylinderCar()
+        {
+            return (from x in brandRepo.ReadAll()
+                    orderby x.Cars.Count(x => x.Cylinder_number == 4) descending
+                    select new KeyValuePair<string, string>("Brand", x.Name)).Take(1);
+        }
 
     }
 }
