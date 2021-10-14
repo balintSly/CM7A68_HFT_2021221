@@ -68,6 +68,13 @@ namespace CM7A68_HFT_2021221.Logic
         {
             return brandRepo.ReadAll();
         }
+        //public IEnumerable<string> BremboUserBrands()
+        //{
+        //    var BremboUserBrands = from x in brandRepo.ReadAll()
+        //                           where x.Cars.Any(x => x.CarParts.Any(x => x.Part.Brand == "Brembo"))
+        //                           select new { Name=x.Name };
+        //    return BremboUserBrands;
+        //}
 
     }
 }
