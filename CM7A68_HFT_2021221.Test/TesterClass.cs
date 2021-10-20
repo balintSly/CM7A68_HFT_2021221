@@ -117,14 +117,44 @@ namespace CM7A68_HFT_2021221.Test
 
             var brands = new List<Brand>() { volkswagen, seat, audi, skoda, porsche, lamborghini, tesla, nissan, toyota, suzuki }.AsQueryable();
 
-            var cars = new List<Car>() { volkswagen1, volkswagen2, volkswagen2, volkswagen4, seat1, seat2, audi1, audi2, skoda1, skoda2, porsche1, porsche2, lamborghini1, lamborghini2, tesla1, tesla2, nissan1, nissan2, toyota1, toyota2, suzuki1, suzuki2 }.AsQueryable();
+            var cars = new List<Car>() { volkswagen1, volkswagen2, volkswagen3, volkswagen4, seat1, seat2, audi1, audi2, skoda1, skoda2, porsche1, porsche2, lamborghini1, lamborghini2, tesla1, tesla2, nissan1, nissan2, toyota1, toyota2, suzuki1, suzuki2 }.AsQueryable();
 
             mockCarRepo.Setup(x => x.ReadAll()).Returns(cars);
             mockbrandRepo.Setup(x => x.ReadAll()).Returns(brands);
             cl = new CarLogic(mockCarRepo.Object);
             bl = new BrandLogic(mockbrandRepo.Object);
+            ;
         }
-        
+        [Test]
+        public void CarCreateTest()
+        {
+            Brand testbrand = new Brand { ID = 99, Name = "TestBrand" };
+            Car testcar = new Car() { ID = 29, BrandID = 99, Cylinder_capacity = 2.0, Cylinder_number = 3, Model = "TestModel", Production_year = 1999, Brand = testbrand, CarParts = null };
+            testbrand.Cars.Add(testcar);
+
+            Assert.DoesNotThrow(() => cl.Create(testcar));
+
+        }
+        //linq 1
+        [Test]
+        public void Top2CarsWithTheMostCompatibleParts() //seat leon, volkswagen touran
+        {
+            var results = cl.Top3CarsWithTheMostCompatibleParts().ToArray();
+            string result = "";
+            for (int i = 0; i < results.Length-1; i++)
+            {
+                result += results[i].Value[0].Value.ToUpper() + " " + results[i].Value[1].Value.ToUpper();
+                if (i!=results.Length-2)
+                {
+                    result += ", ";
+                }
+            }
+            string expected = "SEAT LEON, VOLKSWAGEN TOURAN";
+
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+
 
 
     }
