@@ -8,7 +8,7 @@ using CM7A68_HFT_2021221.Models;
 
 namespace CM7A68_HFT_2021221.Logic
 {
-    class BrandLogic : IBrandLogic
+    public class BrandLogic : IBrandLogic
     {
         IBrandRepo brandRepo;
         public BrandLogic(IBrandRepo brandRepo)

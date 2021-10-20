@@ -8,7 +8,7 @@ using CM7A68_HFT_2021221.Repository;
 
 namespace CM7A68_HFT_2021221.Logic
 {
-    class PartLogic
+    public class PartLogic
     {
         IPartRepo partRepo;
         public PartLogic(IPartRepo partRepo)
