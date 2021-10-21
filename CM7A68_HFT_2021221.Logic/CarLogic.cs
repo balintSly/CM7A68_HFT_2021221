@@ -82,7 +82,7 @@ namespace CM7A68_HFT_2021221.Logic
             return from x in carRepo.ReadAll()
                    group x by x.Brand.Name into g
                    select new KeyValuePair<string, KeyValuePair<string, KeyValuePair<string, double>>>
-                   ("Brand", new KeyValuePair<string, KeyValuePair<string, double>>(g.Key, new KeyValuePair<string, double>("AvgCylCap", g.Average(x => x.Cylinder_capacity))));
+                   ("Brand", new KeyValuePair<string, KeyValuePair<string, double>>(g.Key, new KeyValuePair<string, double>("AvgCylCap",Math.Round( g.Average(x => x.Cylinder_capacity), 1))));
         }
     }
 }

@@ -44,9 +44,14 @@ namespace CM7A68_HFT_2021221.Client
             IEnumerable<KeyValuePair<string, KeyValuePair<string, KeyValuePair<string, double>>>> AvgCylinderCapBrands = from x in db.Cars
                                        group x by x.Brand.Name into g
                                        select new KeyValuePair<string, KeyValuePair<string, KeyValuePair<string, double>>>
-                                       ("Brand",new KeyValuePair<string, KeyValuePair<string, double>>(g.Key, new KeyValuePair<string, double>("AvgCylCap", g.Average(x => x.Cylinder_capacity))));
+                                       ("Brand",new KeyValuePair<string, KeyValuePair<string, double>>(g.Key, new KeyValuePair<string, double>("AvgCylCap",Math.Round( g.Average(x => x.Cylinder_capacity),1))));
+
+
             var list = BrandsWithElectricCars.ToList();
             string test = list[0].Value;
+            IEnumerable<KeyValuePair<string, List<KeyValuePair<string, string>>>> Top3CarsWithTheMostCompatiblePartstest = (from x in db.Cars
+                                                                                                                        orderby x.CarParts.ToArray().Length descending
+                                                                                                                        select new KeyValuePair<string, List<KeyValuePair<string, string>>>("Car", new List<KeyValuePair<string, string>>() { new KeyValuePair<string, string>("Brand", x.Brand.Name), new KeyValuePair<string, string>("Model", x.Model), new KeyValuePair<string, string>("Part_Number", x.CarParts.ToArray().Length.ToString()) }));
             ;
         }
     }

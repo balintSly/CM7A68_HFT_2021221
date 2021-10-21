@@ -42,11 +42,11 @@ namespace CM7A68_HFT_2021221.Test
             Part part10 = new Part() { ID = 10, Brand = "Hella", Item_number = "99998776OP", Name = "Headlights", Price = 60000, Weight = 2 };
             //////////////////////////////////////////////////////////////////////////////////
             Car volkswagen1 = new Car() { ID = 1, BrandID = volkswagen.ID, Cylinder_capacity = 1.8, Cylinder_number = 4, Model = "Golf II", Production_year = 1989, Brand = volkswagen };
-            Car volkswagen2 = new Car() { ID = 2, BrandID = volkswagen.ID, Cylinder_capacity = 2, Cylinder_number = 4, Model = "Golf III GTI", Production_year = 1995, Brand = volkswagen };
+            Car volkswagen2 = new Car() { ID = 2, BrandID = volkswagen.ID, Cylinder_capacity = 2.0, Cylinder_number = 4, Model = "Golf III GTI", Production_year = 1995, Brand = volkswagen };
             Car seat1 = new Car() { ID = 3, BrandID = seat.ID, Cylinder_capacity = 1.8, Cylinder_number = 4, Model = "Leon", Production_year = 2004, Brand = seat };
             Car audi1 = new Car() { ID = 4, BrandID = audi.ID, Cylinder_capacity = 5.2, Cylinder_number = 10, Model = "R8", Production_year = 2008, Brand = audi };
             Car skoda1 = new Car() { ID = 5, BrandID = skoda.ID, Cylinder_capacity = 1.2, Cylinder_number = 3, Model = "Fabia", Production_year = 1999, Brand = skoda };
-            Car porsche1 = new Car() { ID = 6, BrandID = porsche.ID, Cylinder_capacity = 3.8, Cylinder_number = 6, Model = "911 Turbo S", Production_year = 2020, Brand = skoda };
+            Car porsche1 = new Car() { ID = 6, BrandID = porsche.ID, Cylinder_capacity = 3.8, Cylinder_number = 6, Model = "911 Turbo S", Production_year = 2020, Brand = porsche };
             Car lamborghini1 = new Car() { ID = 7, BrandID = lamborghini.ID, Cylinder_capacity = 6.5, Cylinder_number = 12, Model = "Aventador", Production_year = 2011, Brand = lamborghini };
             Car tesla1 = new Car() { ID = 8, BrandID = tesla.ID, Cylinder_capacity = 0, Cylinder_number = 0, Model = "Model S Plaid", Production_year = 2020, Brand = tesla };
             Car nissan1 = new Car() { ID = 9, BrandID = nissan.ID, Cylinder_capacity = 2.6, Cylinder_number = 6, Model = "Skyline", Production_year = 1999, Brand = nissan };
@@ -57,13 +57,13 @@ namespace CM7A68_HFT_2021221.Test
             Car seat2 = new Car() { ID = 14, BrandID = seat.ID, Cylinder_capacity = 1.8, Cylinder_number = 4, Model = "Ibiza Cupra", Production_year = 2016, Brand = volkswagen };
             Car audi2 = new Car() { ID = 15, BrandID = audi.ID, Cylinder_capacity = 1.8, Cylinder_number = 4, Model = "TT", Production_year = 2000, Brand = audi };
             Car skoda2 = new Car() { ID = 16, BrandID = skoda.ID, Cylinder_capacity = 2.0, Cylinder_number = 4, Model = "Superb", Production_year = 2015, Brand = skoda };
-            Car porsche2 = new Car() { ID = 17, BrandID = porsche.ID, Cylinder_capacity = 0, Cylinder_number = 0, Model = "Taycan", Production_year = 2019, Brand = skoda };
+            Car porsche2 = new Car() { ID = 17, BrandID = porsche.ID, Cylinder_capacity = 0, Cylinder_number = 0, Model = "Taycan", Production_year = 2019, Brand = porsche };
             Car lamborghini2 = new Car() { ID = 18, BrandID = lamborghini.ID, Cylinder_capacity = 4.0, Cylinder_number = 8, Model = "Urus", Production_year = 2018, Brand = lamborghini };
             Car tesla2 = new Car() { ID = 19, BrandID = tesla.ID, Cylinder_capacity = 0, Cylinder_number = 0, Model = "Model X", Production_year = 2015, Brand = tesla };
             Car nissan2 = new Car() { ID = 20, BrandID = nissan.ID, Cylinder_capacity = 3.5, Cylinder_number = 6, Model = "350Z", Production_year = 2003, Brand = nissan };
             Car toyota2 = new Car() { ID = 21, BrandID = toyota.ID, Cylinder_capacity = 1.6, Cylinder_number = 4, Model = "AE86", Production_year = 1983, Brand = toyota };
             Car suzuki2 = new Car() { ID = 22, BrandID = suzuki.ID, Cylinder_capacity = 1.4, Cylinder_number = 4, Model = "Vitara", Production_year = 2018, Brand = suzuki };
-            //alkatrészt autóhoz hozzárendelni
+            //alkatrészt autóhoz hozzárendelni/////////////////////////////////////////////////////////////////////////////////////////////////
             volkswagen1.CarParts = new List<CarPart>() { new CarPart { CarID = 1, PartID = 4 }, new CarPart { CarID = 1, PartID = 7 }, new CarPart { CarID = 1, PartID = 10 }, new CarPart { CarID = 1, PartID = 3 } };
             volkswagen2.CarParts = new List<CarPart>() { new CarPart { CarID = 2, PartID = 4 }, new CarPart { CarID = 2, PartID = 7 }, new CarPart { CarID = 2, PartID = 2 } };
             seat1.CarParts = new List<CarPart>() { new CarPart { CarID = 3, PartID = 5 }, new CarPart { CarID = 3, PartID = 7 }, new CarPart { CarID = 3, PartID = 8 }, new CarPart { CarID = 3, PartID = 2 }, new CarPart { CarID = 3, PartID = 10 }, new CarPart { CarID = 3, PartID = 1 } };
@@ -86,9 +86,7 @@ namespace CM7A68_HFT_2021221.Test
             nissan2.CarParts = new List<CarPart>() { new CarPart { CarID = 20, PartID = 6 }, new CarPart { CarID = 20, PartID = 7 }, new CarPart { CarID = 20, PartID = 8 } };
             toyota2.CarParts = new List<CarPart>() { new CarPart { CarID = 21, PartID = 4 }, new CarPart { CarID = 21, PartID = 7 }, new CarPart { CarID = 21, PartID = 9 } };
             suzuki2.CarParts = new List<CarPart>() { new CarPart { CarID = 22, PartID = 6 }, new CarPart { CarID = 22, PartID = 7 }, new CarPart { CarID = 22, PartID = 8 } };
-
-
-            //alkatrészhez autót
+            //alkatrészhez autót////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             part1.CarParts = new List<CarPart>() { new CarPart { CarID = 3, PartID = 1 }, new CarPart { CarID = 4, PartID = 1 }, new CarPart { CarID = 6, PartID = 1 }, new CarPart { CarID = 7, PartID = 1 }, new CarPart { CarID = 12, PartID = 1 }, new CarPart { CarID = 13, PartID = 1 } };
             part2.CarParts = new List<CarPart>() { new CarPart { CarID = 2, PartID = 2 }, new CarPart { CarID = 3, PartID = 2 }, new CarPart { CarID = 5, PartID = 2 }, new CarPart { CarID = 10, PartID = 2 }, new CarPart { CarID = 11, PartID = 2 }, new CarPart { CarID = 12, PartID = 2 }, new CarPart { CarID = 15, PartID = 2 }, new CarPart { CarID = 16, PartID = 2 }, new CarPart { CarID = 19, PartID = 2 } };
             part3.CarParts = new List<CarPart>() { new CarPart { CarID = 6, PartID = 3 }, new CarPart { CarID = 1, PartID = 3 }, new CarPart { CarID = 8, PartID = 3 } };
@@ -99,8 +97,7 @@ namespace CM7A68_HFT_2021221.Test
             part8.CarParts = new List<CarPart>() { new CarPart { CarID = 3, PartID = 8 }, new CarPart { CarID = 7, PartID = 8 }, new CarPart { CarID = 9, PartID = 8 }, new CarPart { CarID = 12, PartID = 8 }, new CarPart { CarID = 13, PartID = 8 }, new CarPart { CarID = 15, PartID = 8 }, new CarPart { CarID = 20, PartID = 8 }, new CarPart { CarID = 22, PartID = 8 } };
             part9.CarParts = new List<CarPart>() { new CarPart { CarID = 4, PartID = 9 }, new CarPart { CarID = 5, PartID = 9 }, new CarPart { CarID = 9, PartID = 9 }, new CarPart { CarID = 21, PartID = 9 } };
             part10.CarParts = new List<CarPart>() { new CarPart { CarID = 1, PartID = 10 }, new CarPart { CarID = 3, PartID = 10 }, new CarPart { CarID = 10, PartID = 10 }, new CarPart { CarID = 11, PartID = 10 }, new CarPart { CarID = 14, PartID = 10 } };
-
-            //autót márkához hozzárendelni
+            //autót márkához hozzárendelni//////////////////////////////////////////////////////////////////////////////////////////////////
             volkswagen.Cars = new List<Car>() { volkswagen1, volkswagen2, volkswagen3, volkswagen4 };
             seat.Cars = new List<Car>() { seat1, seat2 };
             audi.Cars = new List<Car>() { audi1, audi2 };
@@ -111,7 +108,7 @@ namespace CM7A68_HFT_2021221.Test
             nissan.Cars = new List<Car>() { nissan1, nissan2 };
             toyota.Cars = new List<Car>() { toyota1, toyota2 };
             suzuki.Cars = new List<Car>() { suzuki1, suzuki2 };
-
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             var mockCarRepo = new Mock<ICarRepo>();
             var mockbrandRepo = new Mock<IBrandRepo>();
 
@@ -125,19 +122,20 @@ namespace CM7A68_HFT_2021221.Test
             bl = new BrandLogic(mockbrandRepo.Object);
             ;
         }
-        [Test]
-        public void CarCreateTest()
+        [TestCase("TestBrand", -2.0,  3)]
+        [TestCase("", 2.0,  3)]
+        [TestCase("TestBrand", 2.0,  -3)]
+        public void CarCreateExeptionTest(string modelname, double cap, int cyl)
         {
-            Brand testbrand = new Brand { ID = 99, Name = "TestBrand" };
-            Car testcar = new Car() { ID = 29, BrandID = 99, Cylinder_capacity = 2.0, Cylinder_number = 3, Model = "TestModel", Production_year = 1999, Brand = testbrand, CarParts = null };
+            Brand testbrand = new Brand { ID = 99, Name = "TestBrand"};
+            Car testcar = new Car() { ID = 29, BrandID = 99, Cylinder_capacity = cap, Cylinder_number = cyl, Model = modelname, Production_year = 1999, Brand = testbrand, CarParts = null };
             testbrand.Cars.Add(testcar);
 
-            Assert.DoesNotThrow(() => cl.Create(testcar));
+            Assert.Throws(typeof(ArgumentException), ()=>cl.Create(testcar));
 
         }
-        //linq 1
         [Test]
-        public void Top2CarsWithTheMostCompatibleParts() //seat leon, volkswagen touran
+        public void Top2CarsWithTheMostCompatibleParts()
         {
             var results = cl.Top3CarsWithTheMostCompatibleParts().ToArray();
             string result = "";
@@ -152,6 +150,19 @@ namespace CM7A68_HFT_2021221.Test
             string expected = "SEAT LEON, VOLKSWAGEN TOURAN";
 
             Assert.That(result, Is.EqualTo(expected));
+        }
+        [Test]
+        public void AvgCylinderCapBrands()
+        {
+            var results = cl.AvgCylinderCapBrands().ToArray();
+            Dictionary<string, double> result = new Dictionary<string, double>();
+            for (int i = 0; i < results.Length; i++)
+            {
+                result.Add(results[i].Value.Key, results[i].Value.Value.Value);
+            }
+            Assert.That(result["Volkswagen"]==1.9 && result["SEAT"]==1.8 && result["Audi"]==3.5 && result["Skoda"]==1.6 && result["Porsche"]==1.9 && result["Lamborghini"]==5.2 && result["Tesla"]==0 && result["Nissan"]==3 && result["Toyota"]==2.3 && result["Suzuki"]==1.2)
+            ;
+            
         }
 
 
