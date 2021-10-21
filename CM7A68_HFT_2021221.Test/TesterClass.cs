@@ -64,39 +64,39 @@ namespace CM7A68_HFT_2021221.Test
             Car toyota2 = new Car() { ID = 21, BrandID = toyota.ID, Cylinder_capacity = 1.6, Cylinder_number = 4, Model = "AE86", Production_year = 1983, Brand = toyota };
             Car suzuki2 = new Car() { ID = 22, BrandID = suzuki.ID, Cylinder_capacity = 1.4, Cylinder_number = 4, Model = "Vitara", Production_year = 2018, Brand = suzuki };
             //alkatrészt autóhoz hozzárendelni/////////////////////////////////////////////////////////////////////////////////////////////////
-            volkswagen1.CarParts = new List<CarPart>() { new CarPart { CarID = 1, PartID = 4 }, new CarPart { CarID = 1, PartID = 7 }, new CarPart { CarID = 1, PartID = 10 }, new CarPart { CarID = 1, PartID = 3 } };
-            volkswagen2.CarParts = new List<CarPart>() { new CarPart { CarID = 2, PartID = 4 }, new CarPart { CarID = 2, PartID = 7 }, new CarPart { CarID = 2, PartID = 2 } };
-            seat1.CarParts = new List<CarPart>() { new CarPart { CarID = 3, PartID = 5 }, new CarPart { CarID = 3, PartID = 7 }, new CarPart { CarID = 3, PartID = 8 }, new CarPart { CarID = 3, PartID = 2 }, new CarPart { CarID = 3, PartID = 10 }, new CarPart { CarID = 3, PartID = 1 } };
-            audi1.CarParts = new List<CarPart>() { new CarPart { CarID = 4, PartID = 5 }, new CarPart { CarID = 4, PartID = 7 }, new CarPart { CarID = 4, PartID = 1 }, new CarPart { CarID = 4, PartID = 9 } };
-            skoda1.CarParts = new List<CarPart>() { new CarPart { CarID = 5, PartID = 6 }, new CarPart { CarID = 5, PartID = 7 }, new CarPart { CarID = 5, PartID = 9 }, new CarPart { CarID = 5, PartID = 2 } };
-            porsche1.CarParts = new List<CarPart>() { new CarPart { CarID = 6, PartID = 5 }, new CarPart { CarID = 6, PartID = 7 }, new CarPart { CarID = 6, PartID = 3 }, new CarPart { CarID = 6, PartID = 1 } };
-            lamborghini1.CarParts = new List<CarPart>() { new CarPart { CarID = 7, PartID = 5 }, new CarPart { CarID = 7, PartID = 7 }, new CarPart { CarID = 7, PartID = 1 }, new CarPart { CarID = 7, PartID = 8 } };
-            tesla1.CarParts = new List<CarPart>() { new CarPart { CarID = 8, PartID = 6 }, new CarPart { CarID = 8, PartID = 3 } };
-            nissan1.CarParts = new List<CarPart>() { new CarPart { CarID = 9, PartID = 4 }, new CarPart { CarID = 9, PartID = 7 }, new CarPart { CarID = 9, PartID = 9 }, new CarPart { CarID = 9, PartID = 8 } };
-            toyota1.CarParts = new List<CarPart>() { new CarPart { CarID = 10, PartID = 4 }, new CarPart { CarID = 10, PartID = 7 }, new CarPart { CarID = 10, PartID = 10 }, new CarPart { CarID = 10, PartID = 2 } };
-            suzuki1.CarParts = new List<CarPart>() { new CarPart { CarID = 11, PartID = 5 }, new CarPart { CarID = 11, PartID = 7 }, new CarPart { CarID = 11, PartID = 10 }, new CarPart { CarID = 11, PartID = 2 } };
-            volkswagen3.CarParts = new List<CarPart>() { new CarPart { CarID = 12, PartID = 6 }, new CarPart { CarID = 12, PartID = 7 }, new CarPart { CarID = 12, PartID = 1 }, new CarPart { CarID = 12, PartID = 8 }, new CarPart { CarID = 12, PartID = 2 } };
-            volkswagen4.CarParts = new List<CarPart>() { new CarPart { CarID = 13, PartID = 5 }, new CarPart { CarID = 13, PartID = 7 }, new CarPart { CarID = 13, PartID = 8 }, new CarPart { CarID = 13, PartID = 1 } };
-            seat2.CarParts = new List<CarPart>() { new CarPart { CarID = 14, PartID = 4 }, new CarPart { CarID = 14, PartID = 7 }, new CarPart { CarID = 14, PartID = 10 } };
-            audi2.CarParts = new List<CarPart>() { new CarPart { CarID = 15, PartID = 6 }, new CarPart { CarID = 15, PartID = 7 }, new CarPart { CarID = 15, PartID = 2 }, new CarPart { CarID = 15, PartID = 8 } };
-            skoda2.CarParts = new List<CarPart>() { new CarPart { CarID = 16, PartID = 4 }, new CarPart { CarID = 16, PartID = 7 }, new CarPart { CarID = 16, PartID = 2 } };
-            porsche2.CarParts = new List<CarPart>() { new CarPart { CarID = 17, PartID = 6 } };
-            lamborghini2.CarParts = new List<CarPart>() { new CarPart { CarID = 18, PartID = 4 }, new CarPart { CarID = 18, PartID = 7 } };
-            tesla2.CarParts = new List<CarPart>() { new CarPart { CarID = 19, PartID = 5 }, new CarPart { CarID = 19, PartID = 6 }, new CarPart { CarID = 19, PartID = 2 } };
-            nissan2.CarParts = new List<CarPart>() { new CarPart { CarID = 20, PartID = 6 }, new CarPart { CarID = 20, PartID = 7 }, new CarPart { CarID = 20, PartID = 8 } };
-            toyota2.CarParts = new List<CarPart>() { new CarPart { CarID = 21, PartID = 4 }, new CarPart { CarID = 21, PartID = 7 }, new CarPart { CarID = 21, PartID = 9 } };
-            suzuki2.CarParts = new List<CarPart>() { new CarPart { CarID = 22, PartID = 6 }, new CarPart { CarID = 22, PartID = 7 }, new CarPart { CarID = 22, PartID = 8 } };
+            volkswagen1.CarParts = new List<CarPart>() { new CarPart { CarID = 1, Car = volkswagen1, PartID = 4, Part = part4}, new CarPart { CarID = 1, Car = volkswagen1, PartID = 7, Part = part7}, new CarPart { CarID = 1, Car = volkswagen1, PartID = 10, Part = part10 }, new CarPart { CarID = 1, Car = volkswagen1, PartID = 3, Part = part3} };
+            volkswagen2.CarParts = new List<CarPart>() { new CarPart { CarID = 2, Car = volkswagen2, PartID = 4, Part = part4}, new CarPart { CarID = 2, Car = volkswagen2, PartID = 7, Part = part7}, new CarPart { CarID = 2, Car = volkswagen2, PartID = 2, Part = part2} };
+            seat1.CarParts = new List<CarPart>() { new CarPart { CarID = 3, Car = seat1, PartID = 5, Part = part5}, new CarPart { CarID = 3, Car = seat1, PartID = 7, Part = part7}, new CarPart { CarID = 3, Car = seat1, PartID = 8, Part = part8 }, new CarPart { CarID = 3, Car = seat1, PartID = 2, Part = part2}, new CarPart { CarID = 3, Car = seat1, PartID = 10, Part = part10 }, new CarPart { CarID = 3, Car = seat1, PartID = 1, Part = part1} };
+            audi1.CarParts = new List<CarPart>() { new CarPart { CarID = 4, Car = audi1, PartID = 5, Part = part5}, new CarPart { CarID = 4, Car = audi1, PartID = 7, Part = part7}, new CarPart { CarID = 4, Car = audi1, PartID = 1, Part = part1}, new CarPart { CarID = 4, Car = audi1, PartID = 9, Part = part9 } };
+            skoda1.CarParts = new List<CarPart>() { new CarPart { CarID = 5, Car = skoda1, PartID = 6, Part = part6}, new CarPart { CarID = 5, Car = skoda1, PartID = 7, Part = part7}, new CarPart { CarID = 5, Car = skoda1, PartID = 9, Part = part9 }, new CarPart { CarID = 5, Car = skoda1, PartID = 2, Part = part2} };
+            porsche1.CarParts = new List<CarPart>() { new CarPart { CarID = 6, Car = porsche1, PartID = 5, Part = part5}, new CarPart { CarID = 6, Car = porsche1, PartID = 7, Part = part7}, new CarPart { CarID = 6, Car = porsche1, PartID = 3, Part = part3}, new CarPart { CarID = 6, Car = porsche1, PartID = 1, Part = part1} };
+            lamborghini1.CarParts = new List<CarPart>() { new CarPart { CarID = 7, Car = lamborghini1, PartID = 5, Part = part5}, new CarPart { CarID = 7, Car = lamborghini1, PartID = 7, Part = part7}, new CarPart { CarID = 7, Car = lamborghini1, PartID = 1, Part = part1}, new CarPart { CarID = 7, Car = lamborghini1, PartID = 8, Part = part8 } };
+            tesla1.CarParts = new List<CarPart>() { new CarPart { CarID = 8, Car = tesla1, PartID = 6, Part = part6}, new CarPart { CarID = 8, Car = tesla1, PartID = 3, Part = part3} };
+            nissan1.CarParts = new List<CarPart>() { new CarPart { CarID = 9, Car = nissan1, PartID = 4, Part = part4}, new CarPart { CarID = 9, Car = nissan1, PartID = 7, Part = part7}, new CarPart { CarID = 9, Car = nissan1, PartID = 9, Part = part9 }, new CarPart { CarID = 9, Car = nissan1, PartID = 8, Part = part8 } };
+            toyota1.CarParts = new List<CarPart>() { new CarPart { CarID = 10, Car = toyota1, PartID = 4, Part = part4}, new CarPart { CarID = 10, Car = toyota1, PartID = 7, Part = part7}, new CarPart { CarID = 10, Car = toyota1, PartID = 10, Part = part10 }, new CarPart { CarID = 10, Car = toyota1, PartID = 2, Part = part2} };
+            suzuki1.CarParts = new List<CarPart>() { new CarPart { CarID = 11, Car = suzuki1, PartID = 5, Part = part5}, new CarPart { CarID = 11, Car = suzuki1, PartID = 7, Part = part7}, new CarPart { CarID = 11, Car = suzuki1, PartID = 10, Part = part10 }, new CarPart { CarID = 11, Car = suzuki1, PartID = 2, Part = part2} };
+            volkswagen3.CarParts = new List<CarPart>() { new CarPart { CarID = 12, Car = volkswagen3, PartID = 6, Part = part6}, new CarPart { CarID = 12, Car = volkswagen3, PartID = 7, Part = part7}, new CarPart { CarID = 12, Car = volkswagen3, PartID = 1, Part = part1}, new CarPart { CarID = 12, Car = volkswagen3, PartID = 8, Part = part8 }, new CarPart { CarID = 12, Car = volkswagen3, PartID = 2, Part = part2} };
+            volkswagen4.CarParts = new List<CarPart>() { new CarPart { CarID = 13, Car = volkswagen4, PartID = 5, Part = part5}, new CarPart { CarID = 13, Car = volkswagen4, PartID = 7, Part = part7}, new CarPart { CarID = 13, Car = volkswagen4, PartID = 8, Part = part8 }, new CarPart { CarID = 13, Car = volkswagen4, PartID = 1, Part = part1} };
+            seat2.CarParts = new List<CarPart>() { new CarPart { CarID = 14, Car = seat2, PartID = 4, Part = part4}, new CarPart { CarID = 14, Car = seat2, PartID = 7, Part = part7}, new CarPart { CarID = 14, Car = seat2, PartID = 10, Part = part10 } };
+            audi2.CarParts = new List<CarPart>() { new CarPart { CarID = 15, Car = audi2, PartID = 6, Part = part6}, new CarPart { CarID = 15, Car = audi2, PartID = 7, Part = part7}, new CarPart { CarID = 15, Car = audi2, PartID = 2, Part = part2}, new CarPart { CarID = 15, Car = audi2, PartID = 8, Part = part8 } };
+            skoda2.CarParts = new List<CarPart>() { new CarPart { CarID = 16, Car = skoda2, PartID = 4, Part = part4}, new CarPart { CarID = 16, Car = skoda2, PartID = 7, Part = part7}, new CarPart { CarID = 16, Car = skoda2, PartID = 2, Part = part2} };
+            porsche2.CarParts = new List<CarPart>() { new CarPart { CarID = 17, Car = porsche2, PartID = 6, Part = part6} };
+            lamborghini2.CarParts = new List<CarPart>() { new CarPart { CarID = 18, Car = lamborghini2, PartID = 4, Part = part4}, new CarPart { CarID = 18, Car = lamborghini2, PartID = 7, Part = part7} };
+            tesla2.CarParts = new List<CarPart>() { new CarPart { CarID = 19, Car = tesla2, PartID = 5, Part = part5}, new CarPart { CarID = 19, Car = tesla2, PartID = 6, Part = part6}, new CarPart { CarID = 19, Car = tesla2, PartID = 2, Part = part2} };
+            nissan2.CarParts = new List<CarPart>() { new CarPart { CarID = 20, Car = nissan2, PartID = 6, Part = part6}, new CarPart { CarID = 20, Car = nissan2, PartID = 7, Part = part7}, new CarPart { CarID = 20, Car = nissan2, PartID = 8, Part = part8 } };
+            toyota2.CarParts = new List<CarPart>() { new CarPart { CarID = 21, Car = toyota2, PartID = 4, Part = part4}, new CarPart { CarID = 21, Car = toyota2, PartID = 7, Part = part7}, new CarPart { CarID = 21, Car = toyota2, PartID = 9, Part = part9 } };
+            suzuki2.CarParts = new List<CarPart>() { new CarPart { CarID = 22, Car = suzuki2, PartID = 6, Part = part6}, new CarPart { CarID = 22, Car = suzuki2, PartID = 7, Part = part7}, new CarPart { CarID = 22, Car = suzuki2, PartID = 8, Part = part8 } };
             //alkatrészhez autót////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            part1.CarParts = new List<CarPart>() { new CarPart { CarID = 3, PartID = 1 }, new CarPart { CarID = 4, PartID = 1 }, new CarPart { CarID = 6, PartID = 1 }, new CarPart { CarID = 7, PartID = 1 }, new CarPart { CarID = 12, PartID = 1 }, new CarPart { CarID = 13, PartID = 1 } };
-            part2.CarParts = new List<CarPart>() { new CarPart { CarID = 2, PartID = 2 }, new CarPart { CarID = 3, PartID = 2 }, new CarPart { CarID = 5, PartID = 2 }, new CarPart { CarID = 10, PartID = 2 }, new CarPart { CarID = 11, PartID = 2 }, new CarPart { CarID = 12, PartID = 2 }, new CarPart { CarID = 15, PartID = 2 }, new CarPart { CarID = 16, PartID = 2 }, new CarPart { CarID = 19, PartID = 2 } };
-            part3.CarParts = new List<CarPart>() { new CarPart { CarID = 6, PartID = 3 }, new CarPart { CarID = 1, PartID = 3 }, new CarPart { CarID = 8, PartID = 3 } };
-            part4.CarParts = new List<CarPart>() { new CarPart { CarID = 1, PartID = 4 }, new CarPart { CarID = 2, PartID = 4 }, new CarPart { CarID = 9, PartID = 4 }, new CarPart { CarID = 10, PartID = 4 }, new CarPart { CarID = 14, PartID = 4 }, new CarPart { CarID = 16, PartID = 4 }, new CarPart { CarID = 18, PartID = 4 }, new CarPart { CarID = 21, PartID = 4 } };
-            part5.CarParts = new List<CarPart>() { new CarPart { CarID = 3, PartID = 5 }, new CarPart { CarID = 4, PartID = 5 }, new CarPart { CarID = 6, PartID = 5 }, new CarPart { CarID = 7, PartID = 5 }, new CarPart { CarID = 11, PartID = 5 }, new CarPart { CarID = 13, PartID = 5 }, new CarPart { CarID = 19, PartID = 5 } };
-            part6.CarParts = new List<CarPart>() { new CarPart { CarID = 5, PartID = 6 }, new CarPart { CarID = 8, PartID = 6 }, new CarPart { CarID = 12, PartID = 6 }, new CarPart { CarID = 15, PartID = 6 }, new CarPart { CarID = 17, PartID = 6 }, new CarPart { CarID = 19, PartID = 6 }, new CarPart { CarID = 20, PartID = 6 }, new CarPart { CarID = 22, PartID = 6 } };
-            part7.CarParts = new List<CarPart>() { new CarPart { CarID = 1, PartID = 7 }, new CarPart { CarID = 2, PartID = 7 }, new CarPart { CarID = 3, PartID = 7 }, new CarPart { CarID = 4, PartID = 7 }, new CarPart { CarID = 5, PartID = 7 }, new CarPart { CarID = 6, PartID = 7 }, new CarPart { CarID = 7, PartID = 7 }, new CarPart { CarID = 9, PartID = 7 }, new CarPart { CarID = 10, PartID = 7 }, new CarPart { CarID = 11, PartID = 7 }, new CarPart { CarID = 12, PartID = 7 }, new CarPart { CarID = 13, PartID = 7 }, new CarPart { CarID = 14, PartID = 7 }, new CarPart { CarID = 15, PartID = 7 }, new CarPart { CarID = 16, PartID = 7 }, new CarPart { CarID = 18, PartID = 7 }, new CarPart { CarID = 20, PartID = 7 }, new CarPart { CarID = 21, PartID = 7 }, new CarPart { CarID = 22, PartID = 7 }, };
-            part8.CarParts = new List<CarPart>() { new CarPart { CarID = 3, PartID = 8 }, new CarPart { CarID = 7, PartID = 8 }, new CarPart { CarID = 9, PartID = 8 }, new CarPart { CarID = 12, PartID = 8 }, new CarPart { CarID = 13, PartID = 8 }, new CarPart { CarID = 15, PartID = 8 }, new CarPart { CarID = 20, PartID = 8 }, new CarPart { CarID = 22, PartID = 8 } };
-            part9.CarParts = new List<CarPart>() { new CarPart { CarID = 4, PartID = 9 }, new CarPart { CarID = 5, PartID = 9 }, new CarPart { CarID = 9, PartID = 9 }, new CarPart { CarID = 21, PartID = 9 } };
-            part10.CarParts = new List<CarPart>() { new CarPart { CarID = 1, PartID = 10 }, new CarPart { CarID = 3, PartID = 10 }, new CarPart { CarID = 10, PartID = 10 }, new CarPart { CarID = 11, PartID = 10 }, new CarPart { CarID = 14, PartID = 10 } };
+            part1.CarParts = new List<CarPart>() { new CarPart { CarID = 3, Car = seat1, PartID = 1, Part = part1}, new CarPart { CarID = 4, Car = audi1, PartID = 1, Part = part1}, new CarPart { CarID = 6, Car = porsche1, PartID = 1, Part = part1}, new CarPart { CarID = 7, Car = lamborghini1, PartID = 1, Part = part1}, new CarPart { CarID = 12, Car = volkswagen3, PartID = 1, Part = part1}, new CarPart { CarID = 13, Car = volkswagen4, PartID = 1, Part = part1} };
+            part2.CarParts = new List<CarPart>() { new CarPart { CarID = 2, Car = volkswagen2, PartID = 2, Part = part2}, new CarPart { CarID = 3, Car = seat1, PartID = 2, Part = part2}, new CarPart { CarID = 5, Car = skoda1, PartID = 2, Part = part2}, new CarPart { CarID = 10, Car = toyota1, PartID = 2, Part = part2}, new CarPart { CarID = 11, Car = suzuki1, PartID = 2, Part = part2}, new CarPart { CarID = 12, Car = volkswagen3, PartID = 2, Part = part2}, new CarPart { CarID = 15, Car = audi2, PartID = 2, Part = part2}, new CarPart { CarID = 16, Car = skoda2, PartID = 2, Part = part2}, new CarPart { CarID = 19, Car = tesla2, PartID = 2, Part = part2} };
+            part3.CarParts = new List<CarPart>() { new CarPart { CarID = 6, Car = porsche1, PartID = 3, Part = part3}, new CarPart { CarID = 1, Car = volkswagen1, PartID = 3, Part = part3}, new CarPart { CarID = 8, Car = tesla1, PartID = 3, Part = part3} };
+            part4.CarParts = new List<CarPart>() { new CarPart { CarID = 1, Car = volkswagen1, PartID = 4, Part = part4}, new CarPart { CarID = 2, Car = volkswagen2, PartID = 4, Part = part4}, new CarPart { CarID = 9, Car = nissan1, PartID = 4, Part = part4}, new CarPart { CarID = 10, Car = toyota1, PartID = 4, Part = part4}, new CarPart { CarID = 14, Car = seat2, PartID = 4, Part = part4}, new CarPart { CarID = 16, Car = skoda2, PartID = 4, Part = part4}, new CarPart { CarID = 18, Car = lamborghini2, PartID = 4, Part = part4}, new CarPart { CarID = 21, Car = toyota2, PartID = 4, Part = part4} };
+            part5.CarParts = new List<CarPart>() { new CarPart { CarID = 3, Car = seat1, PartID = 5, Part = part5}, new CarPart { CarID = 4, Car = audi1, PartID = 5, Part = part5}, new CarPart { CarID = 6, Car = porsche1, PartID = 5, Part = part5}, new CarPart { CarID = 7, Car = lamborghini1, PartID = 5, Part = part5}, new CarPart { CarID = 11, Car = suzuki1, PartID = 5, Part = part5}, new CarPart { CarID = 13, Car = volkswagen4, PartID = 5, Part = part5}, new CarPart { CarID = 19, Car = tesla2, PartID = 5, Part = part5} };
+            part6.CarParts = new List<CarPart>() { new CarPart { CarID = 5, Car = skoda1, PartID = 6, Part = part6}, new CarPart { CarID = 8, Car = tesla1, PartID = 6, Part = part6}, new CarPart { CarID = 12, Car = volkswagen3, PartID = 6, Part = part6}, new CarPart { CarID = 15, Car = audi2, PartID = 6, Part = part6}, new CarPart { CarID = 17, Car = porsche2, PartID = 6, Part = part6}, new CarPart { CarID = 19, Car = tesla2, PartID = 6, Part = part6}, new CarPart { CarID = 20, Car = nissan2, PartID = 6, Part = part6}, new CarPart { CarID = 22, Car = suzuki2, PartID = 6, Part = part6} };
+            part7.CarParts = new List<CarPart>() { new CarPart { CarID = 1, Car = volkswagen1, PartID = 7, Part = part7}, new CarPart { CarID = 2, Car = volkswagen2, PartID = 7, Part = part7}, new CarPart { CarID = 3, Car = seat1, PartID = 7, Part = part7}, new CarPart { CarID = 4, Car = audi1, PartID = 7, Part = part7}, new CarPart { CarID = 5, Car = skoda1, PartID = 7, Part = part7}, new CarPart { CarID = 6, Car = porsche1, PartID = 7, Part = part7}, new CarPart { CarID = 7, Car = lamborghini1, PartID = 7, Part = part7}, new CarPart { CarID = 9, Car = nissan1, PartID = 7, Part = part7}, new CarPart { CarID = 10, Car = toyota1, PartID = 7, Part = part7}, new CarPart { CarID = 11, Car = suzuki1, PartID = 7, Part = part7}, new CarPart { CarID = 12, Car = volkswagen3, PartID = 7, Part = part7}, new CarPart { CarID = 13, Car = volkswagen4, PartID = 7, Part = part7}, new CarPart { CarID = 14, Car = seat2, PartID = 7, Part = part7}, new CarPart { CarID = 15, Car = audi2, PartID = 7, Part = part7}, new CarPart { CarID = 16, Car = skoda2, PartID = 7, Part = part7}, new CarPart { CarID = 18, Car = lamborghini2, PartID = 7, Part = part7}, new CarPart { CarID = 20, Car = nissan2, PartID = 7, Part = part7}, new CarPart { CarID = 21, Car = toyota2, PartID = 7, Part = part7}, new CarPart { CarID = 22, Car = suzuki2, PartID = 7, Part = part7}, };
+            part8.CarParts = new List<CarPart>() { new CarPart { CarID = 3, Car = seat1, PartID = 8, Part = part8 }, new CarPart { CarID = 7, Car = lamborghini1, PartID = 8, Part = part8 }, new CarPart { CarID = 9, Car = nissan1, PartID = 8, Part = part8 }, new CarPart { CarID = 12, Car = volkswagen3, PartID = 8, Part = part8 }, new CarPart { CarID = 13, Car = volkswagen4, PartID = 8, Part = part8 }, new CarPart { CarID = 15, Car = audi2, PartID = 8, Part = part8 }, new CarPart { CarID = 20, Car = nissan2, PartID = 8, Part = part8 }, new CarPart { CarID = 22, Car = suzuki2, PartID = 8, Part = part8 } };
+            part9.CarParts = new List<CarPart>() { new CarPart { CarID = 4, Car = audi1, PartID = 9, Part = part9 }, new CarPart { CarID = 5, Car = skoda1, PartID = 9, Part = part9 }, new CarPart { CarID = 9, Car = nissan1, PartID = 9, Part = part9 }, new CarPart { CarID = 21, Car = toyota2, PartID = 9, Part = part9 } };
+            part10.CarParts = new List<CarPart>() { new CarPart { CarID = 1, Car = volkswagen1, PartID = 10, Part = part10 }, new CarPart { CarID = 3, Car = seat1, PartID = 10, Part = part10 }, new CarPart { CarID = 10, Car = toyota1, PartID = 10, Part = part10 }, new CarPart { CarID = 11, Car = suzuki1, PartID = 10, Part = part10 }, new CarPart { CarID = 14, Car = seat2, PartID = 10, Part = part10 } };
             //autót márkához hozzárendelni//////////////////////////////////////////////////////////////////////////////////////////////////
             volkswagen.Cars = new List<Car>() { volkswagen1, volkswagen2, volkswagen3, volkswagen4 };
             seat.Cars = new List<Car>() { seat1, seat2 };
@@ -116,12 +116,20 @@ namespace CM7A68_HFT_2021221.Test
 
             var cars = new List<Car>() { volkswagen1, volkswagen2, volkswagen3, volkswagen4, seat1, seat2, audi1, audi2, skoda1, skoda2, porsche1, porsche2, lamborghini1, lamborghini2, tesla1, tesla2, nissan1, nissan2, toyota1, toyota2, suzuki1, suzuki2 }.AsQueryable();
 
-            mockCarRepo.Setup(x => x.ReadAll()).Returns(cars);
-            mockbrandRepo.Setup(x => x.ReadAll()).Returns(brands);
+            //mocked methods
+            mockCarRepo.Setup(x => x.Create(It.IsAny<Car>())).Callback<Car>(car => cars.ToList().Add(car));//???
+            mockCarRepo.Setup(x => x.ReadAll()).Returns(cars);//OK
+            mockCarRepo.Setup(x => x.Read(It.IsAny<int>())).Returns((int i) => cars.Where(x => x.ID == i).Single());//OK
+
+            mockbrandRepo.Setup(x => x.ReadAll()).Returns(brands);//OK
+
+
+
             cl = new CarLogic(mockCarRepo.Object);
             bl = new BrandLogic(mockbrandRepo.Object);
             ;
         }
+        //CarLogic Unit Tests
         [TestCase("TestBrand", -2.0,  3)]
         [TestCase("", 2.0,  3)]
         [TestCase("TestBrand", 2.0,  -3)]
@@ -133,6 +141,33 @@ namespace CM7A68_HFT_2021221.Test
 
             Assert.Throws(typeof(ArgumentException), ()=>cl.Create(testcar));
 
+        }
+        //[Test]
+        //public void CarCreateTest()
+        //{
+        //    Brand testbrand = new Brand { ID = 99, Name = "TestBrand" };
+        //    Car testcar = new Car() { ID = 29, BrandID = 99, Cylinder_capacity = 3.0, Cylinder_number = 8, Model = "TestCar", Production_year = 1999, Brand = testbrand, CarParts = null };
+        //    testbrand.Cars.Add(testcar);
+
+        //    cl.Create(testcar);
+        //    var cars = cl.ReadAll();
+        //    Car car = cl.Read(testcar.ID);
+        //    //Car carreadtest = cl.Read(1);
+        //    Assert.That(cl.Read(testcar.ID) == testcar);
+        //}
+        [TestCase(-1)]
+        [TestCase(99)]
+        public void CarReadExeptionTest(int id)
+        {
+
+            Assert.Throws(typeof(ArgumentException),()=> cl.Read(id));
+        }
+        [Test]
+        public void CarReadTest()
+        {
+            Brand volkswagen = new Brand() { ID = 1, Name = "Volkswagen" };
+            Car volkswagen3 = new Car() { ID = 12, BrandID = volkswagen.ID, Cylinder_capacity = 1.9, Cylinder_number = 4, Model = "Touran", Production_year = 2006, Brand = volkswagen };
+            Assert.That(volkswagen3, Is.EqualTo(cl.Read(12)));
         }
         [Test]
         public void Top2CarsWithTheMostCompatibleParts()
@@ -163,6 +198,18 @@ namespace CM7A68_HFT_2021221.Test
             Assert.That(result["Volkswagen"]==1.9 && result["SEAT"]==1.8 && result["Audi"]==3.5 && result["Skoda"]==1.6 && result["Porsche"]==1.9 && result["Lamborghini"]==5.2 && result["Tesla"]==0 && result["Nissan"]==3 && result["Toyota"]==2.3 && result["Suzuki"]==1.2)
             ;
             
+        }
+        [Test]
+        public void BremboUserBrands()
+        {
+            var result = bl.BremboUserBrands().ToList();
+            List<string> names = new List<string>();
+            for (int i = 0; i < result.Count; i++)
+            {
+                names.Add(result[i].Value);
+            }
+            Assert.That(names.Contains("Volkswagen") && names.Contains("Tesla") && names.Contains("Porsche"));
+            ;
         }
 
 
