@@ -183,6 +183,11 @@ namespace CM7A68_HFT_2021221.Test
             Assert.That(names.Contains("Tesla") && names.Contains("Porsche"));
             ;
         }//linq4
+        [Test]
+        public void BrandWithTheMost4CylinderCar()
+        {
+            Assert.That(bl.BrandWithTheMost4CylinderCar().ToList()[0].Value == "Volkswagen");
+        }//linq5
         [TestCase("TestBrand", -2.0, 3)]
         [TestCase("", 2.0, 3)]
         [TestCase("TestBrand", 2.0, -3)]
