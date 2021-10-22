@@ -112,18 +112,18 @@ namespace CM7A68_HFT_2021221.Test
             var mockCarRepo = new Mock<ICarRepo>();
             var mockbrandRepo = new Mock<IBrandRepo>();
 
-            var brands = new List<Brand>() { volkswagen, seat, audi, skoda, porsche, lamborghini, tesla, nissan, toyota, suzuki }.AsQueryable();
+            var brands = new List<Brand>() { volkswagen, seat, audi, skoda, porsche, lamborghini, tesla, nissan, toyota, suzuki };
 
-            var cars = new List<Car>() { volkswagen1, volkswagen2, volkswagen3, volkswagen4, seat1, seat2, audi1, audi2, skoda1, skoda2, porsche1, porsche2, lamborghini1, lamborghini2, tesla1, tesla2, nissan1, nissan2, toyota1, toyota2, suzuki1, suzuki2 }.AsQueryable();
+            var cars = new List<Car>() { volkswagen1, volkswagen2, volkswagen3, volkswagen4, seat1, seat2, audi1, audi2, skoda1, skoda2, porsche1, porsche2, lamborghini1, lamborghini2, tesla1, tesla2, nissan1, nissan2, toyota1, toyota2, suzuki1, suzuki2 };
 
             //mocked methods
-            mockCarRepo.Setup(x => x.Create(It.IsAny<Car>())).Callback<Car>(car => cars.ToList().Add(car));//???
-            mockCarRepo.Setup(x => x.ReadAll()).Returns(cars);//OK
+            mockCarRepo.Setup(x => x.Create(It.IsAny<Car>())).Callback<Car>(car => cars.Add(car));//???
+            mockCarRepo.Setup(x => x.ReadAll()).Returns(cars.AsQueryable());//OK
             mockCarRepo.Setup(x => x.Read(It.IsAny<int>())).Returns((int i) => cars.Where(x => x.ID == i).Single());//OK
 
-            mockbrandRepo.Setup(x => x.ReadAll()).Returns(brands);//OK
+            mockbrandRepo.Setup(x => x.ReadAll()).Returns(brands.AsQueryable());//OK
             mockbrandRepo.Setup(x => x.Read(It.IsAny<int>())).Returns((int i) => brands.Where(x => x.ID == i).Single());
-
+            mockbrandRepo.Setup(x => x.Create(It.IsAny<Brand>())).Callback<Brand>(brand => brands.Add(brand));
 
             cl = new CarLogic(mockCarRepo.Object);
             bl = new BrandLogic(mockbrandRepo.Object);
@@ -200,19 +200,16 @@ namespace CM7A68_HFT_2021221.Test
             Assert.Throws(typeof(ArgumentException), () => cl.Create(testcar));
 
         }
-        //[Test]
-        //public void CarCreateTest()
-        //{
-        //    Brand testbrand = new Brand { ID = 99, Name = "TestBrand" };
-        //    Car testcar = new Car() { ID = 29, BrandID = 99, Cylinder_capacity = 3.0, Cylinder_number = 8, Model = "TestCar", Production_year = 1999, Brand = testbrand, CarParts = null };
-        //    testbrand.Cars.Add(testcar);
+        [Test]
+        public void CarCreateTest()
+        {
+            Brand testbrand = new Brand { ID = 99, Name = "TestBrand" };
+            Car testcar = new Car() { ID = 29, BrandID = 99, Cylinder_capacity = 3.0, Cylinder_number = 8, Model = "TestCar", Production_year = 1999, Brand = testbrand, CarParts = null };
+            testbrand.Cars.Add(testcar);
 
-        //    cl.Create(testcar);
-        //    var cars = cl.ReadAll();
-        //    Car car = cl.Read(testcar.ID);
-        //    //Car carreadtest = cl.Read(1);
-        //    Assert.That(cl.Read(testcar.ID) == testcar);
-        //}
+            cl.Create(testcar);
+            Assert.That(cl.Read(testcar.ID) == testcar);
+        }
         [TestCase(-1)]
         [TestCase(99)]
         public void CarReadExeptionTest(int id)
