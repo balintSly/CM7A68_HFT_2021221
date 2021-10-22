@@ -122,24 +122,77 @@ namespace CM7A68_HFT_2021221.Test
             mockCarRepo.Setup(x => x.Read(It.IsAny<int>())).Returns((int i) => cars.Where(x => x.ID == i).Single());//OK
 
             mockbrandRepo.Setup(x => x.ReadAll()).Returns(brands);//OK
-
+            mockbrandRepo.Setup(x => x.Read(It.IsAny<int>())).Returns((int i) => brands.Where(x => x.ID == i).Single());
 
 
             cl = new CarLogic(mockCarRepo.Object);
             bl = new BrandLogic(mockbrandRepo.Object);
             ;
         }
-        //CarLogic Unit Tests
-        [TestCase("TestBrand", -2.0,  3)]
-        [TestCase("", 2.0,  3)]
-        [TestCase("TestBrand", 2.0,  -3)]
+        [Test]
+        public void Top2CarsWithTheMostCompatibleParts()
+        {
+            var results = cl.Top3CarsWithTheMostCompatibleParts().ToArray();
+            string result = "";
+            for (int i = 0; i < results.Length-1; i++)
+            {
+                result += results[i].Value[0].Value.ToUpper() + " " + results[i].Value[1].Value.ToUpper();
+                if (i!=results.Length-2)
+                {
+                    result += ", ";
+                }
+            }
+            string expected = "SEAT LEON, VOLKSWAGEN TOURAN";
+
+            Assert.That(result, Is.EqualTo(expected));
+        }//linq1
+        [Test]
+        public void AvgCylinderCapBrands()
+        {
+            var results = cl.AvgCylinderCapBrands().ToArray();
+            Dictionary<string, double> result = new Dictionary<string, double>();
+            for (int i = 0; i < results.Length; i++)
+            {
+                result.Add(results[i].Value.Key, results[i].Value.Value.Value);
+            }
+            Assert.That(result["Volkswagen"]==1.9 && result["SEAT"]==1.8 && result["Audi"]==3.5 && result["Skoda"]==1.6 && result["Porsche"]==1.9 && result["Lamborghini"]==5.2 && result["Tesla"]==0 && result["Nissan"]==3 && result["Toyota"]==2.3 && result["Suzuki"]==1.2)
+            ;
+            
+        }//linq2
+        [Test]
+        public void BremboUserBrands()
+        {
+            var result = bl.BremboUserBrands().ToList();
+            List<string> names = new List<string>();
+            for (int i = 0; i < result.Count; i++)
+            {
+                names.Add(result[i].Value);
+            }
+            Assert.That(names.Contains("Volkswagen") && names.Contains("Tesla") && names.Contains("Porsche"));
+            ;
+        }//linq3
+        [Test]
+        public void BrandsWithElectricCars()
+        {
+            var result = bl.BrandsWithElectricCars().ToList();
+            List<string> names = new List<string>();
+            for (int i = 0; i < result.Count; i++)
+            {
+                names.Add(result[i].Value);
+            }
+            Assert.That(names.Contains("Tesla") && names.Contains("Porsche"));
+            ;
+        }//linq4
+        [TestCase("TestBrand", -2.0, 3)]
+        [TestCase("", 2.0, 3)]
+        [TestCase("TestBrand", 2.0, -3)]
         public void CarCreateExeptionTest(string modelname, double cap, int cyl)
         {
-            Brand testbrand = new Brand { ID = 99, Name = "TestBrand"};
+            Brand testbrand = new Brand { ID = 99, Name = "TestBrand" };
             Car testcar = new Car() { ID = 29, BrandID = 99, Cylinder_capacity = cap, Cylinder_number = cyl, Model = modelname, Production_year = 1999, Brand = testbrand, CarParts = null };
             testbrand.Cars.Add(testcar);
 
-            Assert.Throws(typeof(ArgumentException), ()=>cl.Create(testcar));
+            Assert.Throws(typeof(ArgumentException), () => cl.Create(testcar));
 
         }
         //[Test]
@@ -160,7 +213,7 @@ namespace CM7A68_HFT_2021221.Test
         public void CarReadExeptionTest(int id)
         {
 
-            Assert.Throws(typeof(ArgumentException),()=> cl.Read(id));
+            Assert.Throws(typeof(ArgumentException), () => cl.Read(id));
         }
         [Test]
         public void CarReadTest()
@@ -169,49 +222,6 @@ namespace CM7A68_HFT_2021221.Test
             Car volkswagen3 = new Car() { ID = 12, BrandID = volkswagen.ID, Cylinder_capacity = 1.9, Cylinder_number = 4, Model = "Touran", Production_year = 2006, Brand = volkswagen };
             Assert.That(volkswagen3, Is.EqualTo(cl.Read(12)));
         }
-        [Test]
-        public void Top2CarsWithTheMostCompatibleParts()
-        {
-            var results = cl.Top3CarsWithTheMostCompatibleParts().ToArray();
-            string result = "";
-            for (int i = 0; i < results.Length-1; i++)
-            {
-                result += results[i].Value[0].Value.ToUpper() + " " + results[i].Value[1].Value.ToUpper();
-                if (i!=results.Length-2)
-                {
-                    result += ", ";
-                }
-            }
-            string expected = "SEAT LEON, VOLKSWAGEN TOURAN";
-
-            Assert.That(result, Is.EqualTo(expected));
-        }
-        [Test]
-        public void AvgCylinderCapBrands()
-        {
-            var results = cl.AvgCylinderCapBrands().ToArray();
-            Dictionary<string, double> result = new Dictionary<string, double>();
-            for (int i = 0; i < results.Length; i++)
-            {
-                result.Add(results[i].Value.Key, results[i].Value.Value.Value);
-            }
-            Assert.That(result["Volkswagen"]==1.9 && result["SEAT"]==1.8 && result["Audi"]==3.5 && result["Skoda"]==1.6 && result["Porsche"]==1.9 && result["Lamborghini"]==5.2 && result["Tesla"]==0 && result["Nissan"]==3 && result["Toyota"]==2.3 && result["Suzuki"]==1.2)
-            ;
-            
-        }
-        [Test]
-        public void BremboUserBrands()
-        {
-            var result = bl.BremboUserBrands().ToList();
-            List<string> names = new List<string>();
-            for (int i = 0; i < result.Count; i++)
-            {
-                names.Add(result[i].Value);
-            }
-            Assert.That(names.Contains("Volkswagen") && names.Contains("Tesla") && names.Contains("Porsche"));
-            ;
-        }
-
 
 
 
