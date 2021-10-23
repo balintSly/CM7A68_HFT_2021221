@@ -45,13 +45,13 @@ namespace CM7A68_HFT_2021221.Logic
         {
             try
             {
-                Read(car.ID);
+                 carRepo.Update(car);
             }
             catch (Exception e)
             {
                 throw new ArgumentException(e.Message);
             }
-            carRepo.Update(car);
+           
         }
         public IEnumerable<Car> ReadAll()
         {

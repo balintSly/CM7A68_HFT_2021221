@@ -116,14 +116,44 @@ namespace CM7A68_HFT_2021221.Test
 
             var cars = new List<Car>() { volkswagen1, volkswagen2, volkswagen3, volkswagen4, seat1, seat2, audi1, audi2, skoda1, skoda2, porsche1, porsche2, lamborghini1, lamborghini2, tesla1, tesla2, nissan1, nissan2, toyota1, toyota2, suzuki1, suzuki2 };
 
-            //mocked methods
-            mockCarRepo.Setup(x => x.Create(It.IsAny<Car>())).Callback<Car>(car => cars.Add(car));//???
+            //mocked crud methods
+            mockCarRepo.Setup(x => x.Update(It.IsAny<Car>())).Callback<Car>(car =>
+              {
+                  Car toupdate = cars.Find(toupdate => toupdate.ID == car.ID);
+                  toupdate.Cylinder_number = car.Cylinder_number;
+                  toupdate.Cylinder_capacity = car.Cylinder_capacity;
+                  toupdate.CarParts = car.CarParts;
+                  toupdate.BrandID = car.BrandID;
+                  toupdate.Brand = car.Brand;
+                  toupdate.Model = car.Model;
+                  toupdate.Production_year = car.Production_year;
+                  toupdate = car;
+  
+              });
+            mockCarRepo.Setup(x => x.Create(It.IsAny<Car>())).Callback<Car>(car => cars.Add(car));//OK
             mockCarRepo.Setup(x => x.ReadAll()).Returns(cars.AsQueryable());//OK
             mockCarRepo.Setup(x => x.Read(It.IsAny<int>())).Returns((int i) => cars.Where(x => x.ID == i).Single());//OK
-
+            mockCarRepo.Setup(x => x.Delete(It.IsAny<int>())).Callback<int>(i =>
+              {
+                  Car todelete=cars.Find(car => car.ID == i);
+                  cars.Remove(todelete);
+              });
+            
             mockbrandRepo.Setup(x => x.ReadAll()).Returns(brands.AsQueryable());//OK
-            mockbrandRepo.Setup(x => x.Read(It.IsAny<int>())).Returns((int i) => brands.Where(x => x.ID == i).Single());
+            mockbrandRepo.Setup(x => x.Read(It.IsAny<int>())).Returns((int i) => brands.Where(x => x.ID == i).Single());//OK
             mockbrandRepo.Setup(x => x.Create(It.IsAny<Brand>())).Callback<Brand>(brand => brands.Add(brand));
+            mockbrandRepo.Setup(x => x.Update(It.IsAny<Brand>())).Callback<Brand>(brand =>
+            {
+                Brand toupdate = brands.Find(toupdate => toupdate.ID == brand.ID);
+                toupdate.Cars = brand.Cars;
+                toupdate.Name = brand.Name;
+                toupdate = brand;
+            });
+            mockbrandRepo.Setup(x => x.Delete(It.IsAny<int>())).Callback<int>(i =>
+            {
+                Brand todelete = brands.Find(brand => brand.ID == i);
+                brands.Remove(todelete);
+            });
 
             cl = new CarLogic(mockCarRepo.Object);
             bl = new BrandLogic(mockbrandRepo.Object);
@@ -158,7 +188,7 @@ namespace CM7A68_HFT_2021221.Test
             Assert.That(result["Volkswagen"]==1.9 && result["SEAT"]==1.8 && result["Audi"]==3.5 && result["Skoda"]==1.6 && result["Porsche"]==1.9 && result["Lamborghini"]==5.2 && result["Tesla"]==0 && result["Nissan"]==3 && result["Toyota"]==2.3 && result["Suzuki"]==1.2)
             ;
             
-        }//linq2
+        }//linq2 OK
         [Test]
         public void BremboUserBrands()
         {
@@ -170,7 +200,7 @@ namespace CM7A68_HFT_2021221.Test
             }
             Assert.That(names.Contains("Volkswagen") && names.Contains("Tesla") && names.Contains("Porsche"));
             ;
-        }//linq3
+        }//linq3 OK
         [Test]
         public void BrandsWithElectricCars()
         {
@@ -182,12 +212,12 @@ namespace CM7A68_HFT_2021221.Test
             }
             Assert.That(names.Contains("Tesla") && names.Contains("Porsche"));
             ;
-        }//linq4
+        }//linq4 OK
         [Test]
         public void BrandWithTheMost4CylinderCar()
         {
             Assert.That(bl.BrandWithTheMost4CylinderCar().ToList()[0].Value == "Volkswagen");
-        }//linq5
+        }//linq5 OK
         [TestCase("TestBrand", -2.0, 3)]
         [TestCase("", 2.0, 3)]
         [TestCase("TestBrand", 2.0, -3)]
@@ -199,7 +229,7 @@ namespace CM7A68_HFT_2021221.Test
 
             Assert.Throws(typeof(ArgumentException), () => cl.Create(testcar));
 
-        }
+        }//OK
         [Test]
         public void CarCreateTest()
         {
@@ -209,20 +239,81 @@ namespace CM7A68_HFT_2021221.Test
 
             cl.Create(testcar);
             Assert.That(cl.Read(testcar.ID) == testcar);
-        }
+        }//függ a readtől
         [TestCase(-1)]
         [TestCase(99)]
         public void CarReadExeptionTest(int id)
         {
 
             Assert.Throws(typeof(ArgumentException), () => cl.Read(id));
-        }
+        }//OK
         [Test]
         public void CarReadTest()
         {
             Brand volkswagen = new Brand() { ID = 1, Name = "Volkswagen" };
             Car volkswagen3 = new Car() { ID = 12, BrandID = volkswagen.ID, Cylinder_capacity = 1.9, Cylinder_number = 4, Model = "Touran", Production_year = 2006, Brand = volkswagen };
             Assert.That(volkswagen3, Is.EqualTo(cl.Read(12)));
+        }//OK
+        [Test]
+        public void CarUpdateTest()//függ a readtől
+        {
+            Brand testbrand = new Brand { ID = 29, Name = "TestBrand" };
+            Car testcar = new Car() { ID = 1, BrandID = 99, Cylinder_capacity = 3.0, Cylinder_number = 8, Model = "TestCar", Production_year = 1999, Brand = testbrand, CarParts = null };
+            testbrand.Cars.Add(testcar);
+            cl.Update(testcar);
+            Assert.That(cl.Read(testcar.ID), Is.EqualTo(testcar));
+            ;
+        }
+        [Test]
+        public void CarDeleteTest()//függ a readtől
+        {
+            cl.Delete(1);
+            Assert.Throws(typeof(ArgumentException), ()=> cl.Read(1));
+            ;
+        }
+
+        [TestCase("", 88)]
+        [TestCase("TestBrand", -1)]
+        public void BrandCreateExeptionTest(string brandname, int id)
+        {
+            Brand testbrand = new Brand { ID = id, Name = brandname };
+
+            Assert.Throws(typeof(ArgumentException), () => bl.Create(testbrand));
+
+        }//OK
+        [Test]
+        public void BrandCreateTest()
+        {
+            Brand testbrand = new Brand { ID = 99, Name = "TestBrand" };
+            bl.Create(testbrand);
+            Assert.That(bl.Read(testbrand.ID) == testbrand);
+        }//függ a readtől
+        [TestCase(-1)]
+        [TestCase(99)]
+        public void BrandReadExeptionTest(int id)
+        {
+
+            Assert.Throws(typeof(ArgumentException), () => bl.Read(id));
+        }//OK
+        [Test]
+        public void BrandReadTest()
+        {
+            Brand volkswagen = new Brand() { ID = 1, Name = "Volkswagen" };
+            Assert.That(volkswagen, Is.EqualTo(bl.Read(1)));
+        }//OK
+        [Test]
+        public void BrandUpdateTest()//függ a readtől
+        {
+            Brand testbrand = new Brand { ID = 1, Name = "TestBrand" };
+            bl.Update(testbrand);
+            Assert.That(bl.Read(testbrand.ID), Is.EqualTo(testbrand));
+        }
+        [Test]
+        public void BrandDeleteTest()//függ a readtől
+        {
+            bl.Delete(1);
+            Assert.Throws(typeof(ArgumentException), () => bl.Read(1));
+            ;
         }
 
 

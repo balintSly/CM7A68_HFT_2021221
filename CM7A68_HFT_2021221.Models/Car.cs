@@ -11,6 +11,7 @@ namespace CM7A68_HFT_2021221.Models
     public class Car
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
         public string Model { get; set; }
         public int Production_year { get; set; }
