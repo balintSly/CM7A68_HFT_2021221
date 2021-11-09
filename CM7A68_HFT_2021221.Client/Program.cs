@@ -11,10 +11,12 @@ namespace CM7A68_HFT_2021221.Client
     {
         static void Main(string[] args)
         {
+            #region manual tests
             Console.WriteLine("Program started.");
             CarDBContext db = new CarDBContext();
             CarRepo carRepo = new CarRepo(db);
             BrandRepo brandRepo = new BrandRepo(db);
+            PartRepo partRepo = new PartRepo(db);
             Brand testbrand = new Brand() { Name = "TestBrand", ID = 29 };
             Car testcar = new Car()
             {
@@ -28,12 +30,14 @@ namespace CM7A68_HFT_2021221.Client
                 CarParts = new List<CarPart>()
                 
             };
+            Part testPart = new Part() { ID = 99, Brand = "TestPartBrand", CarParts = new List<CarPart>() , Item_number = "lol", Name = "TestStuff", Price = 5000, Weight = 50000 };
+            testPart.CarParts.Add(new CarPart { Car = testcar, CarID = testcar.ID, Part = testPart, PartID = testPart.ID } );
             CarPart test = new CarPart() { Car = testcar, Part = db.Parts.ToList()[0], PartID = 1 , CarID=29};
+
             testcar.CarParts.Add(test);
             testbrand.Cars.Add(testcar);
-            brandRepo.Create(testbrand);
-            //carRepo.Create(testcar);
-           
+            #endregion
+
             ;
         }
     }

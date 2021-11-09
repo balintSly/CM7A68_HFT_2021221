@@ -10,5 +10,7 @@ namespace CM7A68_HFT_2021221.Logic
         Car Read(int id);
         IEnumerable<Car> ReadAll();
         void Update(Car car);
+        IEnumerable<KeyValuePair<string, List<KeyValuePair<string, string>>>> Top3CarsWithTheMostCompatibleParts();
+        IEnumerable<KeyValuePair<string, KeyValuePair<string, KeyValuePair<string, double>>>> AvgCylinderCapBrands();
     }
 }
