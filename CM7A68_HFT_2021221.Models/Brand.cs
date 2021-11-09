@@ -8,7 +8,7 @@ namespace CM7A68_HFT_2021221.Models
     public class Brand
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
         public string Name { get; set; }
         public virtual ICollection<Car> Cars { get; set; }

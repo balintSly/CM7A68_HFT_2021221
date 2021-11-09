@@ -11,7 +11,7 @@ namespace CM7A68_HFT_2021221.Models
     public class Part
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
         public string Name { get; set; }
         public double Weight { get; set; }

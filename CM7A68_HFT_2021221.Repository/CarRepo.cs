@@ -18,16 +18,6 @@ namespace CM7A68_HFT_2021221.Repository
         public void Create(Car car)
         {
             db.Cars.Add(car);
-            foreach (var carsPart in car.CarParts)
-            {
-                foreach (var item in db.Parts)
-                {
-                    if (item.ID==carsPart.PartID)
-                    {
-                        item.CarParts.Add(carsPart);
-                    }
-                }
-            }//létrehozza az alkatrészek kapcsolatát az autóval
             db.SaveChanges();
         }
         public Car Read(int ID)
@@ -42,16 +32,6 @@ namespace CM7A68_HFT_2021221.Repository
         {
             var todelete = Read(ID);
             db.Remove(todelete);
-            foreach (var carsPart in todelete.CarParts)
-            {
-                foreach (var item in db.Parts)
-                {
-                    if (item.ID == carsPart.PartID)
-                    {
-                        item.CarParts.Remove(carsPart);
-                    }
-                }
-            }//törli az alaktrészek kapcsolatát az autóval
             db.SaveChanges();
         }
         public void Update(Car car)

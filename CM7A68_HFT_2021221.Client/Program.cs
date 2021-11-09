@@ -18,21 +18,21 @@ namespace CM7A68_HFT_2021221.Client
             Brand testbrand = new Brand() { Name = "TestBrand", ID = 29 };
             Car testcar = new Car()
             {
+                ID = 29,
                 Model = "TestModel",
                 Brand = testbrand,
                 BrandID = testbrand.ID,
                 Cylinder_capacity = 2.0,
                 Cylinder_number = 6,
-                ID = 29,
                 Production_year = 29,
                 CarParts = new List<CarPart>()
                 
             };
-            CarPart test = new CarPart() { Car = testcar, CarID = testcar.ID, Part = db.Parts.ToList()[0], PartID = 1 };
+            CarPart test = new CarPart() { Car = testcar, Part = db.Parts.ToList()[0], PartID = 1 , CarID=29};
             testcar.CarParts.Add(test);
             testbrand.Cars.Add(testcar);
             brandRepo.Create(testbrand);
-            carRepo.Create(testcar);
+            //carRepo.Create(testcar);
            
             ;
         }
