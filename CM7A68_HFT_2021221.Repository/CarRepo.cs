@@ -31,7 +31,7 @@ namespace CM7A68_HFT_2021221.Repository
         public void Delete(int ID)
         {
             var todelete = Read(ID);
-            db.Remove(todelete);
+            db.Cars.Remove(todelete);
             db.SaveChanges();
         }
         public void Update(Car car)

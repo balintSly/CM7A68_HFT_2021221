@@ -6,10 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CM7A68_HFT_2021221.Data\CM7A68_HFT_2021221.Data.csproj" />
-    <ProjectReference Include="..\CM7A68_HFT_2021221.Logic\CM7A68_HFT_2021221.Logic.csproj" />
+    <PackageReference Include="ConsoleTables" Version="2.4.2" />
+    <PackageReference Include="Figgle" Version="0.4.0" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CM7A68_HFT_2021221.Models\CM7A68_HFT_2021221.Models.csproj" />
-    <ProjectReference Include="..\CM7A68_HFT_2021221.Repository\CM7A68_HFT_2021221.Repository.csproj" />
   </ItemGroup>
 
 </Project>

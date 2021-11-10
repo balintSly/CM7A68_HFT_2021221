@@ -79,7 +79,7 @@ namespace CM7A68_HFT_2021221.Data
                .HasOne(car => car.Brand)
                .WithMany(brand => brand.Cars)
                .HasForeignKey(car => car.BrandID)
-               .OnDelete(DeleteBehavior.Restrict);
+               .OnDelete(DeleteBehavior.Cascade);
            });
 
             builder.Entity<CarPart>()
