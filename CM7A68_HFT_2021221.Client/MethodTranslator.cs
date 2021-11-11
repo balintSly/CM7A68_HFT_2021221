@@ -64,7 +64,7 @@ namespace CM7A68_HFT_2021221.Client
         }
         public void UpdatePart(Part part)
         {
-            restService.Put<Part>(part, "brand");
+            restService.Put<Part>(part, "part");
         }
         //deletes//////////////////////////////////////////////
         public void DeleteBrand(int id)

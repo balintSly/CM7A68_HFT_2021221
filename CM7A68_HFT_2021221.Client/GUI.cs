@@ -1231,13 +1231,38 @@ namespace CM7A68_HFT_2021221.Client
                     Console.WriteLine("Old weight : " + toupdate.Weight);
                     Console.Write("New weight : ");
                     toupdate.Weight = double.Parse(Console.ReadLine());
-
                     Console.WriteLine("Old compatible cars: ");
+                    var brands = MethodTranslator.GetAllBrand();
+                    var oldcarstable= new ConsoleTable("ID", "Model", "Brand", "Cylinder_capacity", "Cylinder_number");
                     foreach (var item in toupdate.CarParts)
                     {
-                        Console.WriteLine(item.Car.Model, item.Car.ID);
+                        oldcarstable.AddRow(item.Car.ID, item.Car.Model, brands.Find(x => x.ID == item.Car.BrandID).Name, item.Car.Cylinder_capacity, item.Car.Cylinder_number);
                     }
                     var cars = MethodTranslator.GetAllCar();
+                    var stroldctb = oldcarstable.ToStringAlternative();
+                    foreach (var item in stroldctb.Split("\n"))
+                    {
+                        Console.SetCursorPosition((169 - item.Length) / 2, Console.GetCursorPosition().Top);
+                        Console.WriteLine(item);
+                    }
+
+                    Console.WriteLine();
+                    Console.WriteLine("All cars in the database, that you are able to choose:");
+                    var tablenew = new ConsoleTable("ID", "Model", "Brand", "Cylinder_capacity", "Cylinder_number");
+                    foreach (var item in cars)
+                    {
+                        tablenew.AddRow(item.ID, item.Model, brands.Find(x => x.ID == item.BrandID).Name, item.Cylinder_capacity, item.Cylinder_number);
+                    }
+                    string tablewenstr = tablenew.ToStringAlternative();
+                    foreach (var item in tablewenstr.Split("\n"))
+                    {
+                        Console.SetCursorPosition((169 - item.Length) / 2, Console.GetCursorPosition().Top);
+                        Console.WriteLine(item);
+                    }
+                    for (int i = 0; i < 168; i++)
+                    {
+                        Console.Write("-");
+                    }
                     Console.WriteLine("Enter the ID-s of the compatible cars. Press enter without content, to end the loading process.");
                     string input = "0";
                     while (input != "")
