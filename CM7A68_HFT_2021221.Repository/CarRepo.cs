@@ -42,6 +42,7 @@ namespace CM7A68_HFT_2021221.Repository
             oldcar.Cylinder_number = car.Cylinder_number;
             oldcar.Model = car.Model;
             oldcar.Production_year = car.Production_year;
+            oldcar.CarParts = car.CarParts;
             db.SaveChanges();
         }
     }

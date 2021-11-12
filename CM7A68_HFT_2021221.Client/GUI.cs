@@ -1277,6 +1277,7 @@ namespace CM7A68_HFT_2021221.Client
                     }
                     Console.WriteLine("Enter the ID-s of the compatible cars. Press enter without content, to end the loading process.");
                     string input = "0";
+                    toupdate.CarParts = new List<CarPart>();
                     while (input != "")
                     {
                         Console.Write("Enter an ID: ");

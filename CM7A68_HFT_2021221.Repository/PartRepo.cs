@@ -42,6 +42,7 @@ namespace CM7A68_HFT_2021221.Repository
             oldpart.Name = part.Name;
             oldpart.Price = part.Price;
             oldpart.Weight = part.Weight;
+            oldpart.CarParts = part.CarParts;
             db.SaveChanges();
         }
     }
