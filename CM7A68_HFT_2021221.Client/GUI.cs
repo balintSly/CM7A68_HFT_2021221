@@ -19,11 +19,11 @@ namespace CM7A68_HFT_2021221.Client
         MethodTranslator MethodTranslator;
         public void Intro()
         {
-            Console.WindowHeight = 45;
-            Console.WindowWidth = 169;
+            Console.WindowHeight = Console.LargestWindowHeight;
+            Console.WindowWidth = Console.LargestWindowWidth;
             Console.WriteLine();
             Console.WriteLine();
-            for (int i = 0; i < 168; i++)
+            for (int i = 0; i < Console.LargestWindowWidth; i++)
             {
                 Console.Write("-");
             }
@@ -35,13 +35,13 @@ namespace CM7A68_HFT_2021221.Client
             }
 
             Console.WriteLine(FiggleFonts.Doom.Render("                                                                    ( SPIS )"));
-            for (int i = 0; i < 168; i++)
+            for (int i = 0; i < Console.LargestWindowWidth; i++)
             {
                 Console.Write("-");
             }
             Console.WriteLine(FiggleFonts.Small.Render("                                    Made by Szilveszter Balint"));
             Console.WriteLine(FiggleFonts.Small.Render("                                    from SlyTech Industries"));
-            for (int i = 0; i < 168; i++)
+            for (int i = 0; i < Console.LargestWindowWidth; i++)
             {
                 Console.Write("-");
             }
@@ -55,12 +55,12 @@ namespace CM7A68_HFT_2021221.Client
         {
             Console.Clear();
 
-            for (int i = 0; i < 168; i++)
+            for (int i = 0; i < Console.LargestWindowWidth; i++)
             {
                 Console.Write("-");
             }
             Console.WriteLine(FiggleFonts.Doom.Render("                                                       -] Main Menu [-"));
-            for (int i = 0; i < 168; i++)
+            for (int i = 0; i < Console.LargestWindowWidth; i++)
             {
                 Console.Write("-");
             }
@@ -68,7 +68,7 @@ namespace CM7A68_HFT_2021221.Client
             Console.Write(FiggleFonts.Small.Render("Database operations   [ 1 ]"));
             Console.WriteLine(FiggleFonts.Small.Render("Description   [ 2 ]"));
             Console.WriteLine(FiggleFonts.Small.Render("Exit   [ 3 ]"));
-            for (int i = 0; i < 168; i++)
+            for (int i = 0; i < Console.LargestWindowWidth; i++)
             {
                 Console.Write("-");
             }
@@ -81,7 +81,7 @@ namespace CM7A68_HFT_2021221.Client
             Console.WriteLine(FiggleFonts.Small.Render(brandnumber + " Brands"));
             Console.WriteLine(FiggleFonts.Small.Render(carnumber + " Cars"));
             Console.WriteLine(FiggleFonts.Small.Render(partnumber + " Parts"));
-            for (int i = 0; i < 168; i++)
+            for (int i = 0; i < Console.LargestWindowWidth; i++)
             {
                 Console.Write("-");
             }
@@ -116,19 +116,19 @@ namespace CM7A68_HFT_2021221.Client
         public void Description()
         {
             Console.Clear();
-            for (int i = 0; i < 168; i++)
+            for (int i = 0; i < Console.LargestWindowWidth; i++)
             {
                 Console.Write("-");
             }
             Console.WriteLine(FiggleFonts.Doom.Render("                                                       -] Description [-"));
-            for (int i = 0; i < 168; i++)
+            for (int i = 0; i < Console.LargestWindowWidth; i++)
             {
                 Console.Write("-");
             }
             Console.WriteLine();
             Console.WriteLine("This is a database application for spare part retailers.\nThis program helps to register spare parts by car brand and model. You can do basic operations on your data, which are the following ones:\nRead All: It gives back all brands/cars/parts with parameters.\nRead: It gives back one brand/car/part with parameters.\nCreate: You can add a brand/car/part to the database.\nUpdate: If a brand's/car's/part's parameter have changed, you can update it.\nDelete: You can delete a brand/car/part from the database.\n\nA brand can have more cars, but a car can belong to only one brand\nA car can have more parts, and a part can belong to more cars. ");
             Console.WriteLine();
-            for (int i = 0; i < 168; i++)
+            for (int i = 0; i < Console.LargestWindowWidth; i++)
             {
                 Console.Write("-");
             }
@@ -142,12 +142,12 @@ namespace CM7A68_HFT_2021221.Client
         public void OperationOptions()
         {
             Console.Clear();
-            for (int i = 0; i < 168; i++)
+            for (int i = 0; i < Console.LargestWindowWidth; i++)
             {
                 Console.Write("-");
             }
             Console.WriteLine(FiggleFonts.Doom.Render("                                                       -] Options [-"));
-            for (int i = 0; i < 168; i++)
+            for (int i = 0; i < Console.LargestWindowWidth; i++)
             {
                 Console.Write("-");
             }
@@ -157,7 +157,7 @@ namespace CM7A68_HFT_2021221.Client
             Console.WriteLine(FiggleFonts.Small.Render("Part options   [ 3 ]"));
             Console.WriteLine(FiggleFonts.Small.Render("Special queries   [ 4 ]"));
             Console.WriteLine(FiggleFonts.Small.Render("Main menu   [ 5 ]"));
-            for (int i = 0; i < 168; i++)
+            for (int i = 0; i < Console.LargestWindowWidth; i++)
             {
                 Console.Write("-");
             }
@@ -199,12 +199,12 @@ namespace CM7A68_HFT_2021221.Client
         public void BrandOptions()
         {
             Console.Clear();
-            for (int i = 0; i < 168; i++)
+            for (int i = 0; i < Console.LargestWindowWidth; i++)
             {
                 Console.Write("-");
             }
             Console.WriteLine(FiggleFonts.Doom.Render("                                                           -] Brands [-"));
-            for (int i = 0; i < 168; i++)
+            for (int i = 0; i < Console.LargestWindowWidth; i++)
             {
                 Console.Write("-");
             }
@@ -215,7 +215,7 @@ namespace CM7A68_HFT_2021221.Client
             Console.WriteLine(FiggleFonts.Small.Render("Update  [ 4 ]"));
             Console.WriteLine(FiggleFonts.Small.Render("Delete   [ 5 ]"));
             Console.WriteLine(FiggleFonts.Small.Render("Back   [ 6 ]"));
-            for (int i = 0; i < 168; i++)
+            for (int i = 0; i < Console.LargestWindowWidth; i++)
             {
                 Console.Write("-");
             }
@@ -232,12 +232,12 @@ namespace CM7A68_HFT_2021221.Client
             if (num == 1)
             {
                 Console.Clear();
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
                 Console.WriteLine(FiggleFonts.Doom.Render("                                                           -] Brands [-"));
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
@@ -254,7 +254,7 @@ namespace CM7A68_HFT_2021221.Client
                     Console.SetCursorPosition((169 - item.Length) / 2, Console.GetCursorPosition().Top);
                     Console.WriteLine(item);
                 }
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
@@ -271,12 +271,12 @@ namespace CM7A68_HFT_2021221.Client
                 Brand wanted = new Brand();
                 string press;
                 Console.Clear();
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
                 Console.WriteLine(FiggleFonts.Doom.Render("                                                           -] Brands [-"));
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
@@ -292,7 +292,7 @@ namespace CM7A68_HFT_2021221.Client
                     if (wanted == null)
                     {
                         Console.WriteLine("Error: There is no brand with this ID.");
-                        for (int i = 0; i < 168; i++)
+                        for (int i = 0; i < Console.LargestWindowWidth; i++)
                         {
                             Console.Write("-");
                         }
@@ -308,7 +308,7 @@ namespace CM7A68_HFT_2021221.Client
                         table.AddRow(wanted.ID, wanted.Name);
                         Console.WriteLine("The wanted brand:");
                         table.Write(Format.Alternative);
-                        for (int i = 0; i < 168; i++)
+                        for (int i = 0; i < Console.LargestWindowWidth; i++)
                         {
                             Console.Write("-");
                         }
@@ -325,7 +325,7 @@ namespace CM7A68_HFT_2021221.Client
                 catch (Exception e)
                 {
                     Console.WriteLine("Error: " + e.Message);
-                    for (int i = 0; i < 168; i++)
+                    for (int i = 0; i < Console.LargestWindowWidth; i++)
                     {
                         Console.Write("-");
                     }
@@ -344,12 +344,12 @@ namespace CM7A68_HFT_2021221.Client
             {
                 string press;
                 Console.Clear();
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
                 Console.WriteLine(FiggleFonts.Doom.Render("                                                           -] Brands [-"));
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
@@ -366,7 +366,7 @@ namespace CM7A68_HFT_2021221.Client
                 {
 
                     Console.WriteLine("Error: " + e.Message);
-                    for (int i = 0; i < 168; i++)
+                    for (int i = 0; i < Console.LargestWindowWidth; i++)
                     {
                         Console.Write("-");
                     }
@@ -379,7 +379,7 @@ namespace CM7A68_HFT_2021221.Client
                 }
                 
                 Console.WriteLine(FiggleFonts.Small.Render("Brand added"));
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
@@ -394,12 +394,12 @@ namespace CM7A68_HFT_2021221.Client
             {
                 string press;
                 Console.Clear();
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
                 Console.WriteLine(FiggleFonts.Doom.Render("                                                           -] Brands [-"));
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
@@ -436,7 +436,11 @@ namespace CM7A68_HFT_2021221.Client
                     toupdate.Name = Console.ReadLine();
                     MethodTranslator.UpdateBrand(toupdate);
                     Console.Write(FiggleFonts.Small.Render("Brand updated."));
-                    press = "(Press any key to get back)";
+                    for (int i = 0; i < Console.LargestWindowWidth; i++)
+                    {
+                        Console.Write("-");
+                    }
+                     press = "(Press any key to get back)";
                     Console.SetCursorPosition((169 - press.Length) / 2, Console.GetCursorPosition().Top);
                     Console.WriteLine(press);
                     Console.ReadKey();
@@ -446,7 +450,7 @@ namespace CM7A68_HFT_2021221.Client
                 catch (Exception e)
                 {
                     Console.WriteLine("Error: " + e.Message);
-                    for (int i = 0; i < 168; i++)
+                    for (int i = 0; i < Console.LargestWindowWidth; i++)
                     {
                         Console.Write("-");
                     }
@@ -462,12 +466,12 @@ namespace CM7A68_HFT_2021221.Client
             {
                 string press;
                 Console.Clear();
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
                 Console.WriteLine(FiggleFonts.Doom.Render("                                                           -] Brands [-"));
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
@@ -501,6 +505,10 @@ namespace CM7A68_HFT_2021221.Client
 
                     MethodTranslator.DeleteBrand(idx);
                     Console.Write(FiggleFonts.Small.Render("Brand deleted."));
+                    for (int i = 0; i < Console.LargestWindowWidth; i++)
+                    {
+                        Console.Write("-");
+                    }
                     press = "(Press any key to get back)";
                     Console.SetCursorPosition((169 - press.Length) / 2, Console.GetCursorPosition().Top);
                     Console.WriteLine(press);
@@ -511,7 +519,7 @@ namespace CM7A68_HFT_2021221.Client
                 catch (Exception e)
                 {
                     Console.WriteLine("Error: " + e.Message);
-                    for (int i = 0; i < 168; i++)
+                    for (int i = 0; i < Console.LargestWindowWidth; i++)
                     {
                         Console.Write("-");
                     }
@@ -534,12 +542,12 @@ namespace CM7A68_HFT_2021221.Client
         public void CarOptions()
         {
             Console.Clear();
-            for (int i = 0; i < 168; i++)
+            for (int i = 0; i < Console.LargestWindowWidth; i++)
             {
                 Console.Write("-");
             }
             Console.WriteLine(FiggleFonts.Doom.Render("                                                           -] Cars [-"));
-            for (int i = 0; i < 168; i++)
+            for (int i = 0; i < Console.LargestWindowWidth; i++)
             {
                 Console.Write("-");
             }
@@ -550,7 +558,7 @@ namespace CM7A68_HFT_2021221.Client
             Console.WriteLine(FiggleFonts.Small.Render("Update  [ 4 ]"));
             Console.WriteLine(FiggleFonts.Small.Render("Delete   [ 5 ]"));
             Console.WriteLine(FiggleFonts.Small.Render("Back   [ 6 ]"));
-            for (int i = 0; i < 168; i++)
+            for (int i = 0; i < Console.LargestWindowWidth; i++)
             {
                 Console.Write("-");
             }
@@ -567,12 +575,12 @@ namespace CM7A68_HFT_2021221.Client
             if (num == 1)
             {
                 Console.Clear();
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
                 Console.WriteLine(FiggleFonts.Doom.Render("                                                           -] Cars [-"));
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
@@ -591,7 +599,7 @@ namespace CM7A68_HFT_2021221.Client
                     Console.SetCursorPosition((169 - item.Length) / 2, Console.GetCursorPosition().Top);
                     Console.WriteLine(item);
                 }
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
@@ -608,12 +616,12 @@ namespace CM7A68_HFT_2021221.Client
                 Car wanted = new Car();
                 string press;
                 Console.Clear();
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
                 Console.WriteLine(FiggleFonts.Doom.Render("                                                           -] Cars [-"));
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
@@ -629,7 +637,7 @@ namespace CM7A68_HFT_2021221.Client
                     if (wanted == null)
                     {
                         Console.WriteLine("Error: There is no car with this ID.");
-                        for (int i = 0; i < 168; i++)
+                        for (int i = 0; i < Console.LargestWindowWidth; i++)
                         {
                             Console.Write("-");
                         }
@@ -646,7 +654,7 @@ namespace CM7A68_HFT_2021221.Client
                         table.AddRow(wanted.ID, wanted.Model, brands.Find(x=>x.ID==wanted.BrandID).Name, wanted.Cylinder_capacity, wanted.Cylinder_number);
                         Console.WriteLine("The wanted car:");
                         table.Write(Format.Alternative);
-                        for (int i = 0; i < 168; i++)
+                        for (int i = 0; i < Console.LargestWindowWidth; i++)
                         {
                             Console.Write("-");
                         }
@@ -663,7 +671,7 @@ namespace CM7A68_HFT_2021221.Client
                 catch (Exception e)
                 {
                     Console.WriteLine("Error: " + e.Message);
-                    for (int i = 0; i < 168; i++)
+                    for (int i = 0; i < Console.LargestWindowWidth; i++)
                     {
                         Console.Write("-");
                     }
@@ -682,12 +690,12 @@ namespace CM7A68_HFT_2021221.Client
             {
                 string press;
                 Console.Clear();
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
                 Console.WriteLine(FiggleFonts.Doom.Render("                                                           -] Cars [-"));
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
@@ -733,7 +741,7 @@ namespace CM7A68_HFT_2021221.Client
                 {
 
                     Console.WriteLine("Error: " + e.Message);
-                    for (int i = 0; i < 168; i++)
+                    for (int i = 0; i < Console.LargestWindowWidth; i++)
                     {
                         Console.Write("-");
                     }
@@ -746,7 +754,7 @@ namespace CM7A68_HFT_2021221.Client
                 }
 
                 Console.WriteLine(FiggleFonts.Small.Render("Car added"));
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
@@ -761,12 +769,12 @@ namespace CM7A68_HFT_2021221.Client
             {
                 string press;
                 Console.Clear();
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
                 Console.WriteLine(FiggleFonts.Doom.Render("                                                           -] Cars [-"));
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
@@ -829,7 +837,7 @@ namespace CM7A68_HFT_2021221.Client
 
                     MethodTranslator.UpdateCar(toupdate);
                     Console.Write(FiggleFonts.Small.Render("Car updated."));
-                    for (int i = 0; i < 168; i++)
+                    for (int i = 0; i < Console.LargestWindowWidth; i++)
                     {
                         Console.Write("-");
                     }
@@ -843,7 +851,7 @@ namespace CM7A68_HFT_2021221.Client
                 catch (Exception e)
                 {
                     Console.WriteLine("Error: " + e.Message);
-                    for (int i = 0; i < 168; i++)
+                    for (int i = 0; i < Console.LargestWindowWidth; i++)
                     {
                         Console.Write("-");
                     }
@@ -859,12 +867,12 @@ namespace CM7A68_HFT_2021221.Client
             {
                 string press;
                 Console.Clear();
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
                 Console.WriteLine(FiggleFonts.Doom.Render("                                                           -] Cars [-"));
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
@@ -897,6 +905,10 @@ namespace CM7A68_HFT_2021221.Client
 
                     MethodTranslator.DeleteCar(idx);
                     Console.Write(FiggleFonts.Small.Render("Car deleted."));
+                    for (int i = 0; i < Console.LargestWindowWidth; i++)
+                    {
+                        Console.Write("-");
+                    }
                     press = "(Press any key to get back)";
                     Console.SetCursorPosition((169 - press.Length) / 2, Console.GetCursorPosition().Top);
                     Console.WriteLine(press);
@@ -907,7 +919,7 @@ namespace CM7A68_HFT_2021221.Client
                 catch (Exception e)
                 {
                     Console.WriteLine("Error: " + e.Message);
-                    for (int i = 0; i < 168; i++)
+                    for (int i = 0; i < Console.LargestWindowWidth; i++)
                     {
                         Console.Write("-");
                     }
@@ -930,12 +942,12 @@ namespace CM7A68_HFT_2021221.Client
         public void PartOptions()
         {
             Console.Clear();
-            for (int i = 0; i < 168; i++)
+            for (int i = 0; i < Console.LargestWindowWidth; i++)
             {
                 Console.Write("-");
             }
             Console.WriteLine(FiggleFonts.Doom.Render("                                                           -] Parts [-"));
-            for (int i = 0; i < 168; i++)
+            for (int i = 0; i < Console.LargestWindowWidth; i++)
             {
                 Console.Write("-");
             }
@@ -946,7 +958,7 @@ namespace CM7A68_HFT_2021221.Client
             Console.WriteLine(FiggleFonts.Small.Render("Update  [ 4 ]"));
             Console.WriteLine(FiggleFonts.Small.Render("Delete   [ 5 ]"));
             Console.WriteLine(FiggleFonts.Small.Render("Back   [ 6 ]"));
-            for (int i = 0; i < 168; i++)
+            for (int i = 0; i < Console.LargestWindowWidth; i++)
             {
                 Console.Write("-");
             }
@@ -963,12 +975,12 @@ namespace CM7A68_HFT_2021221.Client
             if (num == 1)
             {
                 Console.Clear();
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
                 Console.WriteLine(FiggleFonts.Doom.Render("                                                           -] Parts [-"));
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
@@ -985,7 +997,7 @@ namespace CM7A68_HFT_2021221.Client
                     Console.SetCursorPosition((169 - item.Length) / 2, Console.GetCursorPosition().Top);
                     Console.WriteLine(item);
                 }
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
@@ -1002,12 +1014,12 @@ namespace CM7A68_HFT_2021221.Client
                 Part wanted = new Part();
                 string press;
                 Console.Clear();
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
                 Console.WriteLine(FiggleFonts.Doom.Render("                                                           -] Parts [-"));
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
@@ -1024,7 +1036,7 @@ namespace CM7A68_HFT_2021221.Client
                     if (wanted == null)
                     {
                         Console.WriteLine("Error: There is no part with this ID.");
-                        for (int i = 0; i < 168; i++)
+                        for (int i = 0; i < Console.LargestWindowWidth; i++)
                         {
                             Console.Write("-");
                         }
@@ -1041,7 +1053,7 @@ namespace CM7A68_HFT_2021221.Client
                  
                         Console.WriteLine("The wanted part:");
                         table.Write(Format.Alternative);
-                        for (int i = 0; i < 168; i++)
+                        for (int i = 0; i < Console.LargestWindowWidth; i++)
                         {
                             Console.Write("-");
                         }
@@ -1058,7 +1070,7 @@ namespace CM7A68_HFT_2021221.Client
                 catch (Exception e)
                 {
                     Console.WriteLine("Error: " + e.Message);
-                    for (int i = 0; i < 168; i++)
+                    for (int i = 0; i < Console.LargestWindowWidth; i++)
                     {
                         Console.Write("-");
                     }
@@ -1077,12 +1089,12 @@ namespace CM7A68_HFT_2021221.Client
             {
                 string press;
                 Console.Clear();
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
                 Console.WriteLine(FiggleFonts.Doom.Render("                                                           -] Parts [-"));
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
@@ -1150,7 +1162,7 @@ namespace CM7A68_HFT_2021221.Client
                 {
 
                     Console.WriteLine("Error: " + e.Message);
-                    for (int i = 0; i < 168; i++)
+                    for (int i = 0; i < Console.LargestWindowWidth; i++)
                     {
                         Console.Write("-");
                     }
@@ -1163,7 +1175,7 @@ namespace CM7A68_HFT_2021221.Client
                 }
 
                 Console.WriteLine(FiggleFonts.Small.Render("Part added"));
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
@@ -1178,12 +1190,12 @@ namespace CM7A68_HFT_2021221.Client
             {
                 string press;
                 Console.Clear();
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
                 Console.WriteLine(FiggleFonts.Doom.Render("                                                           -] Parts [-"));
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
@@ -1259,7 +1271,7 @@ namespace CM7A68_HFT_2021221.Client
                         Console.SetCursorPosition((169 - item.Length) / 2, Console.GetCursorPosition().Top);
                         Console.WriteLine(item);
                     }
-                    for (int i = 0; i < 168; i++)
+                    for (int i = 0; i < Console.LargestWindowWidth; i++)
                     {
                         Console.Write("-");
                     }
@@ -1287,7 +1299,7 @@ namespace CM7A68_HFT_2021221.Client
 
                     MethodTranslator.UpdatePart(toupdate);
                     Console.Write(FiggleFonts.Small.Render("Part updated."));
-                    for (int i = 0; i < 168; i++)
+                    for (int i = 0; i < Console.LargestWindowWidth; i++)
                     {
                         Console.Write("-");
                     }
@@ -1301,7 +1313,7 @@ namespace CM7A68_HFT_2021221.Client
                 catch (Exception e)
                 {
                     Console.WriteLine("Error: " + e.Message);
-                    for (int i = 0; i < 168; i++)
+                    for (int i = 0; i < Console.LargestWindowWidth; i++)
                     {
                         Console.Write("-");
                     }
@@ -1317,12 +1329,12 @@ namespace CM7A68_HFT_2021221.Client
             {
                 string press;
                 Console.Clear();
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
                 Console.WriteLine(FiggleFonts.Doom.Render("                                                           -] Parts [-"));
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
@@ -1354,6 +1366,10 @@ namespace CM7A68_HFT_2021221.Client
 
                     MethodTranslator.DeletePart(idx);
                     Console.Write(FiggleFonts.Small.Render("Part deleted."));
+                    for (int i = 0; i < Console.LargestWindowWidth; i++)
+                    {
+                        Console.Write("-");
+                    }
                     press = "(Press any key to get back)";
                     Console.SetCursorPosition((169 - press.Length) / 2, Console.GetCursorPosition().Top);
                     Console.WriteLine(press);
@@ -1364,7 +1380,7 @@ namespace CM7A68_HFT_2021221.Client
                 catch (Exception e)
                 {
                     Console.WriteLine("Error: " + e.Message);
-                    for (int i = 0; i < 168; i++)
+                    for (int i = 0; i < Console.LargestWindowWidth; i++)
                     {
                         Console.Write("-");
                     }
@@ -1387,12 +1403,12 @@ namespace CM7A68_HFT_2021221.Client
         public void Queries()
         {
             Console.Clear();
-            for (int i = 0; i < 168; i++)
+            for (int i = 0; i < Console.LargestWindowWidth; i++)
             {
                 Console.Write("-");
             }
             Console.WriteLine(FiggleFonts.Doom.Render("                                                           -] Queries [-"));
-            for (int i = 0; i < 168; i++)
+            for (int i = 0; i < Console.LargestWindowWidth; i++)
             {
                 Console.Write("-");
             }
@@ -1403,7 +1419,7 @@ namespace CM7A68_HFT_2021221.Client
             Console.WriteLine(FiggleFonts.Small.Render("Cars with the most compatible parts   [ 4 ]"));
             Console.WriteLine(FiggleFonts.Small.Render("Average cylinder capacity by brands   [ 5 ]"));
             Console.WriteLine(FiggleFonts.Small.Render("Back   [ 6 ]"));
-            for (int i = 0; i < 168; i++)
+            for (int i = 0; i < Console.LargestWindowWidth; i++)
             {
                 Console.Write("-");
             }
@@ -1420,12 +1436,12 @@ namespace CM7A68_HFT_2021221.Client
             if (num==1)
             {
                 Console.Clear();
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
                 Console.WriteLine(FiggleFonts.Doom.Render("                                                           -] Queries [-"));
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
@@ -1444,7 +1460,7 @@ namespace CM7A68_HFT_2021221.Client
                     Console.SetCursorPosition((169 - item.Length) / 2, Console.GetCursorPosition().Top);
                     Console.WriteLine(item);
                 }
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
@@ -1457,12 +1473,12 @@ namespace CM7A68_HFT_2021221.Client
             if (num==2)
             {
                 Console.Clear();
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
                 Console.WriteLine(FiggleFonts.Doom.Render("                                                           -] Queries [-"));
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
@@ -1481,7 +1497,7 @@ namespace CM7A68_HFT_2021221.Client
                     Console.SetCursorPosition((169 - item.Length) / 2, Console.GetCursorPosition().Top);
                     Console.WriteLine(item);
                 }
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
@@ -1494,12 +1510,12 @@ namespace CM7A68_HFT_2021221.Client
             if (num==3)
             {
                 Console.Clear();
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
                 Console.WriteLine(FiggleFonts.Doom.Render("                                                           -] Queries [-"));
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
@@ -1518,7 +1534,7 @@ namespace CM7A68_HFT_2021221.Client
                     Console.SetCursorPosition((169 - item.Length) / 2, Console.GetCursorPosition().Top);
                     Console.WriteLine(item);
                 }
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
@@ -1531,12 +1547,12 @@ namespace CM7A68_HFT_2021221.Client
             if (num==4)
             {
                 Console.Clear();
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
                 Console.WriteLine(FiggleFonts.Doom.Render("                                                           -] Queries [-"));
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
@@ -1555,7 +1571,7 @@ namespace CM7A68_HFT_2021221.Client
                     Console.SetCursorPosition((169 - item.Length) / 2, Console.GetCursorPosition().Top);
                     Console.WriteLine(item);
                 }
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
@@ -1568,12 +1584,12 @@ namespace CM7A68_HFT_2021221.Client
             if (num==5)
             {
                 Console.Clear();
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
                 Console.WriteLine(FiggleFonts.Doom.Render("                                                           -] Queries [-"));
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }
@@ -1592,7 +1608,7 @@ namespace CM7A68_HFT_2021221.Client
                     Console.SetCursorPosition((169 - item.Length) / 2, Console.GetCursorPosition().Top);
                     Console.WriteLine(item);
                 }
-                for (int i = 0; i < 168; i++)
+                for (int i = 0; i < Console.LargestWindowWidth; i++)
                 {
                     Console.Write("-");
                 }

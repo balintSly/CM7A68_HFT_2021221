@@ -13,6 +13,7 @@ namespace CM7A68_HFT_2021221.Client
             
             GUI gui = new GUI();
             ;
+
         }
     }
 }
