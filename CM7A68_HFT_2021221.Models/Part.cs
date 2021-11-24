@@ -20,11 +20,15 @@ namespace CM7A68_HFT_2021221.Models
         public int Price { get; set; }
         public string Item_number { get; set; }
         public string Brand { get; set; }
+        
         [JsonIgnore]
         public virtual ICollection<CarPart> CarParts { get; set; }
+        [NotMapped]    //I hope it will work this way
+        public List<int> CarIndexes{ get; set; }
         public Part()
         {
             this.CarParts = new HashSet<CarPart>();
+            this.CarIndexes = new List<int>();
         }
 
         public override bool Equals(object obj)

@@ -11,9 +11,7 @@ namespace CM7A68_HFT_2021221.Client
     {
         static void Main(string[] args)
         {
-            
             GUI gui = new GUI();
-            ;
             #region manual tests
             CarDBContext db = new CarDBContext();
             CarRepo carRepo = new CarRepo(db);
@@ -23,8 +21,8 @@ namespace CM7A68_HFT_2021221.Client
             test.CarParts.Add(new CarPart { CarID = 1, Car = carRepo.Read(1) });
 
             Part updatetest = new Part() { Brand = "TestUpdate", Weight = 99, ID = 29, Name = "UpdateTestPart", Price = 99999, Item_number = "Updatedpart" };
-            updatetest.CarParts.Add(new CarPart { CarID = 2, Car = carRepo.Read(2) });
-            updatetest.CarParts.Add(new CarPart { CarID = 3, Car = carRepo.Read(3) });
+            updatetest.CarParts.Add(new CarPart { CarID = 2});
+            updatetest.CarParts.Add(new CarPart { CarID = 3});
 
             partRepo.Create(test);
             partRepo.Update(updatetest);

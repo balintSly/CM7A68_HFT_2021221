@@ -42,7 +42,20 @@ namespace CM7A68_HFT_2021221.Repository
             oldpart.Name = part.Name;
             oldpart.Price = part.Price;
             oldpart.Weight = part.Weight;
-            oldpart.CarParts = part.CarParts;
+
+            List<CarPart> newParts = new List<CarPart>();
+            //foreach (var item in part.CarParts)
+            //{
+            //    newParts.Add(new CarPart() { CarID = db.Cars.ToList().Find(x => x.ID == item.CarID).ID, Car= db.Cars.ToList().Find(x => x.ID == item.CarID) });
+            //}
+            foreach (var item in part.CarIndexes)
+            {
+                newParts.Add(new CarPart() { CarID = db.Cars.ToList().Find(x => x.ID == item).ID, Car = db.Cars.ToList().Find(x => x.ID == item) });
+            }
+
+
+            oldpart.CarParts = newParts;
+            //oldpart.CarParts = part.CarParts;
             db.SaveChanges();
         }
     }
