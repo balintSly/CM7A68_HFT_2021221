@@ -1285,12 +1285,14 @@ namespace CM7A68_HFT_2021221.Client
                         if (input != "")
                         {
                             int carid = int.Parse(input);
+                            
                             if (cars.Select(x => x.ID).Contains(carid))
                             {
                                 //CarPart carPart = new CarPart() { Car = cars.Find(x => x.ID == carid), CarID = cars.Find(x => x.ID == carid).ID };
                                 //toupdate.CarParts.Add(carPart);
-                                toupdate.CarIndexes.Add(carid);
 
+                                //toupdate.CarIndexes.Add(carid);
+                                toupdate.AddCarId(carid);
                                 
                             }
                         }
