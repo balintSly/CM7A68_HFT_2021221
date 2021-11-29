@@ -11,7 +11,7 @@ namespace CM7A68_HFT_2021221.Client
     {
         static void Main(string[] args)
         {
-            //GUI gui = new GUI();
+            GUI gui = new GUI();
             #region manual tests
             CarDBContext db = new CarDBContext();
             CarRepo carRepo = new CarRepo(db);
