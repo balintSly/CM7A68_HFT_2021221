@@ -30,25 +30,205 @@
                     </StackPanel>
                 </materialDesign:PopupBox>
                 <Grid>
-                    <TabControl>
+                    <TextBlock Text="Spare Part Inventory System" FontSize="20" HorizontalAlignment="Center" FontWeight="ExtraBold"/>
+                    <TabControl Margin="10 60 10 0">
                         <TabItem>
                             <TabItem.Header>
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Source="/WpfTutorialSamples;component/Images/bullet_blue.png" />
                                     <TextBlock Text="Description"/>
                                 </StackPanel>
                             </TabItem.Header>
                             <TextBlock  Text="This is a database application for spare part retailers.&#x0d;This program helps to register spare parts by car brand and model.&#x0d;&#x0d;You can do basic operations on your data, which are the following ones:&#x0d;Read All: It gives back all brands/cars/parts with parameters.&#x0d;Read: It gives back one brand/car/part with parameters.&#x0d;Create: You can add a brand/car/part to the database.&#x0d;Update: If a brand's/car's/part's parameter have changed, you can update it.&#x0d;Delete: You can delete a brand/car/part from the database.&#x0d;&#x0d;A brand can have more cars, but a car can belong to only one brand.&#x0d;A car can have more parts, and a part can belong to more cars."/>
-                        </TabItem><!--Description-->
+                        </TabItem>
+                        <!--Description-->
                         <TabItem>
                             <TabItem.Header>
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Source="/WpfTutorialSamples;component/Images/bullet_red.png" />
-                                    <TextBlock Text="Red" Foreground="Red" />
+                                    <TextBlock Text="Operations" />
                                 </StackPanel>
                             </TabItem.Header>
+                            <TabControl>
+                                <TabItem>
+                                    <TabItem.Header>
+                                        <StackPanel>
+                                            <TextBlock Text="Brands"/>
+                                        </StackPanel>
+                                    </TabItem.Header>
+                                    <TabControl>
+                                        <TabItem>
+                                            <TabItem.Header>
+                                                <StackPanel>
+                                                    <TextBlock Text="Create"/>
+                                                </StackPanel>
+                                            </TabItem.Header>
+                                        </TabItem>
+                                        <TabItem>
+                                            <TabItem.Header>
+                                                <StackPanel>
+                                                    <TextBlock Text="Read"/>
+                                                </StackPanel>
+                                            </TabItem.Header>
+                                        </TabItem>
+                                        <TabItem>
+                                            <TabItem.Header>
+                                                <StackPanel>
+                                                    <TextBlock Text="ReadAll"/>
+                                                </StackPanel>
+                                            </TabItem.Header>
+                                        </TabItem>
+                                        <TabItem>
+                                            <TabItem.Header>
+                                                <StackPanel>
+                                                    <TextBlock Text="Update"/>
+                                                </StackPanel>
+                                            </TabItem.Header>
+                                        </TabItem>
+                                        <TabItem>
+                                            <TabItem.Header>
+                                                <StackPanel>
+                                                    <TextBlock Text="Delete"/>
+                                                </StackPanel>
+                                            </TabItem.Header>
+                                        </TabItem>
+                                    </TabControl>
+                                </TabItem><!--Brand Operations-->
+                                <TabItem>
+                                    <TabItem.Header>
+                                        <StackPanel>
+                                            <TextBlock Text="Cars"/>
+                                        </StackPanel>
+                                    </TabItem.Header>
+                                    <TabControl>
+                                        <TabItem>
+                                            <TabItem.Header>
+                                                <StackPanel>
+                                                    <TextBlock Text="Create"/>
+                                                </StackPanel>
+                                            </TabItem.Header>
+                                        </TabItem>
+                                        <TabItem>
+                                            <TabItem.Header>
+                                                <StackPanel>
+                                                    <TextBlock Text="Read"/>
+                                                </StackPanel>
+                                            </TabItem.Header>
+                                        </TabItem>
+                                        <TabItem>
+                                            <TabItem.Header>
+                                                <StackPanel>
+                                                    <TextBlock Text="ReadAll"/>
+                                                </StackPanel>
+                                            </TabItem.Header>
+                                        </TabItem>
+                                        <TabItem>
+                                            <TabItem.Header>
+                                                <StackPanel>
+                                                    <TextBlock Text="Update"/>
+                                                </StackPanel>
+                                            </TabItem.Header>
+                                        </TabItem>
+                                        <TabItem>
+                                            <TabItem.Header>
+                                                <StackPanel>
+                                                    <TextBlock Text="Delete"/>
+                                                </StackPanel>
+                                            </TabItem.Header>
+                                        </TabItem>
+                                    </TabControl>
+                                </TabItem><!--Car Operations-->
+                                <TabItem>
+                                    <TabItem.Header>
+                                        <StackPanel>
+                                            <TextBlock Text="Parts"/>
+                                        </StackPanel>
+                                    </TabItem.Header>
+                                    <TabControl>
+                                        <TabItem>
+                                            <TabItem.Header>
+                                                <StackPanel>
+                                                    <TextBlock Text="Create"/>
+                                                </StackPanel>
+                                            </TabItem.Header>
+                                        </TabItem>
+                                        <TabItem>
+                                            <TabItem.Header>
+                                                <StackPanel>
+                                                    <TextBlock Text="Read"/>
+                                                </StackPanel>
+                                            </TabItem.Header>
+                                        </TabItem>
+                                        <TabItem>
+                                            <TabItem.Header>
+                                                <StackPanel>
+                                                    <TextBlock Text="ReadAll"/>
+                                                </StackPanel>
+                                            </TabItem.Header>
+                                        </TabItem>
+                                        <TabItem>
+                                            <TabItem.Header>
+                                                <StackPanel>
+                                                    <TextBlock Text="Update"/>
+                                                </StackPanel>
+                                            </TabItem.Header>
+                                        </TabItem>
+                                        <TabItem>
+                                            <TabItem.Header>
+                                                <StackPanel>
+                                                    <TextBlock Text="Delete"/>
+                                                </StackPanel>
+                                            </TabItem.Header>
+                                        </TabItem>
+                                    </TabControl>
+                                </TabItem><!--Part Operations-->
+                                <TabItem>
+                                    <TabItem.Header>
+                                        <StackPanel>
+                                            <TextBlock Text="Special Queries"/>
+                                        </StackPanel>
+                                    </TabItem.Header>
+                                    <TabControl>
+                                        <StackPanel>
+                                            <TabItem>
+                                                <TabItem.Header>
+                                                    <StackPanel>
+                                                        <TextBlock Text="Brembo spare part user brands"/>
+                                                    </StackPanel>
+                                                </TabItem.Header>
+                                            </TabItem>
+                                            <TabItem>
+                                                <TabItem.Header>
+                                                    <StackPanel>
+                                                        <TextBlock Text="Brands with electric cars"/>
+                                                    </StackPanel>
+                                                </TabItem.Header>
+                                            </TabItem>
+                                            <TabItem>
+                                                <TabItem.Header>
+                                                    <StackPanel>
+                                                        <TextBlock Text="Brand with the most 4 cylinder cars"/>
+                                                    </StackPanel>
+                                                </TabItem.Header>
+                                            </TabItem>
+                                            <TabItem>
+                                                <TabItem.Header>
+                                                    <StackPanel>
+                                                        <TextBlock Text="Cars with the most compatible parts"/>
+                                                    </StackPanel>
+                                                </TabItem.Header>
+                                            </TabItem>
+                                            <TabItem>
+                                                <TabItem.Header>
+                                                    <StackPanel>
+                                                        <TextBlock Text="Average cylinder capacity by brands"/>
+                                                    </StackPanel>
+                                                </TabItem.Header>
+                                            </TabItem>
+                                        </StackPanel>
+                                    </TabControl>
+                                </TabItem><!--Queries-->
+                            </TabControl>
                         </TabItem>
-
+                        <!--Operations-->
                     </TabControl>
                 </Grid>
 

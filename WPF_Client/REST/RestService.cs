@@ -5,9 +5,9 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CM7A68_HFT_2021221.Client
+namespace WPF_Client
 {
-    class RestService
+    internal class RestService
     {
         HttpClient client;
 

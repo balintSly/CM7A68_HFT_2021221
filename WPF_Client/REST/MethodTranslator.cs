@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CM7A68_HFT_2021221.Client
+namespace WPF_Client
 {
-    class MethodTranslator
+    internal class MethodTranslator
     {
-        RestService restService ;
+        RestService restService;
         public MethodTranslator()
         {
             this.restService = new RestService("http://localhost:50874");
