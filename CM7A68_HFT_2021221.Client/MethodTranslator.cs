@@ -17,7 +17,7 @@ namespace CM7A68_HFT_2021221.Client
         //readalls//////////////////////////////////////////////
         public List<Brand> GetAllBrand()
         { 
-        return restService.Get<Brand>("brand");
+         return restService.Get<Brand>("brand");
         }
         public List<Car> GetAllCar()
         {
