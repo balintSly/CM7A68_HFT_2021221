@@ -108,7 +108,7 @@
                                                     <ListView.ItemTemplate>
                                                         <DataTemplate>
                                                             <WrapPanel>
-                                                                <Grid Margin="10">
+                                                                <Grid Margin="10" HorizontalAlignment="Left">
                                                                     <Grid.ColumnDefinitions>
                                                                         <ColumnDefinition Width="*"/>
                                                                         <ColumnDefinition Width="*"/>
@@ -117,10 +117,10 @@
                                                                         <RowDefinition Height="*"/>
                                                                         <RowDefinition Height="*"/>
                                                                     </Grid.RowDefinitions>
-                                                                    <TextBlock Text="ID" Grid.Column="0" Grid.Row="0"/>
-                                                                    <TextBlock Text="Name" Grid.Column="1" Grid.Row="0"/>
-                                                                    <TextBlock Text="{Binding ID}" Grid.Column="0" Grid.Row="1"/>
-                                                                    <TextBlock Text="{Binding Name}" Grid.Column="1" Grid.Row="1"/>
+                                                                    <TextBlock Text="ID" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center"/>
+                                                                    <TextBlock Text="Name" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center"/>
+                                                                    <TextBlock Text="{Binding ID}" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center"  Margin="10 0 0 0"/>
+                                                                    <TextBlock Text="{Binding Name}" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" Margin="10 0 0 0"/>
                                                                 </Grid>
                                                             </WrapPanel>
                                                         </DataTemplate>
