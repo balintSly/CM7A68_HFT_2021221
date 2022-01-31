@@ -171,5 +171,72 @@ namespace WPF_Client
             branddeleteResponse.Text = "Brand successfully deleted from the database!";
             deleteAllBrand.ItemsSource = methodTranslator.GetAllBrand();            
         }
+
+        private void createCarBtn_Click(object sender, RoutedEventArgs e)
+        {
+            
+            if ((((TextBox)carModel).Text).Length == 0)
+            {
+                carCreateResponse.Text = "The field of the model can't be empty!";
+            }
+            else
+            {
+                var brands=methodTranslator.GetAllBrand();
+                Car car = new Car();
+                Brand carsbrand=brands.First(x => x.Name == (string)((ComboBox)brandnameBox).SelectedItem);
+                car.Brand = carsbrand;
+                car.Model = ((TextBox)carModel).Text;
+                car.Production_year = (int)((ComboBox)yearsBox).SelectedItem;
+                car.Cylinder_number = (int)((ComboBox)cilnumBox).SelectedItem;
+                car.Cylinder_capacity = (double)((ComboBox)cilcapBox).SelectedItem;
+                car.BrandID = carsbrand.ID;
+                methodTranslator.CreateCar(car);
+                carCreateResponse.Text = "Car successfully added to the database!";
+            }
+        }
+
+        private void cars_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (carCreate.IsSelected)
+            {
+                int yearnow = DateTime.Now.Year;
+                List<int> years = new List<int>();
+                for (int i = yearnow; i >= 1886; i--)
+                {
+                    years.Add(i);
+                }
+                yearsBox.ItemsSource = years;
+                List<int> cylnums = new List<int>();
+                for (int i = 16; i >= 0; i--)
+                {
+                    cylnums.Add(i);
+                }
+                cilnumBox.ItemsSource=cylnums;
+                double maxcap = 8.4;
+                List<double> caps = new List<double>();
+                while (maxcap>=1)
+                {
+                    caps.Add(Math.Round(maxcap,1));
+                    maxcap -= 0.1;
+                }
+                caps.Add(0.5);
+                caps.Add(0);
+                cilcapBox.ItemsSource = caps;
+                var brandsnames = methodTranslator.GetAllBrand().Select(x => x.Name).ToList();
+                brandnameBox.ItemsSource=brandsnames;
+
+            }
+            else if(carRead.IsSelected)
+            {
+                carIds.ItemsSource = methodTranslator.GetAllCar().Select(x => x.ID).ToList();
+            }
+        }
+
+        private void carIds_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int id = (int)((ComboBox)carIds).SelectedItem;
+            var car = methodTranslator.GetAllCar().Where(x => x.ID == id).First();
+            readedCar.ItemsSource = new List<object>() { new {ID=car.ID, Model=car.Model, Production_year=car.Production_year, Cylinder_number=car.Cylinder_number, Cylinder_capacity=car.Cylinder_capacity} };
+        }
     }
 }
