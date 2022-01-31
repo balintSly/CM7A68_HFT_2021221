@@ -18,6 +18,7 @@ namespace CM7A68_HFT_2021221.Repository
         public void Create(Car car)
         {
             car.ID = db.Cars.Count()+1;
+            car.CarParts=new List<CarPart>();
             db.Cars.Add(car);
             db.SaveChanges();
         }

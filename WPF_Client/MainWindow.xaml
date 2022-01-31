@@ -11,7 +11,8 @@
         Background="{x:Null}"
         AllowsTransparency="True"
         WindowStyle="None"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        MouseDown="Window_MouseDown">
 
     <materialDesign:Card UniformCornerRadius="15" Background="{DynamicResource MaterialDesignPaper}" Margin="25"
                          materialDesign:ShadowAssist.ShadowDepth="Depth4">
@@ -84,8 +85,8 @@
                                                 </Grid>
                                                 <TextBlock Margin="10" x:Name="brandCreateResponse" Text="" Grid.Row="1" Style="{StaticResource MaterialDesignHelperTextBlock}"/>
                                             </Grid>
-                                         
-                                            
+
+
                                         </TabItem>
                                         <TabItem x:Name="brandRead">
                                             <TabItem.Header>
@@ -93,7 +94,7 @@
                                                     <TextBlock Text="Read"/>
                                                 </StackPanel>
                                             </TabItem.Header>
-                                            <Grid>
+                                            <Grid MaxHeight="300">
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition/>
                                                     <RowDefinition/>
@@ -104,36 +105,35 @@
                                                           Style="{StaticResource MaterialDesignOutlinedComboBox}"
                                                           Grid.Row="0"
                                                           SelectionChanged="brandId_SelectionChanged"/>
-                                                <ListView Margin="10" Name="readedBrand" Grid.Row="1">
-                                                    <ListView.ItemTemplate>
-                                                        <DataTemplate>
-                                                            <WrapPanel>
-                                                                <Grid Margin="10" HorizontalAlignment="Left">
-                                                                    <Grid.ColumnDefinitions>
-                                                                        <ColumnDefinition Width="*"/>
-                                                                        <ColumnDefinition Width="*"/>
-                                                                    </Grid.ColumnDefinitions>
-                                                                    <Grid.RowDefinitions>
-                                                                        <RowDefinition Height="*"/>
-                                                                        <RowDefinition Height="*"/>
-                                                                    </Grid.RowDefinitions>
-                                                                    <TextBlock Text="ID" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center"/>
-                                                                    <TextBlock Text="Name" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center"/>
-                                                                    <TextBlock Text="{Binding ID}" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center"  Margin="10 0 0 0"/>
-                                                                    <TextBlock Text="{Binding Name}" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" Margin="10 0 0 0"/>
-                                                                </Grid>
-                                                            </WrapPanel>
-                                                        </DataTemplate>
-                                                    </ListView.ItemTemplate>
-                                                </ListView>
+                                                <Grid MaxHeight="500" Grid.Row="1">
+                                                    <ListView Margin="10" Name="readedBrand" Grid.Row="1" VerticalContentAlignment="Top" >
+                                                        <ListView.View>
+                                                            <GridView>
+                                                                <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}" Width="100"/>
+                                                                <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="200"/>
+                                                            </GridView>
+                                                        </ListView.View>
+                                                    </ListView>
+                                                </Grid>
                                             </Grid>
                                         </TabItem>
-                                        <TabItem>
+                                        <TabItem x:Name="readAllBrand">
                                             <TabItem.Header>
                                                 <StackPanel>
                                                     <TextBlock Text="ReadAll"/>
                                                 </StackPanel>
                                             </TabItem.Header>
+                                            <Grid MaxHeight="500">
+                                                <ListView Margin="10" Name="readedAllBrand" Grid.Row="1" 
+                                                          ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="False" VerticalContentAlignment="Top" >
+                                                    <ListView.View>
+                                                        <GridView>
+                                                            <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}" Width="100"/>
+                                                            <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="200"/>
+                                                        </GridView>
+                                                    </ListView.View>
+                                                </ListView>
+                                            </Grid>
                                         </TabItem>
                                         <TabItem>
                                             <TabItem.Header>
@@ -150,7 +150,8 @@
                                             </TabItem.Header>
                                         </TabItem>
                                     </TabControl>
-                                </TabItem><!--Brand Operations-->
+                                </TabItem>
+                                <!--Brand Operations-->
                                 <TabItem>
                                     <TabItem.Header>
                                         <StackPanel>
@@ -194,7 +195,8 @@
                                             </TabItem.Header>
                                         </TabItem>
                                     </TabControl>
-                                </TabItem><!--Car Operations-->
+                                </TabItem>
+                                <!--Car Operations-->
                                 <TabItem>
                                     <TabItem.Header>
                                         <StackPanel>
@@ -238,7 +240,8 @@
                                             </TabItem.Header>
                                         </TabItem>
                                     </TabControl>
-                                </TabItem><!--Part Operations-->
+                                </TabItem>
+                                <!--Part Operations-->
                                 <TabItem>
                                     <TabItem.Header>
                                         <StackPanel>
@@ -247,41 +250,41 @@
                                     </TabItem.Header>
                                     <TabControl x:Name="specials" SelectionChanged="specials_SelectionChanged" TabStripPlacement="Left">
                                         <TabItem x:Name="special1">
-                                                <TabItem.Header>
-                                                    <StackPanel>
-                                                        <TextBlock Text="Brembo spare part user brands"/>
-                                                    </StackPanel>
-                                                </TabItem.Header>
-                                                <Grid>
-                                                    <ListView Margin="10" Name="lvDataBinding"></ListView>
-                                                </Grid>
-                                            </TabItem>
-                                            <TabItem x:Name="special2">
-                                                <TabItem.Header>
-                                                    <StackPanel>
-                                                        <TextBlock Text="Brands with electric cars"/>
-                                                    </StackPanel>
-                                                </TabItem.Header>
+                                            <TabItem.Header>
+                                                <StackPanel>
+                                                    <TextBlock Text="Brembo spare part user brands"/>
+                                                </StackPanel>
+                                            </TabItem.Header>
+                                            <Grid>
+                                                <ListView Margin="10" Name="lvDataBinding"></ListView>
+                                            </Grid>
+                                        </TabItem>
+                                        <TabItem x:Name="special2">
+                                            <TabItem.Header>
+                                                <StackPanel>
+                                                    <TextBlock Text="Brands with electric cars"/>
+                                                </StackPanel>
+                                            </TabItem.Header>
                                             <Grid>
                                                 <ListView Margin="10" Name="lvDataBinding2"></ListView>
                                             </Grid>
                                         </TabItem>
-                                            <TabItem x:Name="special3">
-                                                <TabItem.Header>
-                                                    <StackPanel>
-                                                        <TextBlock Text="Brand with the most 4 cylinder cars"/>
-                                                    </StackPanel>
-                                                </TabItem.Header>
+                                        <TabItem x:Name="special3">
+                                            <TabItem.Header>
+                                                <StackPanel>
+                                                    <TextBlock Text="Brand with the most 4 cylinder cars"/>
+                                                </StackPanel>
+                                            </TabItem.Header>
                                             <Grid>
                                                 <ListView Margin="10" Name="lvDataBinding3"></ListView>
                                             </Grid>
                                         </TabItem>
-                                            <TabItem x:Name="special4">
-                                                <TabItem.Header>
-                                                    <StackPanel>
-                                                        <TextBlock Text="Cars with the most compatible parts"/>
-                                                    </StackPanel>
-                                                </TabItem.Header>
+                                        <TabItem x:Name="special4">
+                                            <TabItem.Header>
+                                                <StackPanel>
+                                                    <TextBlock Text="Cars with the most compatible parts"/>
+                                                </StackPanel>
+                                            </TabItem.Header>
                                             <Grid>
                                                 <StackPanel Orientation="Horizontal">
                                                     <TextBlock Text="Car"/>
@@ -307,7 +310,18 @@
                                                     <TextBlock Text="Average cylinder capacity by brands"/>
                                                 </StackPanel>
                                             </TabItem.Header>
-                                            <Grid>
+                                            <Grid MaxHeight="500" MaxWidth="600">
+                                                <ListView Margin="10" Name="lvDataBinding5" Grid.Row="1" 
+                                                          ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="False" VerticalContentAlignment="Top" >
+                                                    <ListView.View>
+                                                        <GridView>
+                                                            <GridViewColumn Header="Brand" DisplayMemberBinding="{Binding Brand}" Width="100"/>
+                                                            <GridViewColumn Header="Average c.c." DisplayMemberBinding="{Binding AvgCap}" Width="200"/>
+                                                        </GridView>
+                                                    </ListView.View>
+                                                </ListView>
+                                            </Grid>
+                                            <!--<Grid>
                                                 <StackPanel Orientation="Horizontal">
                                                     <TextBlock Text="Brand"/>
                                                     <TextBlock Text="Average cylinder capacity" Margin="20 0 0 0"/>
@@ -324,10 +338,11 @@
                                                         </DataTemplate>
                                                     </ListView.ItemTemplate>
                                                 </ListView>
-                                            </Grid>
+                                            </Grid>-->
                                         </TabItem>
                                     </TabControl>
-                                </TabItem><!--Queries-->
+                                </TabItem>
+                                <!--Queries-->
                             </TabControl>
                         </TabItem>
                         <!--Operations-->

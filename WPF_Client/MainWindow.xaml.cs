@@ -29,7 +29,6 @@ namespace WPF_Client
         MethodTranslator methodTranslator=new MethodTranslator();
         public bool IsDarkTheme { get; set; }
         private readonly PaletteHelper paletteHelper = new PaletteHelper();
-        public List<object> Items { get; set; }
         private void themeToggle_Click(object sender, RoutedEventArgs e)
         {
             ITheme theme = paletteHelper.GetTheme();
@@ -56,41 +55,35 @@ namespace WPF_Client
         {
             if (special1.IsSelected)
             {
-                Items = new List<object>();
-                Items=methodTranslator.BremboUserBrands().Select(x => (object)x.Value).ToList();
-                lvDataBinding.ItemsSource = Items;
+                lvDataBinding.ItemsSource = methodTranslator.BremboUserBrands().Select(x => (object)x.Value).ToList();
             }
             else if (special2.IsSelected)
             {
-                Items = new List<object>();
-                Items=methodTranslator.BrandsWithElectricCars().Select(x => (object)x.Value).ToList();
-                lvDataBinding2.ItemsSource = Items;
+                lvDataBinding2.ItemsSource = methodTranslator.BrandsWithElectricCars().Select(x => (object)x.Value).ToList();
             }
             else if (special3.IsSelected)
             {
-                Items = new List<object>();
-                Items=methodTranslator.BrandWithTheMost4CylinderCar().Select(x => (object)x.Value).ToList();
-                lvDataBinding3.ItemsSource = Items;
+                lvDataBinding3.ItemsSource = methodTranslator.BrandWithTheMost4CylinderCar().Select(x => (object)x.Value).ToList();
             }
             else if(special4.IsSelected)
             {
-                Items=new List<object>();
+                var items=new List<object>();
                 var query = methodTranslator.Top3CarsWithTheMostCompatibleParts();
                 foreach (var item in query)
                 {
-                    Items.Add(new { Car = item.Value[0].Value + " " + item.Value[1].Value, Parts = item.Value[2].Value + " parts" });
+                    items.Add(new { Car = item.Value[0].Value + " " + item.Value[1].Value, Parts = item.Value[2].Value + " parts" });
                 }
-                lvDataBinding4.ItemsSource = Items;
+                lvDataBinding4.ItemsSource = items;
             }
             else if (special5.IsSelected)
             {
-                Items = new List<object>();
+                var items = new List<object>();
                 var query = methodTranslator.AvgCylinderCapBrands();
                 foreach (var item in query)
                 {
-                    Items.Add(new {Brand=item.Value.Key, AvgCap=item.Value.Value.Value +"l"});
+                    items.Add(new {Brand=item.Value.Key, AvgCap=item.Value.Value.Value +"l"});
                 }
-                lvDataBinding5.ItemsSource = Items;
+                lvDataBinding5.ItemsSource = items;
             }
         }
 
@@ -98,9 +91,12 @@ namespace WPF_Client
         {
             if (brandRead.IsSelected)
             {
-                Items=new List<object>();
                 var brands = methodTranslator.GetAllBrand();
                 brandId.ItemsSource = brands.Select(x =>x.ID).ToList();
+            }
+            else if(readAllBrand.IsSelected)
+            {
+                readedAllBrand.ItemsSource=methodTranslator.GetAllBrand();
             }
         }
 
@@ -129,6 +125,12 @@ namespace WPF_Client
             int id = (int)((ComboBox)brandId).SelectedItem;
             var brand = methodTranslator.GetAllBrand().Where(x => x.ID == id).First();
             readedBrand.ItemsSource = new List<Brand>() {brand};
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                this.DragMove();
         }
     }
 }

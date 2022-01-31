@@ -2,6 +2,7 @@
 using CM7A68_HFT_2021221.Models;
 using CM7A68_HFT_2021221.Data;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace CM7A68_HFT_2021221.Repository
 {
@@ -15,6 +16,7 @@ namespace CM7A68_HFT_2021221.Repository
         public void Create(Brand brand)
         {
             brand.ID = db.Brands.Count()+1;
+            brand.Cars = new List<Car>();
             db.Brands.Add(brand);
             db.SaveChanges();
         }
