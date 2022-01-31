@@ -98,6 +98,11 @@ namespace WPF_Client
             {
                 readedAllBrand.ItemsSource=methodTranslator.GetAllBrand();
             }
+            else if(updateBrands.IsSelected)
+            {
+                updatebrandID.ItemsSource = methodTranslator.GetAllBrand().Select(x => x.ID).ToList();
+                updateAllBrand.ItemsSource = methodTranslator.GetAllBrand();
+            }
         }
 
         private void createBrandBtn_Click(object sender, RoutedEventArgs e)
@@ -131,6 +136,28 @@ namespace WPF_Client
         {
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();
+        }
+
+        private void updateBrandBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var brands = methodTranslator.GetAllBrand();
+            Brand brand= brands.Where(x => x.ID == (int)((ComboBox)updatebrandID).SelectedItem).First();
+            var brandnames = brands.Select(x => x.Name).ToList();
+            if ((((TextBox)updatebrandName).Text).Length == 0)
+            {
+                brandupdateResponse.Text = "The field of the name can't be empty!";
+            }
+            else if (brandnames.Contains(((TextBox)brandName).Text))
+            {
+                brandupdateResponse.Text = "There is already a brand with this name in the database!";
+            }
+            else
+            {
+                brand.Name = ((TextBox)updatebrandName).Text;
+                methodTranslator.UpdateBrand(brand);
+                brandupdateResponse.Text = "Brand successfully updated in the database!";
+                updateAllBrand.ItemsSource = methodTranslator.GetAllBrand();
+            }
         }
     }
 }

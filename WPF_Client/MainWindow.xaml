@@ -12,7 +12,8 @@
         AllowsTransparency="True"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
-        MouseDown="Window_MouseDown">
+        MouseDown="Window_MouseDown"
+        ResizeMode="CanResizeWithGrip">
 
     <materialDesign:Card UniformCornerRadius="15" Background="{DynamicResource MaterialDesignPaper}" Margin="25"
                          materialDesign:ShadowAssist.ShadowDepth="Depth4">
@@ -135,12 +136,48 @@
                                                 </ListView>
                                             </Grid>
                                         </TabItem>
-                                        <TabItem>
+                                        <TabItem x:Name="updateBrands">
                                             <TabItem.Header>
                                                 <StackPanel>
                                                     <TextBlock Text="Update"/>
                                                 </StackPanel>
                                             </TabItem.Header>
+                                            <Grid MaxHeight="500">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                </Grid.RowDefinitions>
+                                                    <ListView Margin="10" Name="updateAllBrand" Grid.Row="0" 
+                                                          ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="False" VerticalContentAlignment="Top" >
+                                                    <ListView.View>
+                                                        <GridView>
+                                                            <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}" Width="100"/>
+                                                            <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="200"/>
+                                                        </GridView>
+                                                    </ListView.View>
+                                                </ListView>
+                                                <Grid Grid.Row="1">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition/>
+                                                        <ColumnDefinition/>
+                                                        <ColumnDefinition/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <ComboBox x:Name="updatebrandID" Margin="10" materialDesign:HintAssist.Hint="Choose the ID" 
+                                                          HorizontalAlignment="Left" BorderThickness="2" 
+                                                          BorderBrush="{DynamicResource MaterialDesignDivider}"
+                                                          Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                                                          Grid.Column="0"/>
+                                                    <TextBox x:Name="updatebrandName" Margin="10" materialDesign:HintAssist.Hint="New Name" 
+                                                         BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}"
+                                                         Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                                         Grid.Column="1" Height="50"/>
+                                                    <Button x:Name="updateBrandBtn" Click="updateBrandBtn_Click" Grid.Column="2" Content="Update" Margin="10"
+                                                        BorderThickness="2" 
+                                                        Style="{StaticResource MaterialDesignRaisedSecondaryDarkButton}"/>
+                                                </Grid>
+                                                <TextBlock Margin="10" x:Name="brandupdateResponse" Text="" Grid.Row="2" Style="{StaticResource MaterialDesignHelperTextBlock}"/>
+                                            </Grid>
                                         </TabItem>
                                         <TabItem>
                                             <TabItem.Header>
@@ -255,8 +292,15 @@
                                                     <TextBlock Text="Brembo spare part user brands"/>
                                                 </StackPanel>
                                             </TabItem.Header>
-                                            <Grid>
-                                                <ListView Margin="10" Name="lvDataBinding"></ListView>
+                                            <Grid MaxHeight="500" MaxWidth="200">
+                                                <ListView Margin="10" Name="lvDataBinding" 
+                                                          ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="False" VerticalContentAlignment="Top" >
+                                                    <ListView.View>
+                                                        <GridView>
+                                                            <GridViewColumn Header="Brand" DisplayMemberBinding="{Binding}" Width="100"/>
+                                                        </GridView>
+                                                    </ListView.View>
+                                                </ListView>
                                             </Grid>
                                         </TabItem>
                                         <TabItem x:Name="special2">
@@ -265,8 +309,15 @@
                                                     <TextBlock Text="Brands with electric cars"/>
                                                 </StackPanel>
                                             </TabItem.Header>
-                                            <Grid>
-                                                <ListView Margin="10" Name="lvDataBinding2"></ListView>
+                                            <Grid MaxHeight="500" MaxWidth="200">
+                                                <ListView Margin="10" Name="lvDataBinding2" 
+                                                          ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="False" VerticalContentAlignment="Top" >
+                                                    <ListView.View>
+                                                        <GridView>
+                                                            <GridViewColumn Header="Brand" DisplayMemberBinding="{Binding}" Width="100"/>
+                                                        </GridView>
+                                                    </ListView.View>
+                                                </ListView>
                                             </Grid>
                                         </TabItem>
                                         <TabItem x:Name="special3">
@@ -275,7 +326,7 @@
                                                     <TextBlock Text="Brand with the most 4 cylinder cars"/>
                                                 </StackPanel>
                                             </TabItem.Header>
-                                            <Grid>
+                                            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                                                 <ListView Margin="10" Name="lvDataBinding3"></ListView>
                                             </Grid>
                                         </TabItem>
@@ -285,22 +336,15 @@
                                                     <TextBlock Text="Cars with the most compatible parts"/>
                                                 </StackPanel>
                                             </TabItem.Header>
-                                            <Grid>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <TextBlock Text="Car"/>
-                                                    <TextBlock Text="Number of compatible parts" Margin="20 0 0 0"/>
-                                                </StackPanel>
-                                                <ListView Margin="10" Name="lvDataBinding4">
-                                                    <ListView.ItemTemplate>
-                                                        <DataTemplate>
-                                                            <WrapPanel>
-                                                                <StackPanel Orientation="Horizontal">
-                                                                    <TextBlock Text="{Binding Car}" />
-                                                                    <TextBlock Text="{Binding Parts}" Margin="20 0 0 0"/>
-                                                                </StackPanel>
-                                                            </WrapPanel>
-                                                        </DataTemplate>
-                                                    </ListView.ItemTemplate>
+                                            <Grid MaxHeight="500" MaxWidth="600">
+                                                <ListView Margin="10" Name="lvDataBinding4" Grid.Row="1" 
+                                                          ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="False" VerticalContentAlignment="Top" >
+                                                    <ListView.View>
+                                                        <GridView>
+                                                            <GridViewColumn Header="Car" DisplayMemberBinding="{Binding Car}" Width="150"/>
+                                                            <GridViewColumn Header="Number of p." DisplayMemberBinding="{Binding Parts}" Width="200"/>
+                                                        </GridView>
+                                                    </ListView.View>
                                                 </ListView>
                                             </Grid>
                                         </TabItem>
@@ -321,24 +365,6 @@
                                                     </ListView.View>
                                                 </ListView>
                                             </Grid>
-                                            <!--<Grid>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <TextBlock Text="Brand"/>
-                                                    <TextBlock Text="Average cylinder capacity" Margin="20 0 0 0"/>
-                                                </StackPanel>
-                                                <ListView Margin="10" Name="lvDataBinding5">
-                                                    <ListView.ItemTemplate>
-                                                        <DataTemplate>
-                                                            <WrapPanel>
-                                                                <StackPanel Orientation="Horizontal">
-                                                                    <TextBlock Text="{Binding Brand}" />
-                                                                    <TextBlock Text="{Binding AvgCap}" Margin="20 0 0 0"/>
-                                                                </StackPanel>
-                                                            </WrapPanel>
-                                                        </DataTemplate>
-                                                    </ListView.ItemTemplate>
-                                                </ListView>
-                                            </Grid>-->
                                         </TabItem>
                                     </TabControl>
                                 </TabItem>
