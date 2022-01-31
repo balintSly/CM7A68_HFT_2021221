@@ -14,7 +14,7 @@ namespace CM7A68_HFT_2021221.Repository
         }
         public void Create(Brand brand)
         {
-            brand.ID = db.Brands.Count();
+            brand.ID = db.Brands.Count()+1;
             db.Brands.Add(brand);
             db.SaveChanges();
         }

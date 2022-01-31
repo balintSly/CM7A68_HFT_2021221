@@ -17,7 +17,7 @@ namespace CM7A68_HFT_2021221.Repository
         }
         public void Create(Part part)
         {
-            part.ID=db.Parts.Count();
+            part.ID=db.Parts.Count()+1;
             db.Parts.Add(part);
             db.SaveChanges();
         }
