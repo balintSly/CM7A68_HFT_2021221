@@ -103,6 +103,11 @@ namespace WPF_Client
                 updatebrandID.ItemsSource = methodTranslator.GetAllBrand().Select(x => x.ID).ToList();
                 updateAllBrand.ItemsSource = methodTranslator.GetAllBrand();
             }
+            else if (deleteBrand.IsSelected)
+            {
+                deletebrandID.ItemsSource = methodTranslator.GetAllBrand().Select(x => x.ID).ToList();
+                deleteAllBrand.ItemsSource = methodTranslator.GetAllBrand();
+            }
         }
 
         private void createBrandBtn_Click(object sender, RoutedEventArgs e)
@@ -158,6 +163,13 @@ namespace WPF_Client
                 brandupdateResponse.Text = "Brand successfully updated in the database!";
                 updateAllBrand.ItemsSource = methodTranslator.GetAllBrand();
             }
+        }
+
+        private void deleteBrandBtn_Click(object sender, RoutedEventArgs e)
+        {
+            methodTranslator.DeleteBrand((int)((ComboBox)deletebrandID).SelectedItem);
+            branddeleteResponse.Text = "Brand successfully deleted from the database!";
+            deleteAllBrand.ItemsSource = methodTranslator.GetAllBrand();            
         }
     }
 }

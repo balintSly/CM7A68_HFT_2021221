@@ -179,12 +179,43 @@
                                                 <TextBlock Margin="10" x:Name="brandupdateResponse" Text="" Grid.Row="2" Style="{StaticResource MaterialDesignHelperTextBlock}"/>
                                             </Grid>
                                         </TabItem>
-                                        <TabItem>
+                                        <TabItem x:Name="deleteBrand">
                                             <TabItem.Header>
                                                 <StackPanel>
                                                     <TextBlock Text="Delete"/>
                                                 </StackPanel>
                                             </TabItem.Header>
+                                            <Grid MaxHeight="500">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                </Grid.RowDefinitions>
+                                                <ListView Margin="10" Name="deleteAllBrand" Grid.Row="0" 
+                                                          ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="False" VerticalContentAlignment="Top" >
+                                                    <ListView.View>
+                                                        <GridView>
+                                                            <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}" Width="100"/>
+                                                            <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="200"/>
+                                                        </GridView>
+                                                    </ListView.View>
+                                                </ListView>
+                                                <Grid Grid.Row="1">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition/>
+                                                        <ColumnDefinition/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <ComboBox x:Name="deletebrandID" Margin="10" materialDesign:HintAssist.Hint="Choose the ID" 
+                                                          HorizontalAlignment="Left" BorderThickness="2" 
+                                                          BorderBrush="{DynamicResource MaterialDesignDivider}"
+                                                          Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                                                          Grid.Column="0"/>
+                                                    <Button x:Name="deleteBrandBtn" Click="deleteBrandBtn_Click" Grid.Column="2" Content="Delete" Margin="10"
+                                                        BorderThickness="2" 
+                                                        Style="{StaticResource MaterialDesignRaisedSecondaryDarkButton}"/>
+                                                </Grid>
+                                                <TextBlock Margin="10" x:Name="branddeleteResponse" Text="" Grid.Row="2" Style="{StaticResource MaterialDesignHelperTextBlock}"/>
+                                            </Grid>
                                         </TabItem>
                                     </TabControl>
                                 </TabItem>
