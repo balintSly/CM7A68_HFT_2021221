@@ -281,18 +281,6 @@ namespace WPF_Client
                 
 
             }
-            else if (deleteCar.IsSelected)
-            {
-                deleteCarID.ItemsSource = methodTranslator.GetAllCar().Select(x => x.ID).ToList();
-                var cars = methodTranslator.GetAllCar();
-                List<object> list = new List<object>();
-                var brands = methodTranslator.GetAllBrand();
-                foreach (var car in cars)
-                {
-                    list.Add(new { ID = car.ID, Brand = brands.Where(x => x.ID == car.BrandID).Select(y => y.Name).First(), Model = car.Model, Production_year = car.Production_year, Cylinder_number = car.Cylinder_number, Cylinder_capacity = car.Cylinder_capacity });
-                }
-                deleteAllCar.ItemsSource = list;
-            }
         }
         private void carIds_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -316,7 +304,7 @@ namespace WPF_Client
                 car.Model = ((TextBox)updateCarModel).Text;
                 car.Production_year = (int)((ComboBox)updateCarProd).SelectedItem;
                 car.Cylinder_number = (int)((ComboBox)updateCarCylNum).SelectedItem;
-                car.Cylinder_capacity = (double)updateCarCylCap.SelectedItem;
+                car.Cylinder_capacity = (double)((ComboBox)updateCarCylCap).SelectedItem;
                 car.BrandID = carsbrand.ID;
                 methodTranslator.UpdateCar(car);
                 carupdateResponse.Text = "Car successfully updated in the database!";
@@ -343,13 +331,8 @@ namespace WPF_Client
         {
             if (updateCarCylNum.SelectedValue!=null && (int)updateCarCylNum.SelectedValue ==0)
             {
-                updateCarCylCap.Visibility = Visibility.Hidden;
                 updateCarCylCap.SelectedValue = 0;
                
-            }
-            else
-            {
-                updateCarCylCap.Visibility = Visibility.Visible;
             }
         }
 
@@ -357,67 +340,9 @@ namespace WPF_Client
         {
             if (updateCarCylCap.SelectedValue != null && (double)updateCarCylCap.SelectedValue == 0)
             {
-                updateCarCylNum.Visibility = Visibility.Hidden;
                 updateCarCylNum.SelectedValue = 0;
   
             }
-            else
-            {
-                updateCarCylNum.Visibility = Visibility.Visible;
-            }
-        }
-
-        private void deleteCarBtn_Click(object sender, RoutedEventArgs e)
-        {
-     
-            if (deleteCarID.SelectedItem == null)
-            {
-                cardeleteResponse.Text = "Select an ID!";
-            }
-            else
-            {
-                var id = (int)deleteCarID.SelectedItem;
-                methodTranslator.DeleteCar(id);
-                cardeleteResponse.Text = "Car successfully deleted from the database!";
-                var cars = methodTranslator.GetAllCar();
-                List<object> list = new List<object>();
-                var brands = methodTranslator.GetAllBrand();
-                foreach (var car in cars)
-                {
-                    list.Add(new { ID = car.ID, Brand = brands.Where(x => x.ID == car.BrandID).Select(y => y.Name).First(), Model = car.Model, Production_year = car.Production_year, Cylinder_number = car.Cylinder_number, Cylinder_capacity = car.Cylinder_capacity });
-                }
-                deleteAllCar.ItemsSource = list;
-            }
-        }
-
-        private void parts_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (partCreate.IsSelected)
-            { 
-            
-            }
-            else if(partRead.IsSelected)
-            {
-
-            }
-            else if (partReadAll.IsSelected)
-            {
-
-            }
-            else if (partUpdate.IsSelected)
-            {
-
-            }
-            else if (partDelete.IsSelected)
-            {
-
-            }
-
-        }
-
-        private void createPartBtn_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

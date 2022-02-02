@@ -445,43 +445,12 @@
                                                 <TextBlock Margin="10" x:Name="carupdateResponse" Text="" Grid.Row="2" Style="{StaticResource MaterialDesignHelperTextBlock}"/>
                                             </Grid>
                                         </TabItem>
-                                        <TabItem x:Name="deleteCar">
+                                        <TabItem>
                                             <TabItem.Header>
                                                 <StackPanel>
                                                     <TextBlock Text="Delete"/>
                                                 </StackPanel>
                                             </TabItem.Header>
-                                            <Grid MaxHeight="500">
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition/>
-                                                    <RowDefinition/>
-                                                    <RowDefinition/>
-                                                </Grid.RowDefinitions>
-                                                <ListView Margin="10" Name="deleteAllCar" VerticalContentAlignment="Top" >
-                                                    <ListView.View>
-                                                        <GridView>
-                                                            <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}" Width="100"/>
-                                                            <GridViewColumn Header="Brand" DisplayMemberBinding="{Binding Brand}" Width="100"/>
-                                                            <GridViewColumn Header="Model" DisplayMemberBinding="{Binding Model}" Width="200"/>
-                                                            <GridViewColumn Header="Production year" DisplayMemberBinding="{Binding Production_year}" Width="200"/>
-                                                            <GridViewColumn Header="Cylinder number" DisplayMemberBinding="{Binding Cylinder_number}" Width="200"/>
-                                                            <GridViewColumn Header="Cylinder capacity" DisplayMemberBinding="{Binding Cylinder_capacity}" Width="200"/>
-                                                        </GridView>
-                                                    </ListView.View>
-                                                </ListView>
-                                                <StackPanel Grid.Row="1" Orientation="Horizontal">
-                                                  
-                                                    <ComboBox x:Name="deleteCarID" Margin="10" materialDesign:HintAssist.Hint="Choose the ID" 
-                                                          HorizontalAlignment="Left" BorderThickness="2" 
-                                                          BorderBrush="{DynamicResource MaterialDesignDivider}"
-                                                          Style="{StaticResource MaterialDesignOutlinedComboBox}"
-                                                          Grid.Column="0"/>
-                                                    <Button x:Name="deleteCarBtn" Click="deleteCarBtn_Click" Grid.Column="2" Content="Delete" Margin="10"
-                                                        BorderThickness="2" 
-                                                        Style="{StaticResource MaterialDesignRaisedSecondaryDarkButton}"/>
-                                                </StackPanel>
-                                                <TextBlock Margin="10" x:Name="cardeleteResponse" Text="" Grid.Row="2" Style="{StaticResource MaterialDesignHelperTextBlock}"/>
-                                            </Grid>
                                         </TabItem>
                                     </TabControl>
                                 </TabItem>
@@ -492,83 +461,36 @@
                                             <TextBlock Text="Parts"/>
                                         </StackPanel>
                                     </TabItem.Header>
-                                    <TabControl TabStripPlacement="Left" SelectionChanged="parts_SelectionChanged">
-                                        <TabItem x:Name="partCreate">
+                                    <TabControl TabStripPlacement="Left">
+                                        <TabItem>
                                             <TabItem.Header>
                                                 <StackPanel>
                                                     <TextBlock Text="Create"/>
                                                 </StackPanel>
                                             </TabItem.Header>
-                                            <Grid>
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition/>
-                                                    <RowDefinition/>
-                                                    <RowDefinition/>
-                                                </Grid.RowDefinitions>
-                                                <Grid MaxHeight="500" Grid.Row="0">
-                                                    <ListView Margin="10" Name="createparAllCar" VerticalContentAlignment="Top" >
-                                                        <ListView.View>
-                                                            <GridView>
-                                                                <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}" Width="100"/>
-                                                                <GridViewColumn Header="Brand" DisplayMemberBinding="{Binding Brand}" Width="100"/>
-                                                                <GridViewColumn Header="Model" DisplayMemberBinding="{Binding Model}" Width="200"/>
-                                                                <GridViewColumn Header="Production year" DisplayMemberBinding="{Binding Production_year}" Width="200"/>
-                                                                <GridViewColumn Header="Cylinder number" DisplayMemberBinding="{Binding Cylinder_number}" Width="200"/>
-                                                                <GridViewColumn Header="Cylinder capacity" DisplayMemberBinding="{Binding Cylinder_capacity}" Width="200"/>
-                                                            </GridView>
-                                                        </ListView.View>
-                                                    </ListView>
-                                                </Grid>
-                                                <StackPanel Grid.Row="1" Orientation="Horizontal">
-                                                        <TextBox x:Name="partName" Margin="10" materialDesign:HintAssist.Hint="Name" 
-                                                         BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}"
-                                                         Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                                                         Grid.Row="0" Grid.Column="0" Height="50"/>
-                                                        <TextBox x:Name="partBrand" Margin="10" materialDesign:HintAssist.Hint="Brand" 
-                                                         BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}"
-                                                         Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                                                         Grid.Row="1" Grid.Column="0" Height="50"/>
-                                                        <TextBox x:Name="partPrice" Margin="10" materialDesign:HintAssist.Hint="Price" 
-                                                         BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}"
-                                                         Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                                                         Grid.Row="1" Grid.Column="0" Height="50"/>
-                                                        <TextBox x:Name="partWeight" Margin="10" materialDesign:HintAssist.Hint="Weight" 
-                                                         BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}"
-                                                         Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                                                         Grid.Row="1" Grid.Column="0" Height="50"/>
-                                                        <ComboBox x:Name="createPartCompCarIDs" Margin="10" materialDesign:HintAssist.Hint="Compatible car" 
-                                                         BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}"
-                                                         Style="{StaticResource MaterialDesignOutlinedComboBox}"
-                                                         Grid.Row="1" Grid.Column="0" Height="50"/>
-                                                        <Button x:Name="createPartBtn" Click="createPartBtn_Click" Grid.Column="1" Content="Create" Margin="10"
-                                                        BorderThickness="2" 
-                                                        Style="{StaticResource MaterialDesignRaisedSecondaryDarkButton}"/>
-                                                    </StackPanel>
-                                                <TextBlock Margin="10" x:Name="partCreateResponse" Text="" Grid.Row="2" Style="{StaticResource MaterialDesignHelperTextBlock}"/>
-                                            </Grid>
                                         </TabItem>
-                                        <TabItem x:Name="partRead">
+                                        <TabItem>
                                             <TabItem.Header>
                                                 <StackPanel>
                                                     <TextBlock Text="Read"/>
                                                 </StackPanel>
                                             </TabItem.Header>
                                         </TabItem>
-                                        <TabItem x:Name="partReadAll">
+                                        <TabItem>
                                             <TabItem.Header>
                                                 <StackPanel>
                                                     <TextBlock Text="ReadAll"/>
                                                 </StackPanel>
                                             </TabItem.Header>
                                         </TabItem>
-                                        <TabItem x:Name="partUpdate">
+                                        <TabItem>
                                             <TabItem.Header>
                                                 <StackPanel>
                                                     <TextBlock Text="Update"/>
                                                 </StackPanel>
                                             </TabItem.Header>
                                         </TabItem>
-                                        <TabItem x:Name="partDelete">
+                                        <TabItem>
                                             <TabItem.Header>
                                                 <StackPanel>
                                                     <TextBlock Text="Delete"/>
