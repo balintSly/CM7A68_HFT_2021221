@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MaterialDesignThemes.Wpf;
 using CM7A68_HFT_2021221.Models;
+using System.Threading;
 
 namespace WPF_Client
 {
@@ -211,32 +212,137 @@ namespace WPF_Client
                 {
                     cylnums.Add(i);
                 }
-                cilnumBox.ItemsSource=cylnums;
+                cilnumBox.ItemsSource = cylnums;
                 double maxcap = 8.4;
                 List<double> caps = new List<double>();
-                while (maxcap>=1)
+                while (maxcap >= 1)
                 {
-                    caps.Add(Math.Round(maxcap,1));
+                    caps.Add(Math.Round(maxcap, 1));
                     maxcap -= 0.1;
                 }
                 caps.Add(0.5);
                 caps.Add(0);
                 cilcapBox.ItemsSource = caps;
                 var brandsnames = methodTranslator.GetAllBrand().Select(x => x.Name).ToList();
-                brandnameBox.ItemsSource=brandsnames;
+                brandnameBox.ItemsSource = brandsnames;
 
             }
-            else if(carRead.IsSelected)
+            else if (carRead.IsSelected)
             {
                 carIds.ItemsSource = methodTranslator.GetAllCar().Select(x => x.ID).ToList();
             }
-        }
+            else if (readAllCar.IsSelected)
+            {
+                var cars = methodTranslator.GetAllCar();
+                List<object> list = new List<object>();
+                var brands = methodTranslator.GetAllBrand();
+                foreach (var car in cars)
+                {
+                    list.Add(new {ID=car.ID, Brand= brands.Where(x=>x.ID==car.BrandID).Select(y=>y.Name).First(),Model=car.Model, Production_year=car.Production_year, Cylinder_number=car.Cylinder_number, Cylinder_capacity=car.Cylinder_capacity });
+                }
+                readedAllCar.ItemsSource=list;
+            }
+            else if (updateCar.IsSelected)
+            {
+                updateCarID.ItemsSource = methodTranslator.GetAllCar().Select(x => x.ID).ToList();
+                var cars = methodTranslator.GetAllCar();
+                List<object> list = new List<object>();
+                var brands = methodTranslator.GetAllBrand();
+                foreach (var car in cars)
+                {
+                    list.Add(new { ID = car.ID, Brand = brands.Where(x => x.ID == car.BrandID).Select(y => y.Name).First(), Model = car.Model, Production_year = car.Production_year, Cylinder_number = car.Cylinder_number, Cylinder_capacity = car.Cylinder_capacity });
+                }
+                int yearnow = DateTime.Now.Year;
+                List<int> years = new List<int>();
+                for (int i = yearnow; i >= 1886; i--)
+                {
+                    years.Add(i);
+                }
+                List<int> cylnums = new List<int>();
+                for (int i = 16; i >= 0; i--)
+                {
+                    cylnums.Add(i);
+                }
+                double maxcap = 8.4;
+                List<double> caps = new List<double>();
+                while (maxcap >= 1)
+                {
+                    caps.Add(Math.Round(maxcap, 1));
+                    maxcap -= 0.1;
+                }
+                caps.Add(0.5);
+                caps.Add(0);
 
+                updateAllCar.ItemsSource = list;
+                updateCarBrand.ItemsSource = brands.Select(x => x.Name).ToList();
+                updateCarProd.ItemsSource = years;
+                updateCarCylNum.ItemsSource = cylnums;
+                updateCarCylCap.ItemsSource = caps;
+                
+
+            }
+        }
         private void carIds_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             int id = (int)((ComboBox)carIds).SelectedItem;
             var car = methodTranslator.GetAllCar().Where(x => x.ID == id).First();
-            readedCar.ItemsSource = new List<object>() { new {ID=car.ID, Model=car.Model, Production_year=car.Production_year, Cylinder_number=car.Cylinder_number, Cylinder_capacity=car.Cylinder_capacity} };
+            var brandname = methodTranslator.GetBrand(car.ID).Name;
+            readedCar.ItemsSource = new List<object>() { new {ID=car.ID, Model=car.Model,Brand=brandname, Production_year=car.Production_year, Cylinder_number=car.Cylinder_number, Cylinder_capacity=car.Cylinder_capacity} };
+        }
+        private void updateCarBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if ((((TextBox)updateCarModel).Text).Length == 0)
+            {
+                carupdateResponse.Text = "The field of the model can't be empty!";
+            }
+            else
+            {
+                var car = methodTranslator.GetAllCar().Where(x=>x.ID==(int)updateCarID.SelectedValue).First();
+                var brands = methodTranslator.GetAllBrand();
+                Brand carsbrand = brands.First(x => x.Name == (string)((ComboBox)updateCarBrand).SelectedItem);
+                car.Brand = carsbrand;
+                car.Model = ((TextBox)updateCarModel).Text;
+                car.Production_year = (int)((ComboBox)updateCarProd).SelectedItem;
+                car.Cylinder_number = (int)((ComboBox)updateCarCylNum).SelectedItem;
+                car.Cylinder_capacity = (double)((ComboBox)updateCarCylCap).SelectedItem;
+                car.BrandID = carsbrand.ID;
+                methodTranslator.UpdateCar(car);
+                carupdateResponse.Text = "Car successfully updated in the database!";
+                updateAllCar.ItemsSource = methodTranslator.GetAllCar();
+            }
+        }
+
+        private void updateCarID_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var cars = methodTranslator.GetAllCar();
+            var brands = methodTranslator.GetAllBrand();
+            var combo = updateCarID.SelectedItem;
+            int id = (int)combo;
+            Car cartoupdate = cars.Where(x => x.ID == id).First();
+            carUpdateStack.Visibility = Visibility.Visible;
+            updateCarBrand.SelectedValue = brands.Where(x => x.ID == cartoupdate.BrandID).First().Name;
+            updateCarModel.Text = cartoupdate.Model;
+            updateCarProd.SelectedValue = cartoupdate.Production_year;
+            updateCarCylNum.SelectedValue = cartoupdate.Cylinder_number;
+            updateCarCylCap.SelectedValue = cartoupdate.Cylinder_capacity;
+        }
+
+        private void updateCarCylNum_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (updateCarCylNum.SelectedValue!=null && (int)updateCarCylNum.SelectedValue ==0)
+            {
+                updateCarCylCap.SelectedValue = 0;
+               
+            }
+        }
+
+        private void updateCarCylCap_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (updateCarCylCap.SelectedValue != null && (double)updateCarCylCap.SelectedValue == 0)
+            {
+                updateCarCylNum.SelectedValue = 0;
+  
+            }
         }
     }
 }

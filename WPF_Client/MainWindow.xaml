@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:WPF_Client"
         mc:Ignorable="d"
-        Title="Login" Height="760" Width="532"
+        Title="Login" Height="700" Width="1150"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{x:Null}"
         AllowsTransparency="True"
@@ -306,6 +306,7 @@
                                                         <ListView.View>
                                                             <GridView>
                                                                 <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}" Width="100"/>
+                                                                <GridViewColumn Header="Brand" DisplayMemberBinding="{Binding Brand}" Width="100"/>
                                                                 <GridViewColumn Header="Model" DisplayMemberBinding="{Binding Model}" Width="200"/>
                                                                 <GridViewColumn Header="Production year" DisplayMemberBinding="{Binding Production_year}" Width="200"/>
                                                                 <GridViewColumn Header="Cylinder number" DisplayMemberBinding="{Binding Cylinder_number}" Width="200"/>
@@ -316,19 +317,133 @@
                                                 </Grid>
                                             </Grid>
                                         </TabItem>
-                                        <TabItem>
+                                        <TabItem x:Name="readAllCar">
                                             <TabItem.Header>
                                                 <StackPanel>
                                                     <TextBlock Text="ReadAll"/>
                                                 </StackPanel>
                                             </TabItem.Header>
+                                            <Grid MaxHeight="500">
+                                                <ListView Margin="10" Name="readedAllCar" VerticalContentAlignment="Top" >
+                                                        <ListView.View>
+                                                            <GridView>
+                                                                <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}" Width="100"/>
+                                                                <GridViewColumn Header="Brand" DisplayMemberBinding="{Binding Brand}" Width="100"/>
+                                                                <GridViewColumn Header="Model" DisplayMemberBinding="{Binding Model}" Width="200"/>
+                                                                <GridViewColumn Header="Production year" DisplayMemberBinding="{Binding Production_year}" Width="200"/>
+                                                                <GridViewColumn Header="Cylinder number" DisplayMemberBinding="{Binding Cylinder_number}" Width="200"/>
+                                                                <GridViewColumn Header="Cylinder capacity" DisplayMemberBinding="{Binding Cylinder_capacity}" Width="200"/>
+                                                            </GridView>
+                                                        </ListView.View>
+                                                    </ListView>
+                                            </Grid>
                                         </TabItem>
-                                        <TabItem>
+                                        <TabItem x:Name="updateCar">
                                             <TabItem.Header>
                                                 <StackPanel>
                                                     <TextBlock Text="Update"/>
                                                 </StackPanel>
                                             </TabItem.Header>
+                                            <Grid MaxHeight="500">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                </Grid.RowDefinitions>
+                                                <ListView Margin="10" Name="updateAllCar" Grid.Row="0" 
+                                                          ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="False" VerticalContentAlignment="Top" >
+                                                    <ListView.View>
+                                                        <GridView>
+                                                            <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}" Width="100"/>
+                                                            <GridViewColumn Header="Brand" DisplayMemberBinding="{Binding Brand}" Width="100"/>
+                                                            <GridViewColumn Header="Model" DisplayMemberBinding="{Binding Model}" Width="200"/>
+                                                            <GridViewColumn Header="Production year" DisplayMemberBinding="{Binding Production_year}" Width="200"/>
+                                                            <GridViewColumn Header="Cylinder number" DisplayMemberBinding="{Binding Cylinder_number}" Width="200"/>
+                                                            <GridViewColumn Header="Cylinder capacity" DisplayMemberBinding="{Binding Cylinder_capacity}" Width="200"/>
+                                                        </GridView>
+                                                    </ListView.View>
+                                                </ListView>
+                                                
+                                                <StackPanel Orientation="Horizontal" Grid.Row="1">
+                                                    <ComboBox x:Name="updateCarID" SelectionChanged="updateCarID_SelectionChanged" Margin="10" materialDesign:HintAssist.Hint="Choose the ID" 
+                                                          HorizontalAlignment="Left" BorderThickness="2" 
+                                                          BorderBrush="{DynamicResource MaterialDesignDivider}"
+                                                          Style="{StaticResource MaterialDesignOutlinedComboBox}"/>
+                                                    
+                                                    <StackPanel Orientation="Horizontal" Visibility="Hidden" x:Name="carUpdateStack">
+                                                        <ComboBox x:Name="updateCarBrand" Margin="10" materialDesign:HintAssist.Hint="Brand" 
+                                                          HorizontalAlignment="Left" BorderThickness="2" 
+                                                          BorderBrush="{DynamicResource MaterialDesignDivider}"
+                                                          Style="{StaticResource MaterialDesignOutlinedComboBox}"/>
+                                                        <TextBox x:Name="updateCarModel" Margin="10" materialDesign:HintAssist.Hint="Model" 
+                                                         BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}"
+                                                         Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                                         Height="50"/>
+                                                        <ComboBox x:Name="updateCarProd" Margin="10" materialDesign:HintAssist.Hint="Production year" 
+                                                          HorizontalAlignment="Left" BorderThickness="2" 
+                                                          BorderBrush="{DynamicResource MaterialDesignDivider}"
+                                                          Style="{StaticResource MaterialDesignOutlinedComboBox}"/>
+                                                        <ComboBox x:Name="updateCarCylNum" Margin="10" materialDesign:HintAssist.Hint="Cylinder number" 
+                                                          HorizontalAlignment="Left" BorderThickness="2" 
+                                                          BorderBrush="{DynamicResource MaterialDesignDivider}"
+                                                          Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                                                                  SelectionChanged="updateCarCylNum_SelectionChanged"/>
+                                                        <ComboBox x:Name="updateCarCylCap" Margin="10" materialDesign:HintAssist.Hint="Cylinder capacity" 
+                                                          HorizontalAlignment="Left" BorderThickness="2" 
+                                                          BorderBrush="{DynamicResource MaterialDesignDivider}"
+                                                          Style="{StaticResource MaterialDesignOutlinedComboBox}" 
+                                                                  SelectionChanged="updateCarCylCap_SelectionChanged" />
+                                                        <Button x:Name="updateCarBtn" Click="updateCarBtn_Click" Content="Update" Margin="10"
+                                                        BorderThickness="6" 
+                                                        Style="{StaticResource MaterialDesignRaisedSecondaryDarkButton}"/>
+                                                    </StackPanel>
+                                                   
+                                                </StackPanel>
+                                                <!--<Grid Grid.Row="1">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition/>
+                                                        <ColumnDefinition/>
+                                                        <ColumnDefinition/>
+                                                        <ColumnDefinition/>
+                                                        <ColumnDefinition/>
+                                                        <ColumnDefinition/>
+                                                        <ColumnDefinition/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <ComboBox x:Name="updateCarID" Margin="10" materialDesign:HintAssist.Hint="Choose the ID" 
+                                                          HorizontalAlignment="Left" BorderThickness="2" 
+                                                          BorderBrush="{DynamicResource MaterialDesignDivider}"
+                                                          Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                                                          Grid.Column="0"/>
+                                                    <ComboBox x:Name="updateCarBrand" Margin="10" materialDesign:HintAssist.Hint="Choose the ID" 
+                                                          HorizontalAlignment="Left" BorderThickness="2" 
+                                                          BorderBrush="{DynamicResource MaterialDesignDivider}"
+                                                          Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                                                          Grid.Column="1"/>
+                                                    <TextBox x:Name="updateCarModel" Margin="10" materialDesign:HintAssist.Hint="New Model" 
+                                                         BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}"
+                                                         Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                                         Grid.Column="2" Height="50"/>
+                                                    <ComboBox x:Name="updateCarProd" Margin="10" materialDesign:HintAssist.Hint="Choose the ID" 
+                                                          HorizontalAlignment="Left" BorderThickness="2" 
+                                                          BorderBrush="{DynamicResource MaterialDesignDivider}"
+                                                          Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                                                          Grid.Column="3"/>
+                                                    <ComboBox x:Name="updateCarCylNum" Margin="10" materialDesign:HintAssist.Hint="Choose the ID" 
+                                                          HorizontalAlignment="Left" BorderThickness="2" 
+                                                          BorderBrush="{DynamicResource MaterialDesignDivider}"
+                                                          Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                                                          Grid.Column="4"/>
+                                                    <ComboBox x:Name="updateCarCylCap" Margin="10" materialDesign:HintAssist.Hint="Choose the ID" 
+                                                          HorizontalAlignment="Left" BorderThickness="2" 
+                                                          BorderBrush="{DynamicResource MaterialDesignDivider}"
+                                                          Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                                                          Grid.Column="5"/>
+                                                    <Button x:Name="updateCarBtn" Click="updateCarBtn_Click" Grid.Column="3" Content="Update" Margin="10"
+                                                        BorderThickness="6" 
+                                                        Style="{StaticResource MaterialDesignRaisedSecondaryDarkButton}"/>
+                                                </Grid>-->
+                                                <TextBlock Margin="10" x:Name="carupdateResponse" Text="" Grid.Row="2" Style="{StaticResource MaterialDesignHelperTextBlock}"/>
+                                            </Grid>
                                         </TabItem>
                                         <TabItem>
                                             <TabItem.Header>
