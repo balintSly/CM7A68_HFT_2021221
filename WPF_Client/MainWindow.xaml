@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:WPF_Client"
         mc:Ignorable="d"
-        Title="Login" Height="700" Width="1150"
+        Title="Login" Height="700" Width="1250"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{x:Null}"
         AllowsTransparency="True"
@@ -525,6 +525,10 @@
                                                          Style="{StaticResource MaterialDesignOutlinedTextBox}"
                                                          Grid.Row="0" Grid.Column="0" Height="50"/>
                                                         <TextBox x:Name="partBrand" Margin="10" materialDesign:HintAssist.Hint="Brand" 
+                                                         BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}"
+                                                         Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                                         Grid.Row="1" Grid.Column="0" Height="50"/>
+                                                        <TextBox x:Name="partItemNum" Margin="10" materialDesign:HintAssist.Hint="Item number" 
                                                          BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}"
                                                          Style="{StaticResource MaterialDesignOutlinedTextBox}"
                                                          Grid.Row="1" Grid.Column="0" Height="50"/>

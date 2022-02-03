@@ -404,6 +404,7 @@ namespace WPF_Client
                 }
                 deleteAllCar.ItemsSource = list;
                 createpartAllCar.ItemsSource= list;
+                createPartCompCarIDs.ItemsSource = cars.Select(x => x.ID);
 
             }
             else if(partRead.IsSelected)
@@ -427,17 +428,55 @@ namespace WPF_Client
 
         private void createPartBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            if (partName.Text.Length==0 || partBrand.Text.Length == 0 || partPrice.Text.Length == 0 || partItemNum.Text.Length == 0 || partWeight.Text.Length == 0)
+            {
+                partCreateResponse.Text = "Name, brand, item number, weigth fields are required!";
+            }
+            else
+            {
+                var name = partName.Text;
+                var brand = partBrand.Text;
+                var price = int.Parse(partPrice.Text);
+                var itemnum = partItemNum.Text;
+                var weight = double.Parse(partWeight.Text);
+                var ids = partCreateSelectedCompCars.Text.Split(',').ToList();
+                ids.RemoveAt(ids.Count - 1);
+                var cars = methodTranslator.GetAllCar();
+                Part part = new Part() { Name = name, Brand = brand, Item_number = itemnum, Price = price, Weight = weight, CarParts = new List<CarPart>() };
+                foreach (var item in ids)
+                {
+                    var car = cars.Where(x => x.ID == int.Parse(item)).First();
+                    part.CarParts.Add(new CarPart { Car = car, CarID = car.ID });
+                }
+  
+                methodTranslator.CreatePart(part);
+                partCreateResponse.Text = "Part added to the database!";
+            }
+           
         }
 
         private void partCreateSelectCompCarAdd_Click(object sender, RoutedEventArgs e)
         {
-
+            string[] ids = partCreateSelectedCompCars.Text.Split(',');
+            var add = createPartCompCarIDs.SelectedItem.ToString();
+            if (!ids.Contains(add))
+            {
+                partCreateSelectedCompCars.Text += createPartCompCarIDs.SelectedItem + ", ";
+            }
+            
         }
 
         private void partCreateSelectCompCarRemove_Click(object sender, RoutedEventArgs e)
         {
-
+            string[] ids = partCreateSelectedCompCars.Text.Split(',');
+            partCreateSelectedCompCars.Text = "";
+            foreach (var item in ids)
+            {
+                if (item!=" " && item!= createPartCompCarIDs.SelectedItem.ToString())
+                {
+                    partCreateSelectedCompCars.Text += createPartCompCarIDs.SelectedItem + ", ";
+                }
+            }
         }
 
         private void partPrice_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -448,7 +487,7 @@ namespace WPF_Client
 
         private void partWeight_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex("^[0-9]([.][0-9])?$");
+            Regex regex = new Regex("[^0-9].+");
             e.Handled = regex.IsMatch(e.Text);
         }
     }
