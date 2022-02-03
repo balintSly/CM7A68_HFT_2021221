@@ -505,8 +505,8 @@
                                                     <RowDefinition/>
                                                     <RowDefinition/>
                                                 </Grid.RowDefinitions>
-                                                <Grid MaxHeight="500" Grid.Row="0">
-                                                    <ListView Margin="10" Name="createparAllCar" VerticalContentAlignment="Top" >
+                                                <Grid MaxHeight="380" Grid.Row="0">
+                                                    <ListView Margin="10" Name="createpartAllCar" VerticalContentAlignment="Top" >
                                                         <ListView.View>
                                                             <GridView>
                                                                 <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}" Width="100"/>
@@ -531,14 +531,24 @@
                                                         <TextBox x:Name="partPrice" Margin="10" materialDesign:HintAssist.Hint="Price" 
                                                          BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}"
                                                          Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                                                         Grid.Row="1" Grid.Column="0" Height="50"/>
-                                                        <TextBox x:Name="partWeight" Margin="10" materialDesign:HintAssist.Hint="Weight" 
+                                                         Grid.Row="1" Grid.Column="0" Height="50" PreviewTextInput="partPrice_PreviewTextInput"/>
+                                                        <TextBox x:Name="partWeight" Margin="10" materialDesign:HintAssist.Hint="Weight (kg)" 
                                                          BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}"
                                                          Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                                                         Grid.Row="1" Grid.Column="0" Height="50"/>
+                                                         Grid.Row="1" Grid.Column="0" Height="50" PreviewTextInput="partWeight_PreviewTextInput"/>
                                                         <ComboBox x:Name="createPartCompCarIDs" Margin="10" materialDesign:HintAssist.Hint="Compatible car" 
                                                          BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}"
                                                          Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                                                         Grid.Row="1" Grid.Column="0" Height="50"/>
+                                                        <Button x:Name="partCreateSelectCompCarAdd" Click="partCreateSelectCompCarAdd_Click" Grid.Column="1" Content="Add" Margin="10"
+                                                        BorderThickness="2" 
+                                                        Style="{StaticResource MaterialDesignRaisedSecondaryDarkButton}"/>
+                                                        <Button x:Name="partCreateSelectCompCarRemove" Click="partCreateSelectCompCarRemove_Click" Grid.Column="1" Content="Remove" Margin="10"
+                                                        BorderThickness="2" 
+                                                        Style="{StaticResource MaterialDesignRaisedSecondaryDarkButton}"/>
+                                                        <TextBox x:Name="partCreateSelectedCompCars" Margin="10" materialDesign:HintAssist.Hint="Selected Cars" 
+                                                         BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}"
+                                                         Style="{StaticResource MaterialDesignOutlinedTextBox}"
                                                          Grid.Row="1" Grid.Column="0" Height="50"/>
                                                         <Button x:Name="createPartBtn" Click="createPartBtn_Click" Grid.Column="1" Content="Create" Margin="10"
                                                         BorderThickness="2" 

@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using MaterialDesignThemes.Wpf;
 using CM7A68_HFT_2021221.Models;
 using System.Threading;
+using System.Text.RegularExpressions;
 
 namespace WPF_Client
 {
@@ -393,8 +394,17 @@ namespace WPF_Client
         private void parts_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (partCreate.IsSelected)
-            { 
-            
+            {
+                var cars = methodTranslator.GetAllCar();
+                List<object> list = new List<object>();
+                var brands = methodTranslator.GetAllBrand();
+                foreach (var car in cars)
+                {
+                    list.Add(new { ID = car.ID, Brand = brands.Where(x => x.ID == car.BrandID).Select(y => y.Name).First(), Model = car.Model, Production_year = car.Production_year, Cylinder_number = car.Cylinder_number, Cylinder_capacity = car.Cylinder_capacity });
+                }
+                deleteAllCar.ItemsSource = list;
+                createpartAllCar.ItemsSource= list;
+
             }
             else if(partRead.IsSelected)
             {
@@ -418,6 +428,28 @@ namespace WPF_Client
         private void createPartBtn_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void partCreateSelectCompCarAdd_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void partCreateSelectCompCarRemove_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void partPrice_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void partWeight_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("^[0-9]([.][0-9])?$");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }
