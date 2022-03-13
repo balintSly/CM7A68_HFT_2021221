@@ -131,11 +131,11 @@ namespace WPF_Client_GUI
                () => selectedBrand != null
                );
             DeleteCar = new RelayCommand(
-                () => { },
+                () => { Cars.Delete(selectedCar.ID); },
                 () => selectedCar != null
                 );
             DeletePart = new RelayCommand(
-                () => { },
+                () => { Parts.Delete(selectedPart.ID); },
                 () => selectedPart != null
                 );
 

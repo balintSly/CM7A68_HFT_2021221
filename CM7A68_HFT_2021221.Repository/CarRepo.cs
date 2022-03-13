@@ -17,6 +17,7 @@ namespace CM7A68_HFT_2021221.Repository
         }
         public void Create(Car car)
         {
+            car.ID = ReadAll().Count() + 1;
             db.Cars.Add(car);
             db.SaveChanges();
         }

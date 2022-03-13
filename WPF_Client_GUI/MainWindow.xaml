@@ -74,6 +74,8 @@
                         <TextBox materialDesign:HintAssist.Hint="Name" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
                                  Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding BrandToAdd.Name}"/>
                         <Button Content="Create brand" Command="{Binding CreateBrand}" Margin="10"/>
+                        <TextBox materialDesign:HintAssist.Hint="Name" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding SelectedBrand.Name}"/>
                         <Button Content="Update brand" Command="{Binding UpdateBrand}" Margin="10"/>
                         <Button Content="Delete brand" Command="{Binding DeleteBrand}" Margin="10"/>
                     </StackPanel>
