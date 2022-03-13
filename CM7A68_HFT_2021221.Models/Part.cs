@@ -47,6 +47,8 @@ namespace CM7A68_HFT_2021221.Models
         {
             this.CarParts = new HashSet<CarPart>();
             this.CarIndexes = new List<int>();
+            this.Brand = "";
+            this.Item_number = "";
         }
 
         public override bool Equals(object obj)

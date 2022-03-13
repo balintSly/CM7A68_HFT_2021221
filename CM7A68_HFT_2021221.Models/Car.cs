@@ -27,6 +27,7 @@ namespace CM7A68_HFT_2021221.Models
         public Car()
         {
             this.CarParts = new HashSet<CarPart>();
+            this.Model = "";
         }
 
         [ForeignKey(nameof(Brand))]

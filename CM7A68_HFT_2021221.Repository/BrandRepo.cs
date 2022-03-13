@@ -36,6 +36,7 @@ namespace CM7A68_HFT_2021221.Repository
         {
             var oldbrand = Read(brand.ID);
             oldbrand.Name = brand.Name;
+            oldbrand.Cars = brand.Cars.Select(x=>x).ToList();
             db.SaveChanges();
         }
 

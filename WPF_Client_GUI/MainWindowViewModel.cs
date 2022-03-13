@@ -45,12 +45,14 @@ namespace WPF_Client_GUI
                     selectedBrand = new Brand()
                     {
                         ID = value.ID,
-                        Name = value.Name
+                        Name = value.Name,
                     };
                 }
                 OnPropertyChanged();
                 (DeleteBrand as RelayCommand).NotifyCanExecuteChanged();
                 (UpdateBrand as RelayCommand).NotifyCanExecuteChanged();
+                ;
+
             }
         }
         private Car selectedCar;
@@ -107,7 +109,9 @@ namespace WPF_Client_GUI
             }
         }
         public Brand BrandToAdd { get; set; }
-        public Car CarToAdd { get; set; }
+        public Car CarToAdd{ get; set; }
+        public Brand CarToAddsBrand { get; set; }
+
         public Part PartToAdd { get; set; }
 
         public MainWindowViewModel()
@@ -115,16 +119,28 @@ namespace WPF_Client_GUI
             this.Brands = new RestCollection<Brand>("http://localhost:5000/", "brand", "hub");
             this.Cars = new RestCollection<Car>("http://localhost:5000/", "car", "hub");
             this.Parts = new RestCollection<Part>("http://localhost:5000/", "part", "hub");
+            //Brands.ToList().ForEach(b => { b.Cars = ; });
+            //Parts.ToList().ForEach(b =>  b.CarParts = Cars.SelectMany(x=>x.CarParts).ToList().Where(y=>y.PartID==b.ID).ToList()); //Jó???!!!
 
             BrandToAdd = new Brand();
             CarToAdd = new Car();
+            CarToAddsBrand = new Brand();
             PartToAdd = new Part();
 
             CreateBrand = new RelayCommand(
-                () => { Brands.Add(new Brand() { Name = BrandToAdd.Name }); BrandToAdd.Name = ""; }
-                );
+                () => { Brands.Add(new Brand() { Name = BrandToAdd.Name });});
             CreateCar = new RelayCommand(
-                () => { }
+                () => 
+                {
+                    Cars.Add(new Car()
+                    {
+                        Model = CarToAdd.Model,
+                        Cylinder_capacity = CarToAdd.Cylinder_capacity,
+                        Cylinder_number = CarToAdd.Cylinder_number,
+                        Production_year = CarToAdd.Production_year,
+                        Brand = CarToAddsBrand,
+                        BrandID=CarToAddsBrand.ID                      
+                    });}
                 );
             CreatePart = new RelayCommand(
                 () => { }

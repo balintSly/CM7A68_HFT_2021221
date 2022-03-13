@@ -14,7 +14,7 @@ namespace CM7A68_HFT_2021221.Models
         public int ID { get; set; }
         [Required]
         public string Name { get; set; }
-        [JsonIgnore]
+        //[JsonIgnore]
         public virtual ICollection<Car> Cars { get; set; }
         public Brand()
         {

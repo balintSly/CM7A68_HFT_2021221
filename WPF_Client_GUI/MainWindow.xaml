@@ -58,14 +58,31 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <ListBox ItemsSource="{Binding Brands}" SelectedItem="{Binding SelectedBrand}" Grid.Column="0" >
+                <ListBox ItemsSource="{Binding Brands}" SelectedItem="{Binding SelectedBrand}" Grid.Column="0" HorizontalContentAlignment="Stretch">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <Border BorderBrush="Black" BorderThickness="0">
-                                <StackPanel>
-                                    <Label Content="{Binding ID}" ContentStringFormat="ID: {0}"/>
-                                    <Label Content="{Binding Name}" ContentStringFormat="Name: {0}"/>
-                                </StackPanel>
+                            <Border BorderBrush="Black" BorderThickness="1">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="0">
+                                        <Label Content="{Binding ID}" ContentStringFormat="ID: {0}"/>
+                                        <Label Content="{Binding Name}" ContentStringFormat="Name: {0}"/>
+                                        <Label Content="{Binding Cars.Count}" ContentStringFormat="Cars: {0}"/>
+                                    </StackPanel>
+                                    <ListBox ItemsSource="{Binding Cars}" Grid.Column="1" HorizontalContentAlignment="Stretch">
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Label Content="{Binding Model}"/>
+                                                    <Label Content="{Binding Production_year}"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
+                                </Grid>
                             </Border>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
@@ -83,9 +100,66 @@
                 </Grid>
             </Grid>
             <Grid Visibility="Collapsed" Name="grid_cars">
-                <ListBox ItemsSource="{Binding Cars}" SelectedItem="{Binding SelectedCar}" >
-
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <ListBox ItemsSource="{Binding Cars}" SelectedItem="{Binding SelectedCar}" HorizontalContentAlignment="Stretch" Grid.Column="0">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderBrush="Black" BorderThickness="1">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="0">
+                                        <Label Content="{Binding ID}" ContentStringFormat="ID: {0}"/>
+                                        <Label Content="{Binding Brand.Name}" ContentStringFormat="Brand: {0}"/>
+                                        <Label Content="{Binding Model}" ContentStringFormat="Model: {0}"/>
+                                        <Label Content="{Binding Production_year}" ContentStringFormat="Year: {0}"/>
+                                        <Label Content="{Binding Cylinder_capacity}" ContentStringFormat="Engine: {0}L"/>
+                                        <Label Content="{Binding CarParts.Count}" ContentStringFormat="Parts: {0}"/>
+                                    </StackPanel>
+                                    <ListBox ItemsSource="{Binding CarParts}" Grid.Column="1" HorizontalContentAlignment="Stretch">
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Label Content="{Binding Part.Name}"/>
+                                                    <Label Content="{Binding Part.Item_number}"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
                 </ListBox>
+                <Grid Grid.Column="1">
+                    <ListBox>
+                        <ComboBox materialDesign:HintAssist.Hint="Brand" Height="60" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                                 Style="{StaticResource MaterialDesignOutlinedComboBox}" ItemsSource="{Binding Brands}" SelectedIndex="0" SelectedItem="{Binding CarToAddsBrand}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Label Content="{Binding Name}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <TextBox materialDesign:HintAssist.Hint="Model" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding CarToAdd.Model}"/>
+                        <TextBox materialDesign:HintAssist.Hint="Cylinder capacity" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding CarToAdd.Cylinder_capacity}"/>
+                        <TextBox materialDesign:HintAssist.Hint="Cylinder number" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding CarToAdd.Cylinder_number}"/>
+                        <TextBox materialDesign:HintAssist.Hint="Production year" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding CarToAdd.Production_year}"/>
+                        <Button Content="Create Car" Command="{Binding CreateCar}" Margin="10"/>
+                        
+                        
+                        <Button Content="Delete Car" Command="{Binding DeleteCar}" Margin="10"/>
+                    </ListBox>
+                </Grid>
             </Grid>
             <Grid Visibility="Collapsed" Name="grid_parts">
                 <ListBox ItemsSource="{Binding Parts}" SelectedItem="{Binding SelectedPart}" >
