@@ -22,7 +22,7 @@ namespace CM7A68_HFT_2021221.Models
         [NotMapped]
         [JsonIgnore]
         public  virtual Brand Brand { get; set; }
-        [JsonIgnore]
+        //[JsonIgnore]
         public virtual ICollection<CarPart> CarParts { get; set; }
         public Car()
         {

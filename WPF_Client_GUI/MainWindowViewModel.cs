@@ -34,7 +34,6 @@ namespace WPF_Client_GUI
         public ICommand DeletePart { get; set; }
 
         private Brand selectedBrand;
-
         public Brand SelectedBrand
         {
             get { return selectedBrand; }
