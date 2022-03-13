@@ -13,7 +13,8 @@
         TextOptions.TextFormattingMode="Ideal"
          TextOptions.TextRenderingMode="Auto"
          Background="{DynamicResource MaterialDesignPaper}"
-        FontFamily="{DynamicResource MaterialDesignFont}">
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        ResizeMode="NoResize">
     <Window.DataContext>
         <local:MainWindowViewModel/>
     </Window.DataContext>
@@ -75,8 +76,8 @@
                                  Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding BrandToAdd.Name}"/>
                         <Button Content="Create brand" Command="{Binding CreateBrand}" Margin="10"/>
                         <TextBox materialDesign:HintAssist.Hint="Name" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
-                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding SelectedBrand.Name}"/>
-                        <Button Content="Update brand" Command="{Binding UpdateBrand}" Margin="10"/>
+                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding SelectedBrand.Name, UpdateSourceTrigger=Explicit}" Name="tb_brandName"/>
+                        <Button Name="btn_brandUpdate" Content="Update brand" Command="{Binding UpdateBrand, UpdateSourceTrigger=Explicit}" Margin="10" Click="btn_brandUpdate_Click"/>
                         <Button Content="Delete brand" Command="{Binding DeleteBrand}" Margin="10"/>
                     </StackPanel>
                 </Grid>

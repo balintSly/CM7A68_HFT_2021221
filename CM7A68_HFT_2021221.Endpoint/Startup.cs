@@ -1,4 +1,5 @@
 using CM7A68_HFT_2021221.Data;
+using CM7A68_HFT_2021221.Endpoint.Services;
 using CM7A68_HFT_2021221.Logic;
 using CM7A68_HFT_2021221.Repository;
 using Microsoft.AspNetCore.Builder;
@@ -29,6 +30,7 @@ namespace CM7A68_HFT_2021221.Endpoint
             services.AddTransient<IBrandRepo, BrandRepo>();
 
             services.AddTransient<CarDBContext, CarDBContext>();
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,6 +46,7 @@ namespace CM7A68_HFT_2021221.Endpoint
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<SiganlRHub>("/hub");
             });
         }
     }

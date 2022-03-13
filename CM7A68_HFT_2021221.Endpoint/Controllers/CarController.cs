@@ -1,6 +1,8 @@
-﻿using CM7A68_HFT_2021221.Logic;
+﻿using CM7A68_HFT_2021221.Endpoint.Services;
+using CM7A68_HFT_2021221.Logic;
 using CM7A68_HFT_2021221.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,8 +17,10 @@ namespace CM7A68_HFT_2021221.Endpoint.Controllers
     public class CarController : ControllerBase
     {
         ICarLogic carLogic;
-        public CarController(ICarLogic carLogic)
+        IHubContext<SiganlRHub> hub;
+        public CarController(ICarLogic carLogic, IHubContext<SiganlRHub> hub)
         {
+            this.hub = hub;
             this.carLogic = carLogic;
         }
         
@@ -39,6 +43,7 @@ namespace CM7A68_HFT_2021221.Endpoint.Controllers
         public void Post([FromBody] Car value)
         {
             carLogic.Create(value);
+            hub.Clients.All.SendAsync("CarCreated", value);
         }
 
         // PUT api/<CarController>/5
@@ -46,13 +51,16 @@ namespace CM7A68_HFT_2021221.Endpoint.Controllers
         public void Put([FromBody] Car value)
         {
             carLogic.Update(value);
+            hub.Clients.All.SendAsync("CarUpdated", value);
         }
 
         // DELETE api/<CarController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var value=carLogic.Read(id);
             carLogic.Delete(id);
+            hub.Clients.All.SendAsync("CarDeleted", value);
         }
     }
 }

@@ -26,7 +26,7 @@ namespace WPF_Client_GUI
         }
 
         private void btn_close_menu_Click(object sender, RoutedEventArgs e)
-        { 
+        {
             btn_openmenu.Visibility = Visibility.Visible;
             btn_close_menu.Visibility = Visibility.Collapsed;
         }
@@ -42,8 +42,8 @@ namespace WPF_Client_GUI
             if (lvitem_brands.IsSelected)
             {
                 grid_brands.Visibility = Visibility.Visible;
-                grid_cars.Visibility=Visibility.Collapsed;
-                grid_parts.Visibility=Visibility.Collapsed;
+                grid_cars.Visibility = Visibility.Collapsed;
+                grid_parts.Visibility = Visibility.Collapsed;
             }
             else if (lvitem_cars.IsSelected)
             {
@@ -57,6 +57,11 @@ namespace WPF_Client_GUI
                 grid_cars.Visibility = Visibility.Collapsed;
                 grid_parts.Visibility = Visibility.Visible;
             }
+        }
+        private void btn_brandUpdate_Click(object sender, RoutedEventArgs e)
+        {
+
+            tb_brandName.GetBindingExpression(TextBox.TextProperty).UpdateSource();
         }
     }
 }

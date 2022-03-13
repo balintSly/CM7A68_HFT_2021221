@@ -1,6 +1,8 @@
-﻿using CM7A68_HFT_2021221.Logic;
+﻿using CM7A68_HFT_2021221.Endpoint.Services;
+using CM7A68_HFT_2021221.Logic;
 using CM7A68_HFT_2021221.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +17,11 @@ namespace CM7A68_HFT_2021221.Endpoint.Controllers
     public class PartController : ControllerBase
     {
         IPartLogic partLogic;
-        public PartController(IPartLogic partLogic)
+        IHubContext<SiganlRHub> hub;
+        public PartController(IPartLogic partLogic, IHubContext<SiganlRHub> hub)
         {
             this.partLogic = partLogic;
+            this.hub = hub;
         }
         
         // GET: api/<PartController>
@@ -39,6 +43,7 @@ namespace CM7A68_HFT_2021221.Endpoint.Controllers
         public void Post([FromBody] Part value)
         {
             partLogic.Create(value);
+            hub.Clients.All.SendAsync("PartCreated", value);
         }
 
         // PUT api/<PartController>/5
@@ -46,13 +51,16 @@ namespace CM7A68_HFT_2021221.Endpoint.Controllers
         public void Put([FromBody] Part value)
         {
             partLogic.Update(value);
+            hub.Clients.All.SendAsync("PartUpdated", value);
         }
 
         // DELETE api/<PartController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var value=partLogic.Read(id);
             partLogic.Delete(id);
+            hub.Clients.All.SendAsync("PartCreated", value);
         }
     }
 }

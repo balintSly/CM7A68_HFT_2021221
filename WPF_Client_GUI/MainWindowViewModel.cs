@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace WPF_Client_GUI
 {
-    public class MainWindowViewModel:ObservableRecipient
+    public class MainWindowViewModel : ObservableRecipient
     {
         public RestCollection<Brand> Brands { get; set; }
         public RestCollection<Car> Cars { get; set; }
@@ -38,9 +38,18 @@ namespace WPF_Client_GUI
         public Brand SelectedBrand
         {
             get { return selectedBrand; }
-            set 
-            { 
-                SetProperty(ref selectedBrand, value);
+            set
+            {
+
+                if (value != null)
+                {
+                    selectedBrand = new Brand()
+                    {
+                        ID = value.ID,
+                        Name = value.Name
+                    };
+                }
+                OnPropertyChanged();
                 (DeleteBrand as RelayCommand).NotifyCanExecuteChanged();
                 (UpdateBrand as RelayCommand).NotifyCanExecuteChanged();
             }
@@ -50,9 +59,23 @@ namespace WPF_Client_GUI
         public Car SelectedCar
         {
             get { return selectedCar; }
-            set 
-            { 
-                SetProperty(ref selectedCar, value);
+            set
+            {
+                if (value != null)
+                {
+                    selectedCar = new Car()
+                    {
+                        ID = value.ID,
+                        CarParts = value.CarParts,
+                        Brand = value.Brand,
+                        BrandID = value.BrandID,
+                        Cylinder_capacity = value.Cylinder_capacity,
+                        Cylinder_number = value.Cylinder_number,
+                        Model = value.Model,
+                        Production_year = value.Production_year,
+                    };
+                }
+                OnPropertyChanged();
                 (DeleteCar as RelayCommand).NotifyCanExecuteChanged();
                 (UpdateCar as RelayCommand).NotifyCanExecuteChanged();
             }
@@ -62,9 +85,24 @@ namespace WPF_Client_GUI
         public Part SelectedPart
         {
             get { return selectedPart; }
-            set 
-            { 
-                SetProperty(ref selectedPart, value);
+            set
+            {
+                if (value != null)
+                {
+                    selectedPart = new Part()
+                    {
+                        ID = value.ID,
+                        Name = value.Name,
+                        Brand= value.Brand,
+                        CarIndexes = value.CarIndexes,
+                        CarParts= value.CarParts,
+                        Item_number = value.Item_number,
+                        Price = value.Price,
+                        Weight = value.Weight,
+
+                    };
+                }
+                OnPropertyChanged();
                 (DeletePart as RelayCommand).NotifyCanExecuteChanged();
                 (UpdatePart as RelayCommand).NotifyCanExecuteChanged();
             }
@@ -75,16 +113,16 @@ namespace WPF_Client_GUI
 
         public MainWindowViewModel()
         {
-            this.Brands = new RestCollection<Brand>("http://localhost:5000/","brand");
-            this.Cars = new RestCollection<Car>("http://localhost:5000/", "car");
-            this.Parts = new RestCollection<Part>("http://localhost:5000/", "part");
+            this.Brands = new RestCollection<Brand>("http://localhost:5000/", "brand", "hub");
+            this.Cars = new RestCollection<Car>("http://localhost:5000/", "car", "hub");
+            this.Parts = new RestCollection<Part>("http://localhost:5000/", "part", "hub");
 
             BrandToAdd = new Brand();
             CarToAdd = new Car();
-            PartToAdd= new Part();
+            PartToAdd = new Part();
 
             CreateBrand = new RelayCommand(
-                () => { Brands.Add(BrandToAdd); BrandToAdd = new Brand(); }
+                () => { Brands.Add(new Brand() { Name = BrandToAdd.Name }); BrandToAdd.Name = ""; }
                 );
             CreateCar = new RelayCommand(
                 () => { }
@@ -114,16 +152,16 @@ namespace WPF_Client_GUI
                 );
 
             UpdateBrand = new RelayCommand(
-               () => { },
-               ()=>selectedBrand!=null
+               () => { Brands.Update(selectedBrand); },
+               () => selectedBrand != null
                );
             UpdateCar = new RelayCommand(
-                () => { },
+                () => { Cars.Update(selectedCar); },
                 () => selectedCar != null
                 );
-            UpdateCar = new RelayCommand(
-                () => { },
-                ()=>selectedPart!=null
+            UpdatePart = new RelayCommand(
+                () => { Parts.Update(selectedPart); },
+                () => selectedPart != null
                 );
 
             DeleteBrand = new RelayCommand(
