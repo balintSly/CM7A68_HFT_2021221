@@ -12,7 +12,7 @@ namespace CM7A68_HFT_2021221.Client
         RestService restService ;
         public MethodTranslator()
         {
-            this.restService = new RestService("http://localhost:50874");
+            this.restService = new RestService("http://localhost:5000");
         }
         //readalls//////////////////////////////////////////////
         public List<Brand> GetAllBrand()

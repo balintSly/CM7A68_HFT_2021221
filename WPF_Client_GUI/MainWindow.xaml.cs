@@ -24,5 +24,39 @@ namespace WPF_Client_GUI
         {
             InitializeComponent();
         }
+
+        private void btn_close_menu_Click(object sender, RoutedEventArgs e)
+        { 
+            btn_openmenu.Visibility = Visibility.Visible;
+            btn_close_menu.Visibility = Visibility.Collapsed;
+        }
+
+        private void btn_openmenu_Click(object sender, RoutedEventArgs e)
+        {
+            btn_openmenu.Visibility = Visibility.Collapsed;
+            btn_close_menu.Visibility = Visibility.Visible;
+        }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (lvitem_brands.IsSelected)
+            {
+                grid_brands.Visibility = Visibility.Visible;
+                grid_cars.Visibility=Visibility.Collapsed;
+                grid_parts.Visibility=Visibility.Collapsed;
+            }
+            else if (lvitem_cars.IsSelected)
+            {
+                grid_brands.Visibility = Visibility.Collapsed;
+                grid_cars.Visibility = Visibility.Visible;
+                grid_parts.Visibility = Visibility.Collapsed;
+            }
+            else if (lvitem_parts.IsSelected)
+            {
+                grid_brands.Visibility = Visibility.Collapsed;
+                grid_cars.Visibility = Visibility.Collapsed;
+                grid_parts.Visibility = Visibility.Visible;
+            }
+        }
     }
 }

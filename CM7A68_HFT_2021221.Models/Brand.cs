@@ -18,6 +18,7 @@ namespace CM7A68_HFT_2021221.Models
         public Brand()
         {
             Cars = new HashSet<Car>();
+            this.Name = "";
         }
         public override bool Equals(object obj)
         {

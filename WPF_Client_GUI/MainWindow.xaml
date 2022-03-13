@@ -5,13 +5,122 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Client_GUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+         TextOptions.TextRenderingMode="Auto"
+         Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}">
     <Window.DataContext>
         <local:MainWindowViewModel/>
     </Window.DataContext>
-    <Grid>
-        <ListBox ItemsSource="{Binding Brands}">
+    <Window.Resources>
+        <Storyboard x:Key="MenuOpen">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="50"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="150"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MenuClose">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="150"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="50"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="btn_openmenu">
+            <BeginStoryboard Storyboard="{StaticResource MenuOpen}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="btn_close_menu">
+            <BeginStoryboard Storyboard="{StaticResource MenuClose}"/>
+        </EventTrigger>
+    </Window.Triggers>
             
-        </ListBox>
+    <Grid Background="LightGray">
+        <Grid Height="60" VerticalAlignment="Top" Background="SteelBlue">
+            <materialDesign:PopupBox HorizontalAlignment="Right">
+                <StackPanel>
+                    <Label Content="Info"/>
+                    <Label Content="Exit"/>
+                </StackPanel>
+            </materialDesign:PopupBox>
+            <TextBlock Text="Spare Party Inventory System" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22" FontWeight="DemiBold"/>
+        </Grid>
+        <Grid Background="LightCyan" Height="355" VerticalAlignment="Bottom" Width="740" HorizontalAlignment="Right">
+            <Grid Visibility="Collapsed" Name="grid_brands">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <ListBox ItemsSource="{Binding Brands}" SelectedItem="{Binding SelectedBrand}" Grid.Column="0" >
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderBrush="Black" BorderThickness="0">
+                                <StackPanel>
+                                    <Label Content="{Binding ID}" ContentStringFormat="ID: {0}"/>
+                                    <Label Content="{Binding Name}" ContentStringFormat="Name: {0}"/>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <Grid Grid.Column="1">
+                    <StackPanel>
+                        <TextBox materialDesign:HintAssist.Hint="Name" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding BrandToAdd.Name}"/>
+                        <Button Content="Create brand" Command="{Binding CreateBrand}" Margin="10"/>
+                        <Button Content="Update brand" Command="{Binding UpdateBrand}" Margin="10"/>
+                        <Button Content="Delete brand" Command="{Binding DeleteBrand}" Margin="10"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+            <Grid Visibility="Collapsed" Name="grid_cars">
+                <ListBox ItemsSource="{Binding Cars}" SelectedItem="{Binding SelectedCar}" >
+
+                </ListBox>
+            </Grid>
+            <Grid Visibility="Collapsed" Name="grid_parts">
+                <ListBox ItemsSource="{Binding Parts}" SelectedItem="{Binding SelectedPart}" >
+
+                </ListBox>
+            </Grid>
+        </Grid>
+        <Grid Width="50" HorizontalAlignment="Left" Background="SteelBlue" Name="GridMenu">
+            <StackPanel>
+                <Grid Height="150" Background="White">
+                    <Button Name="btn_close_menu" VerticalAlignment="Top" HorizontalAlignment="Right" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Collapsed" Click="btn_close_menu_Click">
+                        <materialDesign:PackIcon Kind="ArrowLeft" Foreground="Blue" Width="25" Height="25"/>
+                    </Button>
+                    <Button Name="btn_openmenu" VerticalAlignment="Top" HorizontalAlignment="Right" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" Click="btn_openmenu_Click">
+                        <materialDesign:PackIcon Kind="Menu" Foreground="Blue" Width="25" Height="25"/>
+                    </Button>
+                </Grid>
+                <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="ListView_SelectionChanged">
+                    <ListViewItem Height="60" Foreground="Blue" Name="lvitem_brands">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Copyright" Width="25" Height="25"/>
+                            <TextBlock Text="Brands" VerticalAlignment="Center" Margin="20 0 0 0"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60" Foreground="Blue" Name="lvitem_cars">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Car" Width="25" Height="25"/>
+                            <TextBlock Text="Cars" VerticalAlignment="Center" Margin="20 0 0 0"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60" Foreground="Blue" Name="lvitem_parts">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="ScrewFlatTop" Width="25" Height="25"/>
+                            <TextBlock Text="Parts" VerticalAlignment="Center" Margin="20 0 0 0"/>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>
