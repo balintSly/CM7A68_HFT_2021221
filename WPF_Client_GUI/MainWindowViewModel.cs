@@ -56,7 +56,6 @@ namespace WPF_Client_GUI
             }
         }
         private Car selectedCar;
-
         public Car SelectedCar
         {
             get { return selectedCar; }
@@ -68,7 +67,7 @@ namespace WPF_Client_GUI
                     {
                         ID = value.ID,
                         CarParts = value.CarParts,
-                        Brand = value.Brand,
+                        Brand = Brands.Where(x=>x.ID==value.BrandID).First(),
                         BrandID = value.BrandID,
                         Cylinder_capacity = value.Cylinder_capacity,
                         Cylinder_number = value.Cylinder_number,
@@ -76,13 +75,13 @@ namespace WPF_Client_GUI
                         Production_year = value.Production_year,
                     };
                 }
+                CarToUpdatesBrand = Brands.Where(x => x.ID == value.BrandID).First();
                 OnPropertyChanged();
                 (DeleteCar as RelayCommand).NotifyCanExecuteChanged();
                 (UpdateCar as RelayCommand).NotifyCanExecuteChanged();
             }
         }
         private Part selectedPart;
-
         public Part SelectedPart
         {
             get { return selectedPart; }
@@ -108,9 +107,11 @@ namespace WPF_Client_GUI
                 (UpdatePart as RelayCommand).NotifyCanExecuteChanged();
             }
         }
+
         public Brand BrandToAdd { get; set; }
         public Car CarToAdd{ get; set; }
         public Brand CarToAddsBrand { get; set; }
+        public Brand CarToUpdatesBrand { get; set; }
 
         public Part PartToAdd { get; set; }
 
@@ -119,28 +120,32 @@ namespace WPF_Client_GUI
             this.Brands = new RestCollection<Brand>("http://localhost:5000/", "brand", "hub");
             this.Cars = new RestCollection<Car>("http://localhost:5000/", "car", "hub");
             this.Parts = new RestCollection<Part>("http://localhost:5000/", "part", "hub");
-            //Brands.ToList().ForEach(b => { b.Cars = ; });
-            //Parts.ToList().ForEach(b =>  b.CarParts = Cars.SelectMany(x=>x.CarParts).ToList().Where(y=>y.PartID==b.ID).ToList()); //Jó???!!!
+            
 
             BrandToAdd = new Brand();
             CarToAdd = new Car();
             CarToAddsBrand = new Brand();
             PartToAdd = new Part();
+            CarToUpdatesBrand = Brands.FirstOrDefault();
 
             CreateBrand = new RelayCommand(
                 () => { Brands.Add(new Brand() { Name = BrandToAdd.Name });});
             CreateCar = new RelayCommand(
                 () => 
                 {
-                    Cars.Add(new Car()
+                    var newCar= new Car()
                     {
                         Model = CarToAdd.Model,
                         Cylinder_capacity = CarToAdd.Cylinder_capacity,
                         Cylinder_number = CarToAdd.Cylinder_number,
                         Production_year = CarToAdd.Production_year,
-                        Brand = CarToAddsBrand,
-                        BrandID=CarToAddsBrand.ID                      
-                    });}
+                        //Brand = CarToAddsBrand,
+                        BrandID = CarToAddsBrand.ID
+                    };
+                    Cars.Add(newCar);
+                    OnPropertyChanged();
+                    ;
+                }
                 );
             CreatePart = new RelayCommand(
                 () => { }
@@ -167,11 +172,17 @@ namespace WPF_Client_GUI
                 );
 
             UpdateBrand = new RelayCommand(
-               () => { Brands.Update(selectedBrand); },
+               () => 
+               {Brands.Update(selectedBrand);},
                () => selectedBrand != null
                );
             UpdateCar = new RelayCommand(
-                () => { Cars.Update(selectedCar); },
+                () => 
+                {
+                    selectedCar.BrandID = CarToUpdatesBrand.ID;
+                    selectedCar.Brand = null;
+                    Cars.Update(selectedCar); 
+                },
                 () => selectedCar != null
                 );
             UpdatePart = new RelayCommand(
@@ -180,11 +191,11 @@ namespace WPF_Client_GUI
                 );
 
             DeleteBrand = new RelayCommand(
-               () => { Brands.Delete(selectedBrand.ID); },
+               () => { Brands.Delete(selectedBrand.ID); OnPropertyChanged(); },
                () => selectedBrand != null
                );
             DeleteCar = new RelayCommand(
-                () => { Cars.Delete(selectedCar.ID); },
+                () => { Cars.Delete(selectedCar.ID); OnPropertyChanged(); },
                 () => selectedCar != null
                 );
             DeletePart = new RelayCommand(

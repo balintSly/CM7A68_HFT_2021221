@@ -57,11 +57,14 @@ namespace WPF_Client_GUI
                 grid_cars.Visibility = Visibility.Collapsed;
                 grid_parts.Visibility = Visibility.Visible;
             }
+           
         }
         private void btn_brandUpdate_Click(object sender, RoutedEventArgs e)
         {
 
             tb_brandName.GetBindingExpression(TextBox.TextProperty).UpdateSource();
         }
+    
+
     }
 }
