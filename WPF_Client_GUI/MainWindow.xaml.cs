@@ -59,12 +59,11 @@ namespace WPF_Client_GUI
             }
            
         }
-        private void btn_brandUpdate_Click(object sender, RoutedEventArgs e)
+        private void update_listboxes(object sender, RoutedEventArgs e)
         {
-
-            tb_brandName.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            lb_brands.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateSource();
+            lb_cars.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateSource();
+            lb_parts.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateSource();
         }
-    
-
     }
 }

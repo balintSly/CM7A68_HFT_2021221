@@ -91,11 +91,12 @@
                     <StackPanel>
                         <TextBox materialDesign:HintAssist.Hint="Name" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
                                  Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding BrandToAdd.Name}"/>
-                        <Button Content="Create brand" Command="{Binding CreateBrand}" Margin="10"/>
+                        <Button Content="Create brand" Command="{Binding CreateBrand}" Margin="10" Click="update_listboxes"/>
                         <TextBox materialDesign:HintAssist.Hint="Name" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
                                  Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding SelectedBrand.Name, UpdateSourceTrigger=Explicit}" Name="tb_brandName"/>
-                        <Button Name="btn_brandUpdate" Content="Update brand" Command="{Binding UpdateBrand, UpdateSourceTrigger=Explicit}" Margin="10" Click="btn_brandUpdate_Click"/>
-                        <Button Content="Delete brand" Command="{Binding DeleteBrand}" Margin="10"/>
+                        <Button Name="btn_brandUpdate" Content="Update brand" 
+                                Command="{Binding UpdateBrand, UpdateSourceTrigger=Explicit}" Margin="10" Click="update_listboxes"/>
+                        <Button Content="Delete brand" Command="{Binding DeleteBrand}" Margin="10" Click="update_listboxes"/>
                     </StackPanel>
                 </Grid>
             </Grid>
@@ -104,7 +105,7 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <ListBox ItemsSource="{Binding Cars}" SelectedItem="{Binding SelectedCar}" HorizontalContentAlignment="Stretch" Grid.Column="0">
+                <ListBox ItemsSource="{Binding Cars}" SelectedItem="{Binding SelectedCar}" HorizontalContentAlignment="Stretch" Grid.Column="0" Name="lb_cars">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Border BorderBrush="Black" BorderThickness="1">
@@ -125,8 +126,7 @@
                                         <ListBox.ItemTemplate>
                                             <DataTemplate>
                                                 <StackPanel Orientation="Horizontal">
-                                                    <Label Content="{Binding Part.Name}"/>
-                                                    <Label Content="{Binding Part.Item_number}"/>
+                                                    <Label Content="{Binding PartID}" ContentStringFormat="Part ID: {0}"/>
                                                 </StackPanel>
                                             </DataTemplate>
                                         </ListBox.ItemTemplate>
@@ -157,7 +157,7 @@
                                  Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding CarToAdd.Cylinder_number}"/>
                         <TextBox materialDesign:HintAssist.Hint="Production year" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
                                  Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding CarToAdd.Production_year}"/>
-                        <Button Content="Create Car" Command="{Binding CreateCar}" Margin="10"/>
+                        <Button Content="Create Car" Command="{Binding CreateCar}" Margin="10" Click="update_listboxes"/>
 
                         <ComboBox materialDesign:HintAssist.Hint="Brand" Height="60" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
                                  Style="{StaticResource MaterialDesignOutlinedComboBox}" ItemsSource="{Binding Brands}" SelectedItem="{Binding CarToUpdatesBrand}">
@@ -178,8 +178,8 @@
                                  Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding SelectedCar.Cylinder_number}"/>
                         <TextBox materialDesign:HintAssist.Hint="Production year" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
                                  Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding SelectedCar.Production_year}"/>
-                        <Button Content="Update Car" Command="{Binding UpdateCar}" Margin="10"/>
-                        <Button Content="Delete Car" Command="{Binding DeleteCar}" Margin="10"/>
+                        <Button Content="Update Car" Command="{Binding UpdateCar}" Margin="10" Click="update_listboxes"/>
+                        <Button Content="Delete Car" Command="{Binding DeleteCar}" Margin="10" Click="update_listboxes"/>
                     </ListBox>
                 </Grid>
             </Grid>
@@ -188,7 +188,7 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <ListBox ItemsSource="{Binding Parts}" SelectedItem="{Binding SelectedPart}" Grid.Column="0" HorizontalContentAlignment="Stretch">
+                <ListBox ItemsSource="{Binding Parts}" SelectedItem="{Binding SelectedPart}" Grid.Column="0" HorizontalContentAlignment="Stretch" Name="lb_parts">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Border BorderBrush="Black" BorderThickness="1">
@@ -207,7 +207,11 @@
                                         <Label Content="{Binding CarIndexes.Count}" ContentStringFormat="Cars: {0}"/>
                                     </StackPanel>
                                     <ListBox ItemsSource="{Binding CarIndexes}" Grid.Column="1" HorizontalContentAlignment="Stretch">
-
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <Label Content="{Binding}" ContentStringFormat="Car ID: {0}"/>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
                                     </ListBox>
                                 </Grid>
                             </Border>
@@ -238,7 +242,7 @@
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                         </ListBox>
-                        <Button Content="Create Part" Command="{Binding CreatePart}" Margin="10"/>
+                        <Button Content="Create Part" Command="{Binding CreatePart}" Margin="10" Click="update_listboxes"/>
 
                         <TextBox materialDesign:HintAssist.Hint="Brand" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
                                  Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding SelectedPart.Brand}"/>
@@ -262,8 +266,8 @@
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                         </ListBox>
-                        <Button Content="Update Part" Command="{Binding UpdatePart}" Margin="10"/>
-                        <Button Content="Delete Part" Command="{Binding DeletePart}" Margin="10"/>
+                        <Button Content="Update Part" Command="{Binding UpdatePart}" Margin="10" Click="update_listboxes"/>
+                        <Button Content="Delete Part" Command="{Binding DeletePart}" Margin="10" Click="update_listboxes"/>
                     </ListBox>
                 </Grid>
             </Grid>

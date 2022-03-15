@@ -46,6 +46,7 @@ namespace CM7A68_HFT_2021221.Repository
             oldpart.Name = part.Name;
             oldpart.Price = part.Price;
             oldpart.Weight = part.Weight;
+            
 
             List<CarPart> newParts = new List<CarPart>();
             //foreach (var item in part.CarParts)
@@ -56,7 +57,7 @@ namespace CM7A68_HFT_2021221.Repository
             {
                 newParts.Add(new CarPart() { CarID = db.Cars.ToList().Find(x => x.ID == item).ID, Car = db.Cars.ToList().Find(x => x.ID == item) });
             }
-
+            oldpart.CarIndexes = part.CarIndexes;
 
             oldpart.CarParts = newParts;
             //oldpart.CarParts = part.CarParts;

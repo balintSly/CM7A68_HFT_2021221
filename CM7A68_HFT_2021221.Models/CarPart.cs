@@ -11,7 +11,8 @@ namespace CM7A68_HFT_2021221.Models
     {
         [JsonIgnore]
         public virtual Car Car { get; set; }     
-        public int CarID { get; set; }     
+        public int CarID { get; set; }
+        [JsonIgnore]
         public virtual Part Part { get; set; }     
         public int PartID { get; set; }     
     }

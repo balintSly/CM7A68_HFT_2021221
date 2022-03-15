@@ -131,6 +131,7 @@ namespace WPF_Client_GUI
                     SelectedCarsToPart.Add(new Car
                     {
                         BrandID = value.BrandID,
+                        ID= value.ID,
                         CarParts = value.CarParts,
                         Cylinder_capacity = value.Cylinder_capacity,
                         Cylinder_number = value.Cylinder_number,
@@ -230,6 +231,7 @@ namespace WPF_Client_GUI
                 () => 
                 {
                     selectedPart.CarParts.Clear();
+                    selectedPart.CarIndexes.Clear();
                     selectedPart.CarIndexes= SelectedCarsToPart.Select(x=>x.ID).ToList();
                     Parts.Update(selectedPart); 
                 },
@@ -245,7 +247,9 @@ namespace WPF_Client_GUI
                 () => selectedCar != null
                 );
             DeletePart = new RelayCommand(
-                () => { Parts.Delete(selectedPart.ID); },
+                () => { 
+                    Parts.Delete(selectedPart.ID); 
+                },
                 () => selectedPart != null
                 );
 

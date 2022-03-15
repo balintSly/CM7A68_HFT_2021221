@@ -21,7 +21,7 @@ namespace CM7A68_HFT_2021221.Models
         public string Item_number { get; set; }
         public string Brand { get; set; }
         
-        [JsonIgnore]
+        //[JsonIgnore]
         public virtual ICollection<CarPart> CarParts { get; set; }
         private List<int> carIndexes;
         [NotMapped]    //I hope it will work this way
