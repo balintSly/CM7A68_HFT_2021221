@@ -233,7 +233,8 @@ namespace WPF_Client_GUI
                     selectedPart.CarParts.Clear();
                     selectedPart.CarIndexes.Clear();
                     selectedPart.CarIndexes= SelectedCarsToPart.Select(x=>x.ID).ToList();
-                    Parts.Update(selectedPart); 
+                    Parts.Update(selectedPart);
+                    SelectedCarsToPart.Clear();
                 },
                 () => selectedPart != null
                 );

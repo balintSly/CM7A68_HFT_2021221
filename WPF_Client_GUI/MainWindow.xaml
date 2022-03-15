@@ -44,10 +44,9 @@
 
     <Grid Background="LightGray">
         <Grid Height="60" VerticalAlignment="Top" Background="SteelBlue">
-            <materialDesign:PopupBox HorizontalAlignment="Right">
+            <materialDesign:PopupBox HorizontalAlignment="Right" Margin="10" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
                 <StackPanel>
-                    <Label Content="Info"/>
-                    <Label Content="Exit"/>
+                    <Button Content="Exit" Click="exit_button_click" Margin="10" FontWeight="Bold"/>
                 </StackPanel>
             </materialDesign:PopupBox>
             <TextBlock Text="Spare Party Inventory System" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22" FontWeight="DemiBold"/>
@@ -119,7 +118,7 @@
                                         <Label Content="{Binding BrandID}" ContentStringFormat="Brand: {0}"/>
                                         <Label Content="{Binding Model}" ContentStringFormat="Model: {0}"/>
                                         <Label Content="{Binding Production_year}" ContentStringFormat="Year: {0}"/>
-                                        <Label Content="{Binding Cylinder_capacity}" ContentStringFormat="Engine: {0}L"/>
+                                        <Label Content="{Binding Cylinder_capacity}" ContentStringFormat="Engine: {0} L"/>
                                         <Label Content="{Binding CarParts.Count}" ContentStringFormat="Parts: {0}"/>
                                     </StackPanel>
                                     <ListBox ItemsSource="{Binding CarParts}" Grid.Column="1" HorizontalContentAlignment="Stretch">
@@ -202,8 +201,8 @@
                                         <Label Content="{Binding Brand}" ContentStringFormat="Brand: {0}"/>
                                         <Label Content="{Binding Name}" ContentStringFormat="Name: {0}"/>
                                         <Label Content="{Binding Item_number}" ContentStringFormat="Item umber: {0}"/>
-                                        <Label Content="{Binding Price}" ContentStringFormat="Price: {0}Ft"/>
-                                        <Label Content="{Binding Weight}" ContentStringFormat="Price: {0}kg"/>
+                                        <Label Content="{Binding Price}" ContentStringFormat="Price: {0} Ft"/>
+                                        <Label Content="{Binding Weight}" ContentStringFormat="Price: {0} kg"/>
                                         <Label Content="{Binding CarIndexes.Count}" ContentStringFormat="Cars: {0}"/>
                                     </StackPanel>
                                     <ListBox ItemsSource="{Binding CarIndexes}" Grid.Column="1" HorizontalContentAlignment="Stretch">
@@ -232,12 +231,13 @@
                                  Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding PartToAdd.Weight}"/>
                         <ListBox materialDesign:HintAssist.Hint="Compatible cars" Height="200" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
                                  Style="{StaticResource MaterialDesignChoiceChipOutlineListBox}" ItemsSource="{Binding Cars}" 
-                                 SelectedItem="{Binding SelectedCarAddToPart}">
+                                 SelectedItem="{Binding SelectedCarAddToPart}" HorizontalContentAlignment="Stretch">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
                                         <Label Content="{Binding Model}"/>
                                         <Label Content="{Binding Production_year}"/>
+                                        <Label Content="{Binding ID}" ContentStringFormat=" ID: {0}"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
@@ -256,12 +256,13 @@
                                  Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding SelectedPart.Weight}"/>
                         <ListBox materialDesign:HintAssist.Hint="Compatible cars" Height="200" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
                                  Style="{StaticResource MaterialDesignChoiceChipOutlineListBox}" 
-                                 ItemsSource="{Binding Cars}" SelectedItem="{Binding SelectedCarAddToPart}">
+                                 ItemsSource="{Binding Cars}" SelectedItem="{Binding SelectedCarAddToPart}" HorizontalContentAlignment="Stretch">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
                                         <Label Content="{Binding Model}"/>
                                         <Label Content="{Binding Production_year}"/>
+                                        <Label Content="{Binding ID}" ContentStringFormat=" ID: {0}"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>

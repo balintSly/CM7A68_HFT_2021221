@@ -65,5 +65,10 @@ namespace WPF_Client_GUI
             lb_cars.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateSource();
             lb_parts.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateSource();
         }
+
+        private void exit_button_click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -61,7 +61,7 @@ namespace CM7A68_HFT_2021221.Endpoint.Controllers
         {
             var value=partLogic.Read(id);
             partLogic.Delete(id);
-            hub.Clients.All.SendAsync("PartCreated", value);
+            hub.Clients.All.SendAsync("PartDeleted", value);
         }
     }
 }
