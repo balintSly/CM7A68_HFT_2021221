@@ -41,7 +41,14 @@ namespace CM7A68_HFT_2021221.Models
                 else {return carIndexes; }
                     
             }
-            set { this.carIndexes = value; } 
+            set 
+            {
+                if (value!=null)
+                {
+                    this.carIndexes = value;
+                }
+                
+            } 
         }
         public Part()
         {
@@ -49,6 +56,9 @@ namespace CM7A68_HFT_2021221.Models
             this.CarIndexes = new List<int>();
             this.Brand = "";
             this.Item_number = "";
+            this.Name = "";
+            this.Price = 0;
+            this.Weight = 0;
         }
 
         public override bool Equals(object obj)

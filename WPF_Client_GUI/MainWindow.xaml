@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Client_GUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="SPIS" Height="650" Width="1200"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -32,7 +32,7 @@
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </Window.Resources>
-    
+
     <Window.Triggers>
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="btn_openmenu">
             <BeginStoryboard Storyboard="{StaticResource MenuOpen}"/>
@@ -41,7 +41,7 @@
             <BeginStoryboard Storyboard="{StaticResource MenuClose}"/>
         </EventTrigger>
     </Window.Triggers>
-            
+
     <Grid Background="LightGray">
         <Grid Height="60" VerticalAlignment="Top" Background="SteelBlue">
             <materialDesign:PopupBox HorizontalAlignment="Right">
@@ -52,7 +52,7 @@
             </materialDesign:PopupBox>
             <TextBlock Text="Spare Party Inventory System" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22" FontWeight="DemiBold"/>
         </Grid>
-        <Grid Background="LightCyan" Height="355" VerticalAlignment="Bottom" Width="740" HorizontalAlignment="Right">
+        <Grid Background="LightCyan" Height="555" VerticalAlignment="Bottom" Width="1135" HorizontalAlignment="Right">
             <Grid Visibility="Collapsed" Name="grid_brands">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -179,17 +179,93 @@
                         <TextBox materialDesign:HintAssist.Hint="Production year" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
                                  Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding SelectedCar.Production_year}"/>
                         <Button Content="Update Car" Command="{Binding UpdateCar}" Margin="10"/>
-
-
-
                         <Button Content="Delete Car" Command="{Binding DeleteCar}" Margin="10"/>
                     </ListBox>
                 </Grid>
             </Grid>
             <Grid Visibility="Collapsed" Name="grid_parts">
-                <ListBox ItemsSource="{Binding Parts}" SelectedItem="{Binding SelectedPart}" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <ListBox ItemsSource="{Binding Parts}" SelectedItem="{Binding SelectedPart}" Grid.Column="0" HorizontalContentAlignment="Stretch">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderBrush="Black" BorderThickness="1">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="0">
+                                        <Label Content="{Binding ID}" ContentStringFormat="ID: {0}"/>
+                                        <Label Content="{Binding Brand}" ContentStringFormat="Brand: {0}"/>
+                                        <Label Content="{Binding Name}" ContentStringFormat="Name: {0}"/>
+                                        <Label Content="{Binding Item_number}" ContentStringFormat="Item umber: {0}"/>
+                                        <Label Content="{Binding Price}" ContentStringFormat="Price: {0}Ft"/>
+                                        <Label Content="{Binding Weight}" ContentStringFormat="Price: {0}kg"/>
+                                        <Label Content="{Binding CarIndexes.Count}" ContentStringFormat="Cars: {0}"/>
+                                    </StackPanel>
+                                    <ListBox ItemsSource="{Binding CarIndexes}" Grid.Column="1" HorizontalContentAlignment="Stretch">
 
+                                    </ListBox>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
                 </ListBox>
+                <Grid Grid.Column="1">
+                    <ListBox>
+                        <TextBox materialDesign:HintAssist.Hint="Brand" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding PartToAdd.Brand}"/>
+                        <TextBox materialDesign:HintAssist.Hint="Name" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding PartToAdd.Name}"/>
+                        <TextBox materialDesign:HintAssist.Hint="Item number" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding PartToAdd.Item_number}"/>
+                        <TextBox materialDesign:HintAssist.Hint="Price" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding PartToAdd.Price}"/>
+                        <TextBox materialDesign:HintAssist.Hint="Weight" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding PartToAdd.Weight}"/>
+                        <ListBox materialDesign:HintAssist.Hint="Compatible cars" Height="200" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                                 Style="{StaticResource MaterialDesignChoiceChipOutlineListBox}" ItemsSource="{Binding Cars}" 
+                                 SelectedItem="{Binding SelectedCarAddToPart}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Content="{Binding Model}"/>
+                                        <Label Content="{Binding Production_year}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                        <Button Content="Create Part" Command="{Binding CreatePart}" Margin="10"/>
+
+                        <TextBox materialDesign:HintAssist.Hint="Brand" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding SelectedPart.Brand}"/>
+                        <TextBox materialDesign:HintAssist.Hint="Name" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding SelectedPart.Name}"/>
+                        <TextBox materialDesign:HintAssist.Hint="Item number" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding SelectedPart.Item_number}"/>
+                        <TextBox materialDesign:HintAssist.Hint="Price" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding SelectedPart.Price}"/>
+                        <TextBox materialDesign:HintAssist.Hint="Weight" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding SelectedPart.Weight}"/>
+                        <ListBox materialDesign:HintAssist.Hint="Compatible cars" Height="200" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                                 Style="{StaticResource MaterialDesignChoiceChipOutlineListBox}" 
+                                 ItemsSource="{Binding Cars}" SelectedItem="{Binding SelectedCarAddToPart}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Content="{Binding Model}"/>
+                                        <Label Content="{Binding Production_year}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                        <Button Content="Update Part" Command="{Binding UpdatePart}" Margin="10"/>
+                        <Button Content="Delete Part" Command="{Binding DeletePart}" Margin="10"/>
+                    </ListBox>
+                </Grid>
             </Grid>
         </Grid>
         <Grid Width="50" HorizontalAlignment="Left" Background="SteelBlue" Name="GridMenu">

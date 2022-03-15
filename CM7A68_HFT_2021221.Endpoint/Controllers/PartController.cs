@@ -28,7 +28,8 @@ namespace CM7A68_HFT_2021221.Endpoint.Controllers
         [HttpGet]
         public IEnumerable<Part> Get()
         {
-            return partLogic.ReadAll();
+            var parts = partLogic.ReadAll();
+            return parts;
         }
 
         // GET api/<PartController>/5

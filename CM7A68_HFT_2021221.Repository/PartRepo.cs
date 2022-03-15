@@ -27,7 +27,10 @@ namespace CM7A68_HFT_2021221.Repository
         }
         public IQueryable<Part> ReadAll()
         {
-            return db.Parts;
+            var parts=db.Parts.ToList();
+            parts.ForEach(x => x.CarIndexes = x.CarParts.Select(x => x.CarID).ToList());
+            return parts.AsQueryable();
+            //return db.Parts;
         }
         public void Delete(int ID)
         {
