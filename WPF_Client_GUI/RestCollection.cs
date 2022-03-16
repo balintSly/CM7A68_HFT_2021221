@@ -16,7 +16,7 @@ namespace WPF_Client_GUI
     {
         HttpClient client;
 
-        public RestService(string baseurl, string pingableEndpoint = "swagger")
+        public RestService(string baseurl, string pingableEndpoint = "car")
         {
             bool isOk = false;
             do
