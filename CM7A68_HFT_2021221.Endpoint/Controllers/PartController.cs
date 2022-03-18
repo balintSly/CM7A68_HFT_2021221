@@ -45,6 +45,8 @@ namespace CM7A68_HFT_2021221.Endpoint.Controllers
         {
             partLogic.Create(value);
             hub.Clients.All.SendAsync("PartCreated", value);
+            hub.Clients.All.SendAsync("CarUpdated", null);
+            hub.Clients.All.SendAsync("BrandUpdated", null);
         }
 
         // PUT api/<PartController>/5
@@ -53,6 +55,8 @@ namespace CM7A68_HFT_2021221.Endpoint.Controllers
         {
             partLogic.Update(value);
             hub.Clients.All.SendAsync("PartUpdated", value);
+            hub.Clients.All.SendAsync("CarUpdated", null);
+            hub.Clients.All.SendAsync("BrandUpdated", null);
         }
 
         // DELETE api/<PartController>/5
@@ -62,6 +66,8 @@ namespace CM7A68_HFT_2021221.Endpoint.Controllers
             var value=partLogic.Read(id);
             partLogic.Delete(id);
             hub.Clients.All.SendAsync("PartDeleted", value);
+            hub.Clients.All.SendAsync("CarUpdated", null);
+            hub.Clients.All.SendAsync("BrandUpdated", null);
         }
     }
 }
