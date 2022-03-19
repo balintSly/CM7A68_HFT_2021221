@@ -59,13 +59,6 @@ namespace WPF_Client_GUI
             }
            
         }
-        private void update_listboxes(object sender, RoutedEventArgs e)
-        {
-            lb_brands.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateSource();
-            lb_cars.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateSource();
-            lb_parts.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateSource();
-        }
-
         private void exit_button_click(object sender, RoutedEventArgs e)
         {
             this.Close();

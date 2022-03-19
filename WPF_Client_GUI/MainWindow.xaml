@@ -31,6 +31,13 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="50"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
+        <Storyboard x:Key="MoveCar">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Canvas.Left)" Storyboard.TargetName="carAnimPic">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-820"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="1050"/>
+                <EasingDoubleKeyFrame KeyTime="0" Value="-820"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
     </Window.Resources>
 
     <Window.Triggers>
@@ -40,9 +47,36 @@
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="btn_close_menu">
             <BeginStoryboard Storyboard="{StaticResource MenuClose}"/>
         </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="btn_create_car">
+            <BeginStoryboard Storyboard="{StaticResource MoveCar}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="btn_update_car">
+            <BeginStoryboard Storyboard="{StaticResource MoveCar}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="btn_delete_car">
+            <BeginStoryboard Storyboard="{StaticResource MoveCar}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="btn_create_brand">
+            <BeginStoryboard Storyboard="{StaticResource MoveCar}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="btn_update_brand">
+            <BeginStoryboard Storyboard="{StaticResource MoveCar}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="btn_delete_brand">
+            <BeginStoryboard Storyboard="{StaticResource MoveCar}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="btn_create_part">
+            <BeginStoryboard Storyboard="{StaticResource MoveCar}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="btn_update_part">
+            <BeginStoryboard Storyboard="{StaticResource MoveCar}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="btn_delete_part">
+            <BeginStoryboard Storyboard="{StaticResource MoveCar}"/>
+        </EventTrigger>
     </Window.Triggers>
 
-    <Grid Background="LightGray">
+    <Grid Background="Transparent">
         <Grid Height="60" VerticalAlignment="Top" Background="SteelBlue">
             <materialDesign:PopupBox HorizontalAlignment="Right" Margin="10" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
                 <StackPanel>
@@ -90,12 +124,12 @@
                     <StackPanel>
                         <TextBox materialDesign:HintAssist.Hint="Name" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
                                  Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding BrandToAdd.Name}"/>
-                        <Button Content="Create brand" Command="{Binding CreateBrand}" Margin="10" Click="update_listboxes"/>
+                        <Button Content="Create brand" Command="{Binding CreateBrand}" Margin="10" Name="btn_create_brand"/>
                         <TextBox materialDesign:HintAssist.Hint="Name" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
                                  Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding SelectedBrand.Name, UpdateSourceTrigger=Explicit}" Name="tb_brandName"/>
-                        <Button Name="btn_brandUpdate" Content="Update brand" 
-                                Command="{Binding UpdateBrand, UpdateSourceTrigger=Explicit}" Margin="10" Click="update_listboxes"/>
-                        <Button Content="Delete brand" Command="{Binding DeleteBrand}" Margin="10" Click="update_listboxes"/>
+                        <Button Name="btn_update_brand" Content="Update brand" 
+                                Command="{Binding UpdateBrand, UpdateSourceTrigger=Explicit}" Margin="10"/>
+                        <Button Content="Delete brand" Command="{Binding DeleteBrand}" Margin="10" Name="btn_delete_brand"/>
                     </StackPanel>
                 </Grid>
             </Grid>
@@ -156,7 +190,7 @@
                                  Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding CarToAdd.Cylinder_number}"/>
                         <TextBox materialDesign:HintAssist.Hint="Production year" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
                                  Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding CarToAdd.Production_year}"/>
-                        <Button Content="Create Car" Command="{Binding CreateCar}" Margin="10" Click="update_listboxes"/>
+                        <Button Content="Create Car" Command="{Binding CreateCar}" Margin="10" Name="btn_create_car"/>
 
                         <ComboBox materialDesign:HintAssist.Hint="Brand" Height="60" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
                                  Style="{StaticResource MaterialDesignOutlinedComboBox}" ItemsSource="{Binding Brands}" SelectedItem="{Binding CarToUpdatesBrand}">
@@ -177,8 +211,8 @@
                                  Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding SelectedCar.Cylinder_number}"/>
                         <TextBox materialDesign:HintAssist.Hint="Production year" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
                                  Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding SelectedCar.Production_year}"/>
-                        <Button Content="Update Car" Command="{Binding UpdateCar}" Margin="10" Click="update_listboxes"/>
-                        <Button Content="Delete Car" Command="{Binding DeleteCar}" Margin="10" Click="update_listboxes"/>
+                        <Button Content="Update Car" Command="{Binding UpdateCar}" Margin="10" Name="btn_update_car"/>
+                        <Button Content="Delete Car" Command="{Binding DeleteCar}" Margin="10" Name="btn_delete_car"/>
                     </ListBox>
                 </Grid>
             </Grid>
@@ -242,7 +276,7 @@
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                         </ListBox>
-                        <Button Content="Create Part" Command="{Binding CreatePart}" Margin="10" Click="update_listboxes"/>
+                        <Button Content="Create Part" Command="{Binding CreatePart}" Margin="10" Name="btn_create_part"/>
 
                         <TextBox materialDesign:HintAssist.Hint="Brand" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
                                  Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding SelectedPart.Brand}"/>
@@ -267,8 +301,8 @@
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                         </ListBox>
-                        <Button Content="Update Part" Command="{Binding UpdatePart}" Margin="10" Click="update_listboxes"/>
-                        <Button Content="Delete Part" Command="{Binding DeletePart}" Margin="10" Click="update_listboxes"/>
+                        <Button Content="Update Part" Command="{Binding UpdatePart}" Margin="10" Name="btn_update_part"/>
+                        <Button Content="Delete Part" Command="{Binding DeletePart}" Margin="10" Name="btn_delete_part"/>
                     </ListBox>
                 </Grid>
             </Grid>
@@ -305,5 +339,9 @@
                 </ListView>
             </StackPanel>
         </Grid>
+        <Canvas>
+            <Image Source="Images/car.png" x:Name="carAnimPic" Canvas.Top="0" Canvas.Left="-820" Height="599" Width="810" Visibility="Visible"/>
+        </Canvas>
     </Grid>
+
 </Window>

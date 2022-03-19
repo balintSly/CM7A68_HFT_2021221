@@ -7,6 +7,10 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Images\car.png" />
+  </ItemGroup>
+
 	
   <ItemGroup>
     <PackageReference Include="MaterialDesignThemes" Version="4.3.0" />
@@ -17,6 +21,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CM7A68_HFT_2021221.Models\CM7A68_HFT_2021221.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\car.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>
