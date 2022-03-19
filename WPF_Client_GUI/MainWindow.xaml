@@ -14,7 +14,8 @@
          TextOptions.TextRenderingMode="Auto"
          Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        Icon="Images/icon.png">
     <Window.DataContext>
         <local:MainWindowViewModel/>
     </Window.DataContext>
@@ -34,12 +35,11 @@
         <Storyboard x:Key="MoveCar">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Canvas.Left)" Storyboard.TargetName="carAnimPic">
                 <EasingDoubleKeyFrame KeyTime="0" Value="-820"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="1050"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="1050"/>
                 <EasingDoubleKeyFrame KeyTime="0" Value="-820"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </Window.Resources>
-
     <Window.Triggers>
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="btn_openmenu">
             <BeginStoryboard Storyboard="{StaticResource MenuOpen}"/>
@@ -75,7 +75,6 @@
             <BeginStoryboard Storyboard="{StaticResource MoveCar}"/>
         </EventTrigger>
     </Window.Triggers>
-
     <Grid Background="Transparent">
         <Grid Height="60" VerticalAlignment="Top" Background="SteelBlue">
             <materialDesign:PopupBox HorizontalAlignment="Right" Margin="10" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
