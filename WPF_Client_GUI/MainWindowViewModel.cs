@@ -48,6 +48,7 @@ namespace WPF_Client_GUI
                     {
                         ID = value.ID,
                         Name = value.Name,
+                        Cars = value.Cars
                     };
                 }
                 OnPropertyChanged();
@@ -258,7 +259,9 @@ namespace WPF_Client_GUI
             #endregion
             UpdateBrand = new RelayCommand(
                () =>
-               { Brands.Update(selectedBrand); },
+               { 
+                   Brands.Update(selectedBrand); 
+               },
                () => selectedBrand != null
                );
             UpdateCar = new RelayCommand(
