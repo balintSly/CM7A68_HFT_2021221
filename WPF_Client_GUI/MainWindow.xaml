@@ -207,7 +207,7 @@
 
                             <ComboBox materialDesign:HintAssist.Hint="Brand" Height="60" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
                                  Style="{StaticResource MaterialDesignOutlinedComboBox}" ItemsSource="{Binding Brands}" SelectedItem="{Binding CarToUpdatesBrand}"
-                                      Grid.Column="0" Grid.Row="3">
+                                      Grid.Column="0" Grid.Row="3" SelectedIndex="{Binding SelectedBrandIdx}">
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">

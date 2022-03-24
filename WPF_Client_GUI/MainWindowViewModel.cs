@@ -58,6 +58,20 @@ namespace WPF_Client_GUI
             }
         }
         private Car selectedCar;
+
+        private int selectedBrandIdx;
+                
+        public int SelectedBrandIdx
+        {
+            get { return selectedBrandIdx; }
+            set 
+            { 
+                SetProperty(ref selectedBrandIdx, value);
+            
+            }
+        }
+
+
         public Car SelectedCar
         {
             get { return selectedCar; }
@@ -76,6 +90,7 @@ namespace WPF_Client_GUI
                         Model = value.Model,
                         Production_year = value.Production_year,
                     };
+                    SelectedBrandIdx = Brands.ToList().FindIndex(x => x.ID == selectedCar.BrandID);
                 }
                 CarToUpdatesBrand = Brands.Where(x => x.ID == value.BrandID).First();
                 OnPropertyChanged();
@@ -182,7 +197,7 @@ namespace WPF_Client_GUI
             PartToAdd = new Part();
             SelectedCarsToPart = new List<Car>();
             SelectedCarsToPartUpdate = new List<Car>();
-            CarToUpdatesBrand = Brands.FirstOrDefault();
+            //CarToUpdatesBrand = Brands.FirstOrDefault();
 
             CreateBrand = new RelayCommand(
                 () => { Brands.Add(new Brand() { Name = BrandToAdd.Name }); });
