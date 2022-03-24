@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Client_GUI"
         mc:Ignorable="d"
-        Title="SPIS" Height="650" Width="1200"
+        Title="SPIS" Height="700" Width="1200"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -84,7 +84,7 @@
             </materialDesign:PopupBox>
             <TextBlock Text="Spare Party Inventory System" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22" FontWeight="DemiBold"/>
         </Grid>
-        <Grid Background="LightCyan" Height="555" VerticalAlignment="Bottom" Width="1135" HorizontalAlignment="Right">
+        <Grid Background="LightCyan" Height="605" VerticalAlignment="Bottom" Width="1135" HorizontalAlignment="Right">
             <Grid Visibility="Collapsed" Name="grid_brands">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -169,49 +169,69 @@
                     </ListBox.ItemTemplate>
                 </ListBox>
                 <Grid Grid.Column="1">
-                    <ListBox>
-                        <ComboBox materialDesign:HintAssist.Hint="Brand" Height="60" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
-                                 Style="{StaticResource MaterialDesignOutlinedComboBox}" ItemsSource="{Binding Brands}" SelectedItem="{Binding CarToAddsBrand}">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <Label Content="{Binding Name}"/>
-                                        <Label Content="{Binding ID}" ContentStringFormat=" (ID: {0})"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
-                        <TextBox materialDesign:HintAssist.Hint="Model" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
-                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding CarToAdd.Model}"/>
-                        <TextBox materialDesign:HintAssist.Hint="Cylinder capacity" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
-                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding CarToAdd.Cylinder_capacity}"/>
-                        <TextBox materialDesign:HintAssist.Hint="Cylinder number" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
-                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding CarToAdd.Cylinder_number}"/>
-                        <TextBox materialDesign:HintAssist.Hint="Production year" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
-                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding CarToAdd.Production_year}"/>
-                        <Button Content="Create Car" Command="{Binding CreateCar}" Margin="10" Name="btn_create_car"/>
+                    <ListBox HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <ComboBox materialDesign:HintAssist.Hint="Brand" Height="60" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                                 Style="{StaticResource MaterialDesignOutlinedComboBox}" ItemsSource="{Binding Brands}" SelectedItem="{Binding CarToAddsBrand}" 
+                                  Grid.Column="0" Grid.Row="0">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label Content="{Binding Name}"/>
+                                            <Label Content="{Binding ID}" ContentStringFormat=" (ID: {0})"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                            <TextBox materialDesign:HintAssist.Hint="Model" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding CarToAdd.Model}" Grid.Column="1" Grid.Row="0"/>
+                            <TextBox materialDesign:HintAssist.Hint="Cylinder capacity" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding CarToAdd.Cylinder_capacity}" Grid.Column="0" Grid.Row="1"/>
+                            <TextBox materialDesign:HintAssist.Hint="Cylinder number" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding CarToAdd.Cylinder_number}" Grid.Column="1" Grid.Row="1"/>
+                            <TextBox materialDesign:HintAssist.Hint="Production year" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding CarToAdd.Production_year}" Grid.Column="0" Grid.Row="2"/>
+                            <Button Content="Create Car" Command="{Binding CreateCar}" Margin="10" Name="btn_create_car" Grid.Column="1" Grid.Row="2"/>
 
-                        <ComboBox materialDesign:HintAssist.Hint="Brand" Height="60" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
-                                 Style="{StaticResource MaterialDesignOutlinedComboBox}" ItemsSource="{Binding Brands}" SelectedItem="{Binding CarToUpdatesBrand}">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <Label Content="{Binding Name}"/>
-                                        <Label Content="{Binding ID}" ContentStringFormat=" (ID: {0})"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
-                        <TextBox materialDesign:HintAssist.Hint="Model" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
-                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding SelectedCar.Model}"/>
-                        <TextBox materialDesign:HintAssist.Hint="Cylinder capacity" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
-                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding SelectedCar.Cylinder_capacity}"/>
-                        <TextBox materialDesign:HintAssist.Hint="Cylinder number" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
-                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding SelectedCar.Cylinder_number}"/>
-                        <TextBox materialDesign:HintAssist.Hint="Production year" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
-                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding SelectedCar.Production_year}"/>
-                        <Button Content="Update Car" Command="{Binding UpdateCar}" Margin="10" Name="btn_update_car"/>
-                        <Button Content="Delete Car" Command="{Binding DeleteCar}" Margin="10" Name="btn_delete_car"/>
+                            <ComboBox materialDesign:HintAssist.Hint="Brand" Height="60" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                                 Style="{StaticResource MaterialDesignOutlinedComboBox}" ItemsSource="{Binding Brands}" SelectedItem="{Binding CarToUpdatesBrand}"
+                                      Grid.Column="0" Grid.Row="3">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label Content="{Binding Name}"/>
+                                            <Label Content="{Binding ID}" ContentStringFormat=" (ID: {0})"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                            <TextBox materialDesign:HintAssist.Hint="Model" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding SelectedCar.Model}" Grid.Column="1" Grid.Row="3"/>
+                            <TextBox materialDesign:HintAssist.Hint="Cylinder capacity" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding SelectedCar.Cylinder_capacity}" Grid.Column="0" Grid.Row="4"/>
+                            <TextBox materialDesign:HintAssist.Hint="Cylinder number" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding SelectedCar.Cylinder_number}" Grid.Column="1" Grid.Row="4"/>
+                            <TextBox materialDesign:HintAssist.Hint="Production year" Height="50" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding SelectedCar.Production_year}" Grid.Column="0" Grid.Row="5"/>
+                            <StackPanel Grid.Column="1" Grid.Row="5" Orientation="Vertical">
+                                <Button Content="Update Car" Command="{Binding UpdateCar}" Margin="10" Name="btn_update_car"/>
+                                <Button Content="Delete Car" Command="{Binding DeleteCar}" Margin="10" Name="btn_delete_car"/>
+                            </StackPanel>
+                            
+                        </Grid>
+                        
                     </ListBox>
                 </Grid>
             </Grid>
