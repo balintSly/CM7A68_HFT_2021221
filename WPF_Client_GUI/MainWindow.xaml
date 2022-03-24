@@ -289,7 +289,7 @@
                                  Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding SelectedPart.Weight}"/>
                         <ListBox materialDesign:HintAssist.Hint="Compatible cars" Height="200" Width="200" Margin="20" BorderBrush="{DynamicResource MaterialDesignDivider}" 
                                  Style="{StaticResource MaterialDesignChoiceChipOutlineListBox}" 
-                                 ItemsSource="{Binding Cars}" SelectedItem="{Binding SelectedCarAddToPart}" HorizontalContentAlignment="Stretch">
+                                 ItemsSource="{Binding Cars}" SelectedItem="{Binding SelectedCarAddToPartUpdate}" HorizontalContentAlignment="Stretch">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">

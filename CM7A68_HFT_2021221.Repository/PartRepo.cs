@@ -34,7 +34,6 @@ namespace CM7A68_HFT_2021221.Repository
             var parts = db.Parts.ToList();
             parts.ForEach(x => x.CarIndexes = x.CarParts.Select(x => x.CarID).ToList());
             return parts.AsQueryable();
-            //return db.Parts;
         }
         public void Delete(int ID)
         {
@@ -51,12 +50,13 @@ namespace CM7A68_HFT_2021221.Repository
             oldpart.Price = part.Price;
             oldpart.Weight = part.Weight;
             List<CarPart> newParts = new List<CarPart>();
+            oldpart.CarParts=new List<CarPart>();
+            db.Cars.ToList().ForEach(x => x.CarParts.Remove(x.CarParts.Where(y => y.PartID == part.ID).FirstOrDefault()));
             foreach (var item in part.CarIndexes)
             {
-                newParts.Add(new CarPart() { CarID = db.Cars.ToList().Find(x => x.ID == item).ID, Car = db.Cars.ToList().Find(x => x.ID == item) });
+                oldpart.CarParts.Add(new CarPart() { CarID = db.Cars.ToList().Find(x => x.ID == item).ID, Car = db.Cars.ToList().Find(x => x.ID == item) });
             }
             oldpart.CarIndexes = part.CarIndexes;
-            oldpart.CarParts = newParts;
             db.SaveChanges();
         }
     }

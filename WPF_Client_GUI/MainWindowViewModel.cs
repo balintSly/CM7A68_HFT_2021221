@@ -143,6 +143,32 @@ namespace WPF_Client_GUI
             }
         }
 
+        public List<Car> SelectedCarsToPartUpdate { get; set; }
+        private Car selectedCarAddToPartUpdate;
+
+        public Car SelectedCarAddToPartUpdate
+        {
+            get { return selectedCarAddToPartUpdate; }
+            set
+            {
+                selectedCarAddToPartUpdate = value;
+                if (SelectedCarsToPartUpdate.Where(x => x.ID == value.ID).FirstOrDefault() == null)
+                {
+                    SelectedCarsToPartUpdate.Add(new Car
+                    {
+                        BrandID = value.BrandID,
+                        ID = value.ID,
+                        CarParts = value.CarParts,
+                        Cylinder_capacity = value.Cylinder_capacity,
+                        Cylinder_number = value.Cylinder_number,
+                        Model = value.Model,
+                        Production_year = value.Production_year
+                    });
+                }
+
+            }
+        }
+
         public MainWindowViewModel()
         {
             this.Brands = new RestCollection<Brand>("http://localhost:5000/", "brand", "hub");
@@ -155,6 +181,7 @@ namespace WPF_Client_GUI
             CarToAddsBrand = new Brand();
             PartToAdd = new Part();
             SelectedCarsToPart = new List<Car>();
+            SelectedCarsToPartUpdate = new List<Car>();
             CarToUpdatesBrand = Brands.FirstOrDefault();
 
             CreateBrand = new RelayCommand(
@@ -189,6 +216,7 @@ namespace WPF_Client_GUI
                         CarIndexes= SelectedCarsToPart.Select(x=>x.ID).ToList()
                     };
                     Parts.Add(newPart);
+                    SelectedCarsToPart.Clear();
                     OnPropertyChanged();
                 }
                 );
@@ -232,9 +260,10 @@ namespace WPF_Client_GUI
                 {
                     selectedPart.CarParts.Clear();
                     selectedPart.CarIndexes.Clear();
-                    selectedPart.CarIndexes= SelectedCarsToPart.Select(x=>x.ID).ToList();
+                    selectedPart.CarIndexes= SelectedCarsToPartUpdate.Select(x=>x.ID).ToList();
                     Parts.Update(selectedPart);
-                    SelectedCarsToPart.Clear();
+                    SelectedCarsToPartUpdate.Clear();
+                    OnPropertyChanged();
                 },
                 () => selectedPart != null
                 );
