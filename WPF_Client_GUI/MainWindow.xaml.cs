@@ -59,9 +59,28 @@ namespace WPF_Client_GUI
             }
            
         }
+        double windowWidth;
+        double windowHeight;
         private void exit_button_click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+        bool isloaded;
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            windowWidth = this.ActualWidth;
+            windowHeight = this.ActualHeight;
+            isloaded = true;
+        }
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (isloaded)
+            {
+                
+                maingrid.Width *=(this.ActualWidth/windowWidth);
+                maingrid.Height*=(this.ActualHeight/windowHeight);
+            }
         }
     }
 }

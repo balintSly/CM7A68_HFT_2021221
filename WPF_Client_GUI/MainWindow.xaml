@@ -14,8 +14,10 @@
          TextOptions.TextRenderingMode="Auto"
          Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        ResizeMode="NoResize"
-        Icon="Images/icon.png">
+        ResizeMode="CanResize"
+        Icon="Images/icon.png"
+        Loaded="Window_Loaded"
+        SizeChanged="Window_SizeChanged">
     <Window.DataContext>
         <local:MainWindowViewModel/>
     </Window.DataContext>
@@ -84,7 +86,7 @@
             </materialDesign:PopupBox>
             <TextBlock Text="Spare Party Inventory System" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22" FontWeight="DemiBold"/>
         </Grid>
-        <Grid Background="LightCyan" Height="605" VerticalAlignment="Bottom" Width="1135" HorizontalAlignment="Right">
+        <Grid Background="LightCyan" Height="605" VerticalAlignment="Bottom" Width="1135" HorizontalAlignment="Right" Name="maingrid">
             <Grid Visibility="Collapsed" Name="grid_brands">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
