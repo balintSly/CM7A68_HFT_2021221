@@ -7,16 +7,22 @@
 </head>
 <body>
 <h1>Car Brand Catalog</h1>
-<div id="brand_container">
-    <div class="rowhead">
-        <div class="col">Brand ID</div>
-        <div class="col">Name</div>
-        <div class="col">Cars</div>
+<div id="maindiv">
+    <div id="brand_container">
+        <div class="row" id="headrow">
+            <div class="idcol">ID</div>
+            <div class="namecol">Name</div>
+            <div class="col">Cars</div>
+            <div class="col">Actions</div>
+        </div>
     </div>
-    <div class="rows" id="brand_rows">
-
+    <div id="add_container">
+        <label>Brand name</label>
+        <input type="text" id="brandname">
+        <input type="button" value="Create" onclick="create()">
     </div>
 </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
