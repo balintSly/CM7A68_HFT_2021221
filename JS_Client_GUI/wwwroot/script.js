@@ -13,22 +13,16 @@ async function getdata(){
 }
 function display() {
     document.getElementById('brand_container').innerHTML="";
-    document.getElementById('brand_container').innerHTM+=
-        '<div class="row" id="headrow"> ' +
-        '<div class="idcol">ID</div> ' +
-        '<div class="namecol">Name</div> ' +
-        '<div class="namecol">Action</div> ' +
-        '<div class="col">Cars</div></div>';
     brands.forEach(x=>{
         cars="";
-        x.cars.forEach(y=>cars+='<div class="carcol">'+y.model+' '+y.production_year+'</div>');
+        x.cars.forEach(y=>cars+='<div class="col">'+y.model+' '+y.production_year+'</div>');
 
 document.getElementById('brand_container').innerHTML+=
-    '<div class="row">' +
-        '<div class="idcol">'+x.id+'</div>'+
-        '<div class="namecol">'+x.name+'</div>'+
-        '<div class="col">'+ cars +'</div>'+
-    `<div class="namecol"><button onclick="deletebrand(${x.id})">Delete</button></div>`+
+    '<div class="row border border-primary">' +
+        '<div class="col p-2">'+x.id+'</div>'+
+        '<div class="col p-2">'+x.name+'</div>'+
+        '<div class="col p-2">'+ cars +'</div>'+
+    `<div class="col p-2"><button onclick="deletebrand(${x.id})" class="btn btn-danger">Delete</button></div>`+
     '</div>';
     });
 }

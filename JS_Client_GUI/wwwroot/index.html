@@ -1,28 +1,33 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <title>Brand Editor</title>
-    <link rel="stylesheet" href="style.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<h1>Car Brand Catalog</h1>
-<div id="maindiv">
-    <div id="brand_container">
-        <div class="row" id="headrow">
-            <div class="idcol">ID</div>
-            <div class="namecol">Name</div>
-            <div class="col">Cars</div>
-            <div class="col">Actions</div>
-        </div>
-    </div>
-    <div id="add_container">
-        <label>Brand name</label>
-        <input type="text" id="brandname">
-        <input type="button" value="Create" onclick="create()">
+<h1 class="display-1 text-center mb-3">Car Brand Catalog</h1>
+<hr class="py-1">
+<div id="add_container" class="container">
+    <div class="row">
+        <div class="col"><input type="text" id="brandname" class="form-control" placeholder="Brand name"></div>
+        <div class="col"><input type="button" value="Create" onclick="create()" class="btn btn-outline-primary"></div>
     </div>
 </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
-    <script src="script.js"></script>
+<div class="container mt-3 rounded-top border border-primary bg-primary text-white" id="bc_head">
+    <div class="row">
+        <div class="col p-2 fw-bold">ID</div>
+        <div class="col p-2 fw-bold">Name</div>
+        <div class="col p-2 fw-bold">Cars</div>
+        <div class="col p-2 fw-bold">Actions</div>
+    </div>
+</div>
+<div class="container rounded-bottom border border-primary bg-info text-dark" id="brand_container">
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+<script src="script.js"></script>
+<script src="style.css" rel="stylesheet"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
