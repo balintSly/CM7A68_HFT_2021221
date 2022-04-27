@@ -23,7 +23,7 @@ namespace CM7A68_HFT_2021221.Endpoint.Controllers
             this.brandLogic = brandLogic;
             this.hub = hub;
         }
-        
+
         // GET: api/<BrandController>
         [HttpGet]
         public IEnumerable<Brand> Get()
@@ -54,7 +54,7 @@ namespace CM7A68_HFT_2021221.Endpoint.Controllers
         {
             brandLogic.Update(value);
             hub.Clients.All.SendAsync("BrandUpdated", value);
-             hub.Clients.All.SendAsync("CarUpdated", null);
+            hub.Clients.All.SendAsync("CarUpdated", null);
             hub.Clients.All.SendAsync("PartUpdated", null);
         }
 
@@ -62,10 +62,10 @@ namespace CM7A68_HFT_2021221.Endpoint.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            var deleted=brandLogic.Read(id);         
+            var deleted = brandLogic.Read(id);
             brandLogic.Delete(id);
             hub.Clients.All.SendAsync("BrandDeleted", deleted);
-             hub.Clients.All.SendAsync("CarUpdated", null);
+            hub.Clients.All.SendAsync("CarUpdated", null);
             hub.Clients.All.SendAsync("PartUpdated", null);
         }
     }
